@@ -18,7 +18,15 @@ This code is written in C++ and compiled with development
 snapshots of the GNU C++ compiler (\texttt{http://gcc.gnu.org/}).
 Any compiler compliant with the ANSI ISO C++ standard \emph{should}
 compile the code, but I would read about how the compiler implements
-and instantiates templates before I tried it.
+and instantiates templates before I tried it.  The makeline
+used included
+\begin{verbatim}
+CFLAGS = -ansi -pedantic -Wall -O -gstabs+ -D_REENTRANT 
+CFLAGS += -D_GNU_SOURCE -ftemplate-depth-17 -funroll-loops 
+CFLAGS += -fstrict-aliasing
+LIBS = -llapack -lblas -lg2c -lm
+\end{verbatim}
+
 
 
 %-----------------------------------------------------------------
@@ -41,28 +49,65 @@ and instantiates templates before I tried it.
 %-----------------------------------------------------------------
 \section{Libraries Used}
 
-%-----------------------------------------------------------------
-\subsection{The \texttt{valarray} Template}
+\begin{itemize}
+
+\item
+The ANSI/ISO standard C++ library includes template support,
+which is used heavily throughout this program.
+In particular, the \texttt{valarray} 
 \index{Code@\emph{Code}!Valarray}
+template combines the ease of using a template--based
+container with the numerical speed of a simple
+C array.  The implementation for templates within the g++
+compiler suite is still under development, so a heavy
+regimen of testing is recommended, paricularly with
+templates for expression evaluation.
+For more information about 
+templates in C++ see\cite{Stroustrup:97}, and
+for more information on how these are implemented
+by the GNU compilers check out
+\texttt{http://gcc.gnu.org/}.
 
-The ANSI/ISO standard C++ library includes template support.
+\item
+The Template Numerical Toolkit \texttt{TNT} 
+Provides fairly functional matrix interfaces
+and compiles quickly despite being entirely
+template based.  More on this alleged successor to
+things like \texttt{lapack++} can be found at
+\texttt{http://math.nist.gov/tnt}.
 
-%-----------------------------------------------------------------
-\subsection{The Template Numerical Toolkit}
 
-%-----------------------------------------------------------------
-\subsection{blitz++}
+\item
+The \texttt{blitz++} toolkit seems like it will be a great toolkit
+when completed.  I simply used the component of the library
+that generates random numbers, preferring \texttt{TNT} 
+for matrix work.  This was done for two reasons,
+the blitz library is all templates and took \emph{forever}
+to compile even the simplest things under the GNU compiler,
+and \texttt{TNT} provided examples for interfacing 
+with \texttt{LAPACK} routines, where \texttt{blitx++}
+did not.
+More information about this library can be found at
+\texttt{http://www.oonumerics.org}.
 
-%-----------------------------------------------------------------
-\subsection{LAPACK}
-The module \texttt{fwrap.C} is an example o
+\item
+The ubiquitous Fortran library \texttt{LAPACK} was used 
+for the rather droll
+task of diagonalizing density matrices.  One of my primary
+reasons for including code in this dissertation is to provide
+examples of calling these legacy library routines from C++.
+The module \texttt{fwrap.C} is example code from the 
+\texttt{TNT}
+slightly adapted to do eigenvalue and eigenvector problems
+for double precision complex Hermitian matrices, and is
+included below.
 
+\end{itemize}
 
 %-----------------------------------------------------------------
 %-----------------------------------------------------------------
 \section{Modules}
 
-\begin{sloppy}
 
 %-----------------------------------------------------------------
 \subsection{main}
@@ -104,5 +149,3 @@ The module \texttt{fwrap.C} is an example o
 %-----------------------------------------------------------------
 \subsection{myvalarray}
 \lgrindfile{figures/myvalarray.h.lg}
-
-\end{sloppy}
