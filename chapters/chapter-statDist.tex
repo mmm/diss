@@ -25,8 +25,6 @@ It can be extended to general density operators with little difficulty.
 %--------------------------------------------------------------------------------   
 \subsection{Classical Statistical Distance}
 
-\mmm{Is this really necessary?}
-
 It is worth noting, that statistical distance on a classical state space 
 is not just the Euclidean distance between two probabilities $|p_1-p_2|$.  
 This is due to the fact that probabilities near $\frac{1}{2}$ are harder 
@@ -57,7 +55,6 @@ uncertainty as RMS deviation
 \begin{equation}
 \Delta p = \left[ \frac{p(1-p)}{n} \right]^\frac{1}{2}.
 \end{equation}
-\mmm{???}
 
 \mmm{Add in Konstantine's stuff here}
 
@@ -65,16 +62,6 @@ uncertainty as RMS deviation
 \subsection{A Quantum Mechanical Approach}
 \label{ssec:qmapproach}
 
-I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Wooters:81}
-geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
-to get the Fubini--Study metric for projective Hilbert space\dots
-\begin{equation}
-                ds_{\text{SP}}^2 = \sum_i \frac{1}{4}\frac{(dp_i)^2}{p_i} + 
-                \left( 
-                    \sum_i p_i(d\phi_i)^2 - \left( \sum_i p_i d\phi_i \right)^2
-                \right).
-\label{e:fsStatistical}
-\end{equation}
 
 Consider two pure states:
 \begin{equation}
@@ -204,6 +191,17 @@ and then equation (\ref{e:dPsi_perp}) gives
 \end{split}
 \end{equation}
 
+\mmm{fix this}
+I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Wooters:81}
+geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
+to get the Fubini--Study metric for projective Hilbert space\dots
+\begin{equation}
+                ds_{\text{SP}}^2 = \sum_i \frac{1}{4}\frac{(dp_i)^2}{p_i} + 
+                \left( 
+                    \sum_i p_i(d\phi_i)^2 - \left( \sum_i p_i d\phi_i \right)^2
+                \right).
+\label{e:fsStatistical}
+\end{equation}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
