@@ -7,7 +7,9 @@
 %--------------------------------------------------------------------------------   
 \section{Grover}
 
+%--------------------------------------------------------------------------------   
 \subsection{Sines and Cosines}
+\label{ssec:sincos}
 
 Grover's algorithm was introduced and discussed at great length in
 chapter (\ref{chap:quantumAlgorithms}).  There, it was mentioned that
@@ -125,6 +127,38 @@ Since this is (\ref{e:discsincos}) as expected, $j\Rightarrow j+1$.
 \mmm{Trotter formula!}
 
 \mmm{Biggest problem still: Why is Grover a geodesic?}
+
+%--------------------------------------------------------------------------------   
+\subsection{Grover is a Geodesic}
+
+Section (\ref{ssec:sincos}) expressed Grover's algorithm in terms of
+trigonometric functions of discrete quantities.  The coefficients of
+the state
+\begin{equation}
+\ket{\Psi} = k\ket{\omega} + \sum_{j\in\omega_\perp}l\ket{j}
+\end{equation}
+evolve according to
+\begin{equation}
+\begin{split}
+k_i =& \sin\left[\left(2i+1\right)\theta\right]\\
+l_i =& \frac{1}{\sqrt{N-1}}\cos\left[\left(2i+1\right)\theta\right].
+\end{split}
+\end{equation}
+This evolution can be viewed as a discrete path in state space
+\mmm{figure}.
+
+\begin{prop}
+The continuous path connecting these points is a geodesic
+of the Fubini--Study metric.
+\end{prop}
+
+\begin{proof}
+Duh!
+\end{proof}
+
+
+
+
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
