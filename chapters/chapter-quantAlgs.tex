@@ -527,10 +527,10 @@ where, as before,
 \ket{s} = \frac{1}{\sqrt{N}}\sum_{i=0}^{N-1} \ket{i}
 \end{equation}
 is the equally--weighted
-superposition of all computational basis states.
-This transformation preserves $\ket{s}$, but flips 
-the sign of any vector orthogonal to $\ket{s}$.
-It \emph{rotates} a vector around $\ket{s}$.
+superposition (the ``average'') of all computational basis states.
+The diffusion transformation preserves $\ket{s}$, but flips 
+the sign of any vector orthogonal to $\ket{s}$\dots
+it \emph{rotates} a vector around $\ket{s}$.
 
 Now, rewrite (\ref{e:diffusion}) as
 \begin{equation}
@@ -600,13 +600,13 @@ gives
                               \biggr\rbrace.
 \end{split}
 \end{equation}
-Since the ket $\ket\omega$ was chosen an element of the orthonormal
+Since the ket $\ket\omega$ was chosen to be an element of the orthonormal
 basis $\ket{i}$,
 \begin{equation}
 \sum_j \braket{j}{\omega} = 1,\qquad\text{and}\qquad
 \sum_j \braket{j}{\omega_\perp} = N-1.
 \end{equation}
-Then, a single step of Grover looks like
+A single step of Grover then looks like
 \begin{equation}
 {\bf U}_{\text{Grover}}\ket\Psi
 \quad =\quad 
@@ -615,8 +615,8 @@ Then, a single step of Grover looks like
                                     - k + l(N-1)
                               \right).
 \end{equation}
-To find the coefficients for the state after this iteration,
-take
+To find the coefficients for the resulting state after 
+the Grover iteration is applied, take
 \begin{equation}
 \begin{split}
 k_{\text{new}} =& \bra{\omega}{\bf U}_{\text{Grover}}\ket\Psi\\
@@ -634,7 +634,6 @@ l_{\text{new}} =& \bra{\omega_\perp}{\bf U}_{\text{Grover}}\ket\Psi\\
 =& -\frac{2}{N}k + \frac{N-2}{N}l.
 \end{split}
 \end{equation}
-
 So, under the action of Grover's algorithm, the state at any given
 iteration can be described by
 \begin{equation}
@@ -662,21 +661,23 @@ A careful analysis of this is presented in the following section.
 %--------------------------------------------------------------------------------   
 \subsection{Complexity Analysis}
 
-\mmm{probability of measuring desired state as a function of
-number of iterations}
-
-\mmm{add in discrete sine and cosine stuff}
 
 \subsubsection{A Classical Search}
 
+\subsubsection{Grover}
+
+\mmm{probability of measuring desired state as a function of
+number of iterations}
+
 \subsubsection{Grover is Optimal}
 
-\mmm{Zalka says Grover is least time... use this to show Grover geodesic}
+\mmm{Zalka says Grover is least time...}
 
 %--------------------------------------------------------------------------------   
 \subsection{Advanced Searches}
 
 \subsubsection{Multisearch}
+
 \subsubsection{Start from an Arbitrary Initial Distribution}
 
 
