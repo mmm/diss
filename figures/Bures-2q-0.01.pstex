@@ -1,0 +1,749 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%BoundingBox: 53 57 394 565
+%%Title: Bures-2q-0.01.pstex
+%%Creator: mmm@wildcard.ph.utexas.edu with xmgr
+%%CreationDate: Tue Aug  8 16:50:44 2000
+%%EndComments
+80 dict begin
+/Pat0 { 0.000000 setgray } def
+/Pat1 { 0.062500 setgray } def
+/Pat2 { 0.125000 setgray } def
+/Pat3 { 0.187500 setgray } def
+/Pat4 { 0.250000 setgray } def
+/Pat5 { 0.312500 setgray } def
+/Pat6 { 0.375000 setgray } def
+/Pat7 { 0.437500 setgray } def
+/Pat8 { 0.500000 setgray } def
+/Pat9 { 0.562500 setgray } def
+/Pat10 { 0.625000 setgray } def
+/Pat11 { 0.687500 setgray } def
+/Pat12 { 0.750000 setgray } def
+/Pat13 { 0.812500 setgray } def
+/Pat14 { 0.875000 setgray } def
+/Pat15 { 0.937500 setgray } def
+/setpattern { } def
+/m {moveto} bind def
+/l {lineto} bind def
+/s {stroke} bind def
+% Symbol fill
+/f { gsave fill grestore stroke } bind def
+% Opaque symbol
+/o { gsave 1.000000 1.000000 1.000000 setrgbcolor
+     fill grestore stroke } bind def
+% Circle symbol
+/a { 3 -1 roll 0 360 arc } bind def
+/da { a s } bind def
+/fa { a f } bind def
+/oa { a o } bind def
+% Square symbol
+/sq { moveto dup dup rmoveto 2 mul
+      dup neg 0 rlineto dup neg 0 exch rlineto
+      0 rlineto closepath } bind def
+/dsq { sq s } bind def
+/fsq { sq f } bind def
+/osq { sq o } bind def
+% Triangle symbols
+/t1 { moveto dup 0 exch rmoveto
+      dup neg dup 2 mul rlineto 2 mul 0 rlineto
+      closepath } bind def
+/dt1 { t1 s } bind def
+/ft1 { t1 f } bind def
+/ot1 { t1 o } bind def
+/t2 { moveto dup neg 0 rmoveto
+      dup dup 2 mul exch neg rlineto
+      2 mul 0 exch rlineto closepath } bind def
+/dt2 { t2 s } bind def
+/ft2 { t2 f } bind def
+/ot2 { t2 o } bind def
+/t3 { moveto dup neg 0 exch rmoveto
+      dup dup 2 mul rlineto neg 2 mul 0 rlineto
+      closepath } bind def
+/dt3 { t3 s } bind def
+/ft3 { t3 f } bind def
+/ot3 { t3 o } bind def
+/t4 { moveto dup 0 rmoveto
+      dup dup -2 mul exch rlineto
+      -2 mul 0 exch rlineto closepath } bind def
+/dt4 { t4 s } bind def
+/ft4 { t4 f } bind def
+/ot4 { t4 o } bind def
+% Diamond symbol
+/di { moveto dup 0 exch rmoveto
+      dup neg dup rlineto dup dup neg rlineto
+      dup dup rlineto closepath } bind def
+/ddi { di s } bind def
+/fdi { di f } bind def
+/odi { di o } bind def
+% Plus symbol
+/pl { dup 0 rmoveto dup -2 mul 0 rlineto
+      dup dup rmoveto -2 mul 0 exch rlineto
+    } bind def
+/dpl { m pl s } bind def
+% x symbol
+/x { dup dup rmoveto dup -2 mul dup rlineto
+     2 mul dup 0 rmoveto dup neg exch rlineto
+   } bind def
+/dx { m x s } bind def
+% Splat symbol
+/dsp { m dup pl dup 0 exch rmoveto 0.707 mul x s
+     } bind def
+/RJ {
+ stringwidth neg exch neg exch
+ rmoveto
+} bind def
+/CS {
+ stringwidth
+ 2 div neg exch 2 div neg exch
+ rmoveto
+} bind def
+0.24 0.24 scale
+1 setlinecap
+
+	mark             
+	/ISOLatin1Encoding 
+	  8#000 1 8#054 {StandardEncoding exch get} for 
+	  /minus 
+	  8#056 1 8#217 {StandardEncoding exch get} for 
+	  /dotlessi 
+	  8#301 1 8#317 {StandardEncoding exch get} for 
+	  /space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+	  /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen 
+	  /registered /macron /degree /plusminus /twosuperior /threesuperior /acute 
+	  /mu /paragraph /periodcentered /cedilla /onesuperior /ordmasculine 
+	  /guillemotright /onequarter /onehalf /threequarters /questiondown /Agrave 
+	  /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla /Egrave /Eacute
+	  /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis /Eth /Ntilde
+	  /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply /Oslash /Ugrave 
+	  /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls /agrave /aacute 
+	  /acircumflex /atilde /adieresis /aring /ae /ccedilla /egrave /eacute 
+	  /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis /eth /ntilde
+	  /ograve /oacute /ocircumflex /otilde /odieresis /divide /oslash /ugrave 
+	  /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+	  /ISOLatin1Encoding where not {256 array astore def} if 
+	 cleartomark 
+
+	/makeISOEncoded 
+	{ findfont /curfont exch def 
+	  /newfont curfont maxlength dict def  
+	  /ISOLatin1 (-ISOLatin1) def
+	  /curfontname curfont /FontName get dup length string cvs def 
+	  /newfontname curfontname length ISOLatin1 length add string 
+    	 dup 0                  curfontname putinterval 
+    	 dup curfontname length ISOLatin1   putinterval 
+	  def 
+	  curfont   
+	  { exch dup /FID ne  
+    	{ dup /Encoding eq  
+    	  { exch pop ISOLatin1Encoding exch }  
+    	  if  
+    	  dup /FontName eq  
+    	  { exch pop newfontname exch }  
+    	  if  
+    	  exch newfont 3 1 roll put  
+    	}  
+    	{ pop pop }  
+    	ifelse  
+	  }  
+	  forall 
+	  newfontname newfont definefont 
+	} def 
+
+	/Times-Roman makeISOEncoded pop 
+	/Times-Bold makeISOEncoded pop 
+	/Times-Italic makeISOEncoded pop 
+	/Times-BoldItalic makeISOEncoded pop 
+	/Helvetica makeISOEncoded pop 
+	/Helvetica-Bold makeISOEncoded pop 
+	/Helvetica-Oblique makeISOEncoded pop 
+	/Helvetica-BoldOblique makeISOEncoded pop 
+s
+0.000000 0.000000 0.000000 setrgbcolor
+1 setlinewidth
+/Times-Italic-ISOLatin1 findfont 60 scalefont setfont
+[] 0 setdash
+349 434 m
+349 444 l
+477 434 m
+477 444 l
+605 434 m
+605 444 l
+733 434 m
+733 444 l
+861 434 m
+861 444 l
+988 434 m
+988 444 l
+1116 434 m
+1116 444 l
+1244 434 m
+1244 444 l
+1372 434 m
+1372 444 l
+1500 434 m
+1500 444 l
+1628 434 m
+1628 444 l
+349 2115 m
+349 2105 l
+477 2115 m
+477 2105 l
+605 2115 m
+605 2105 l
+733 2115 m
+733 2105 l
+861 2115 m
+861 2105 l
+988 2115 m
+988 2105 l
+1116 2115 m
+1116 2105 l
+1244 2115 m
+1244 2105 l
+1372 2115 m
+1372 2105 l
+1500 2115 m
+1500 2105 l
+1628 2115 m
+1628 2105 l
+s
+349 434 m
+349 454 l
+605 434 m
+605 454 l
+861 434 m
+861 454 l
+1116 434 m
+1116 454 l
+1372 434 m
+1372 454 l
+1628 434 m
+1628 454 l
+349 2115 m
+349 2095 l
+605 2115 m
+605 2095 l
+861 2115 m
+861 2095 l
+1116 2115 m
+1116 2095 l
+1372 2115 m
+1372 2095 l
+1628 2115 m
+1628 2095 l
+/Times-Italic-ISOLatin1 findfont 60 scalefont setfont
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+s
+349 384 m
+gsave
+349 384 translate
+0 rotate
+0 -20  m
+(0) CS
+(0) show
+grestore
+newpath
+605 384 m
+gsave
+605 384 translate
+0 rotate
+0 -20  m
+(1) CS
+(1) show
+grestore
+newpath
+861 384 m
+gsave
+861 384 translate
+0 rotate
+0 -20  m
+(2) CS
+(2) show
+grestore
+newpath
+1116 384 m
+gsave
+1116 384 translate
+0 rotate
+0 -20  m
+(3) CS
+(3) show
+grestore
+newpath
+1372 384 m
+gsave
+1372 384 translate
+0 rotate
+0 -20  m
+(4) CS
+(4) show
+grestore
+newpath
+1628 384 m
+gsave
+1628 384 translate
+0 rotate
+0 -20  m
+(5) CS
+(5) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+988 284 m
+gsave
+988 284 translate
+0 rotate
+0 0  m
+(\(timesteps\)) CS
+(\(timesteps\)) show
+grestore
+newpath
+349 434 m
+359 434 l
+349 714 m
+359 714 l
+349 994 m
+359 994 l
+349 1275 m
+359 1275 l
+349 1555 m
+359 1555 l
+349 1835 m
+359 1835 l
+349 2115 m
+359 2115 l
+1628 434 m
+1618 434 l
+1628 714 m
+1618 714 l
+1628 994 m
+1618 994 l
+1628 1275 m
+1618 1275 l
+1628 1555 m
+1618 1555 l
+1628 1835 m
+1618 1835 l
+1628 2115 m
+1618 2115 l
+s
+349 434 m
+369 434 l
+349 994 m
+369 994 l
+349 1555 m
+369 1555 l
+349 2115 m
+369 2115 l
+1628 434 m
+1608 434 l
+1628 994 m
+1608 994 l
+1628 1555 m
+1608 1555 l
+1628 2115 m
+1608 2115 l
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+s
+311 434 m
+gsave
+311 434 translate
+0 rotate
+0 -20  m
+(0) RJ
+(0) show
+grestore
+newpath
+311 994 m
+gsave
+311 994 translate
+0 rotate
+0 -20  m
+(0.5) RJ
+(0.5) show
+grestore
+newpath
+311 1555 m
+gsave
+311 1555 translate
+0 rotate
+0 -20  m
+(1) RJ
+(1) show
+grestore
+newpath
+311 2115 m
+gsave
+311 2115 translate
+0 rotate
+0 -20  m
+(1.5) RJ
+(1.5) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 90 scalefont setfont
+988 2283 m
+gsave
+988 2283 translate
+0 rotate
+0 0  m
+(Bures distance -v- time) CS
+(Bures distance -v- time) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+988 2165 m
+gsave
+988 2165 translate
+0 rotate
+0 0  m
+(2 qubits with noise threshold 0.01) CS
+(2 qubits with noise threshold 0.01) show
+grestore
+newpath
+349 435 m
+351 510 l
+364 626 l
+377 695 l
+390 752 l
+402 801 l
+415 845 l
+428 878 l
+441 904 l
+454 925 l
+466 951 l
+479 980 l
+492 1005 l
+505 1025 l
+518 1047 l
+530 1067 l
+543 1084 l
+556 1105 l
+569 1120 l
+582 1136 l
+594 1148 l
+607 1161 l
+620 1173 l
+633 1186 l
+646 1200 l
+658 1209 l
+671 1222 l
+684 1228 l
+697 1238 l
+710 1245 l
+722 1255 l
+735 1262 l
+748 1269 l
+761 1277 l
+774 1288 l
+786 1292 l
+799 1297 l
+812 1308 l
+825 1319 l
+838 1327 l
+850 1336 l
+863 1340 l
+876 1346 l
+889 1354 l
+901 1358 l
+914 1366 l
+927 1371 l
+940 1376 l
+953 1384 l
+965 1386 l
+978 1387 l
+991 1391 l
+1004 1394 l
+1017 1396 l
+1029 1402 l
+1042 1412 l
+1055 1419 l
+1068 1423 l
+1081 1429 l
+1093 1432 l
+1106 1436 l
+1119 1441 l
+1132 1446 l
+1145 1445 l
+1157 1448 l
+1170 1449 l
+1183 1455 l
+1196 1463 l
+1209 1470 l
+1221 1476 l
+1234 1480 l
+1247 1485 l
+1260 1490 l
+1273 1492 l
+1285 1502 l
+1298 1505 l
+1311 1504 l
+1324 1509 l
+1337 1512 l
+1349 1515 l
+1362 1517 l
+1375 1520 l
+1388 1527 l
+1401 1528 l
+1413 1539 l
+1426 1541 l
+1439 1545 l
+1452 1551 l
+1465 1552 l
+1477 1558 l
+1490 1559 l
+1503 1566 l
+1516 1566 l
+1528 1563 l
+1541 1571 l
+1554 1567 l
+1567 1570 l
+1580 1572 l
+1592 1569 l
+1605 1566 l
+1618 1565 l
+1628 1572 l
+s
+1.000000 0.000000 0.000000 setrgbcolor
+349 435 m
+350 510 l
+363 695 l
+376 800 l
+388 877 l
+401 923 l
+414 977 l
+427 1021 l
+440 1061 l
+452 1098 l
+465 1128 l
+478 1151 l
+491 1175 l
+504 1195 l
+516 1213 l
+529 1228 l
+542 1242 l
+555 1255 l
+568 1267 l
+580 1280 l
+593 1296 l
+606 1306 l
+619 1317 l
+631 1326 l
+644 1333 l
+657 1339 l
+670 1341 l
+683 1342 l
+695 1355 l
+708 1362 l
+721 1366 l
+734 1371 l
+747 1370 l
+759 1370 l
+772 1379 l
+785 1387 l
+798 1392 l
+811 1394 l
+823 1402 l
+836 1403 l
+849 1406 l
+862 1408 l
+875 1411 l
+887 1419 l
+900 1426 l
+913 1431 l
+926 1437 l
+939 1436 l
+951 1440 l
+964 1444 l
+977 1442 l
+990 1449 l
+1003 1453 l
+1015 1456 l
+1028 1458 l
+1041 1466 l
+1054 1473 l
+1067 1469 l
+1079 1469 l
+1092 1474 l
+1105 1480 l
+1118 1487 l
+1131 1488 l
+1143 1486 l
+1156 1488 l
+1169 1490 l
+1182 1486 l
+1195 1491 l
+1207 1497 l
+1220 1505 l
+1233 1512 l
+1246 1522 l
+1258 1532 l
+1271 1533 l
+1284 1535 l
+1297 1540 l
+1310 1543 l
+1322 1546 l
+1335 1550 l
+1348 1552 l
+1361 1549 l
+1374 1547 l
+1386 1548 l
+1399 1554 l
+1412 1560 l
+1425 1560 l
+1438 1554 l
+1450 1558 l
+1463 1557 l
+1476 1561 l
+1489 1566 l
+1502 1567 l
+1514 1576 l
+1527 1580 l
+1540 1578 l
+1553 1576 l
+1566 1581 l
+1578 1588 l
+1591 1586 l
+1604 1589 l
+1617 1591 l
+1628 1586 l
+s
+0.000000 0.000000 0.000000 setrgbcolor
+0.000000 1.000000 0.000000 setrgbcolor
+349 435 m
+354 510 l
+364 570 l
+374 610 l
+385 637 l
+395 676 l
+405 695 l
+415 722 l
+425 746 l
+436 760 l
+446 779 l
+456 802 l
+466 822 l
+477 841 l
+487 852 l
+497 864 l
+507 881 l
+518 890 l
+528 903 l
+538 910 l
+548 920 l
+559 930 l
+569 938 l
+579 947 l
+589 964 l
+600 977 l
+610 988 l
+620 998 l
+630 1009 l
+640 1022 l
+651 1028 l
+661 1035 l
+671 1045 l
+681 1055 l
+692 1063 l
+702 1069 l
+712 1080 l
+722 1089 l
+733 1095 l
+743 1103 l
+753 1112 l
+763 1123 l
+774 1129 l
+784 1136 l
+794 1143 l
+804 1149 l
+814 1158 l
+825 1166 l
+835 1172 l
+845 1175 l
+855 1181 l
+866 1187 l
+876 1192 l
+886 1199 l
+896 1205 l
+907 1209 l
+917 1218 l
+927 1224 l
+937 1230 l
+948 1236 l
+958 1242 l
+968 1247 l
+978 1255 l
+988 1260 l
+999 1266 l
+1009 1267 l
+1019 1272 l
+1029 1278 l
+1040 1281 l
+1050 1286 l
+1060 1293 l
+1070 1296 l
+1081 1300 l
+1091 1309 l
+1101 1310 l
+1111 1318 l
+1122 1322 l
+1132 1325 l
+1142 1331 l
+1152 1336 l
+1163 1340 l
+1173 1345 l
+1183 1352 l
+1193 1360 l
+1203 1365 l
+1214 1370 l
+1224 1369 l
+1234 1372 l
+1244 1374 l
+1255 1380 l
+1265 1387 l
+1275 1392 l
+1285 1399 l
+1296 1405 l
+1306 1414 l
+1316 1420 l
+1326 1421 l
+1337 1423 l
+1347 1432 l
+1357 1436 l
+1367 1440 l
+1377 1440 l
+1388 1445 l
+1398 1448 l
+1408 1451 l
+1418 1458 l
+1429 1461 l
+1439 1463 l
+1449 1465 l
+1459 1469 l
+1470 1473 l
+1480 1476 l
+1490 1481 l
+1500 1482 l
+1511 1482 l
+1521 1484 l
+1531 1487 l
+1541 1490 l
+1552 1495 l
+1562 1495 l
+1572 1496 l
+1582 1496 l
+1592 1492 l
+1603 1495 l
+1613 1499 l
+1623 1499 l
+1628 1499 l
+s
+0.000000 0.000000 0.000000 setrgbcolor
+349 434 m
+349 2115 l
+1628 2115 l
+1628 434 l
+349 434 l
+s
+end
+showpage
+%%Trailer
