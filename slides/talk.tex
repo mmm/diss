@@ -425,6 +425,20 @@ described in this way.
 \textbf{How does the QFT find the period?}
 \end{center}
 
+From 
+\begin{equation*}
+\frac{1}{\sqrt{N}}\sum_{\lbrace x|f(x)=c\rbrace} \ket{x}\ket{c},
+\end{equation*}
+a Quantum Fourier Transform 
+\begin{equation*}
+\ket{x} = \frac{1}{\sqrt{N}}\sum_{y=0}^{N-1} e^{\frac{2\pi ixy}{N}}\ket{y}
+\end{equation*}
+on the first ket will give
+\begin{equation*}
+\frac{1}{N}\sum_{\lbrace x|f(x)=c\rbrace}\sum_{y=0}^{N-1} 
+e^{\frac{2\pi ixy}{N}}\ket{y}\ket{c},
+\end{equation*}
+
 \pagebreak
 
 %-----------------------------------------------------------------
