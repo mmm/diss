@@ -3,12 +3,122 @@
 \label{chap:quantumComputation}
 \index{Quantum Computation@\emph{Quantum Computation}}%
 
-\subsubsection{General QC intro}
+In the early 80's, 
+Yuri Manin\cite{Manin:80} and Richard Feynman\cite{Feynman:82} examined 
+the difficulty of simulating a quantum mechanical system.  
+Feynman argued that, in order to effectively simulate a physical quantum 
+system, a conventional ``classical'' computer would require an unreasonably 
+large amount of overhead.  So no matter how clever the programmer, this
+task would almost always require enormous amounts of computer time and storage
+space.  Feynman also mentioned that this difficulty might be overcome
+by using an inherently quantum mechanical computer.  
+Benioff\cite{Benioff:80} had already shown how to, at least in theory, 
+use quantum mechanical processes as a basis for conventional computation,
+and Feynman\cite{Feynman:85} later refined this approach.
 
-The search algorithm is
-used to solve various other problems on a quantum
+If a computer that is quantum mechanical in nature were to be built,
+it would be able to handle the complexity required for the task of simulating
+a quantum system.  Could this same computer also be used to solve other complex
+problems?  Could this {\sl quantum} computer be put to work to solve 
+{\sl classical} problems?  The answer, remarkably,  is yes!
+This approach resulted in several 
+people\cite{Deutsch:85a,Deutsch:85b,Deutsch/Jozsa:92,Bernstein/Vazirani:97,
+Simon:97,Shor:94,Grover:96a}
+describing \emph{quantum algorithms}, or programs that will run on a quantum
+computer to solve various types of problems.
+In the process, it was discovered that some problems that are extremely hard
+to solve on a classical computer were easily solved on a quantum computer.
+
+Perhaps the most notable of these quantum algorithms is the one designed by 
+Peter Shor\cite{Shor:94} in 1994.  This now famous algorithm quickly finds the 
+prime factors of a composite integer, a daunting task for even the most
+powerful of classical computers.  
+
+Computer scientists use a system of
+complexity classes to classify the difficulty of various problems.
+It turns out that Shor's algorithm reduces the problem of factorization
+to a completely different complexity class.  This problem can be solved
+in polynomial time on a quantum computer.  \ie, the time required to solve
+the problem scales as a polynomial in the size of the input (the number to
+be factored).  The fastest algorithm to solve the problem on a classical
+computer\footnote{The ``number field sieve'' requires 
+\begin{equation}
+\text{Running time} \approx \exp\left[ \left(\frac{64}{9}\right)^{\frac{1}{3}}
+\left(\ln n\right)^{\frac{1}{3}}
+\left(\ln \ln n\right)^{\frac{2}{3}}
+\right]
+\end{equation}
+to find the factors of $n$.} 
+has a running time that is exponential in the size of the input.
+
+Consider finding the 65--digit factors of a 130--digit number.
+Today, this can be done in about a month using a network of hundreds 
+of computers.  From this result, we can estimate that it will take about 
+$10^10$ years to factor a 400--digit number using today's technology.
+In fact, most popular cryptosystems today, for instance those used to 
+protect online credit card transactions, nuclear missle secrets, etc., 
+rely upon the fact that this particular problem is so intractably 
+difficult to solve.  Well, enter the {\sl quantum} computer.  
+
+Once a suitably large quantum computer is built, Shor's algorithm could 
+conceivably factor this 400--digit number in the order of years --
+maybe less.  The complexity of the problem has been considerably reduced.
+Needless to say, this has generated a considerable amount of interest in 
+quantum computation.
+
+Another major quantum algorithm is the search algorithm.  Lov
+Grover\cite{Grover:96a} developed a version of the common
+search
+algorithm that will run on a quantum computer.  
+The fastest known classical algorithms that will pick a single item out of
+a large unordered list run in a time on the order of the size of the list.
+While Shor's algorithm enjoys an exponential speedup over any classical 
+solutions to factorization, Grover's algorithm only has a square root speedup
+over classical search algorithms.  It will pick an item from an unordered
+list in about the square root of the size of the list.  Nevertheless, for
+a large list, this is a substantial speedup.
+
+Grover's algorithm is interesting for several reasons.  The general search
+algorithm is most amenable to being transformed into a solution to a different
+problem.  Various other problems can be transformed into search problems and hence
+enjoy a speedup when run on a on a quantum
 computer\cite{Durr/Hoyer:96,Grover:96b,Grover:97,Brassard/Hoyer/Tapp:97,
 Terhal/Smolin:98,Brassard/Hoyer/Tapp:98,Cerf/Grover/Williams:98,Farhi/Gutmann:98}.
+Also, Grover's algorithm is perhaps the easiest algorithm to model and simulate.
+Since the largest physical quantum computer built is only a few bits, we
+are still at a stage where numerical and analytical simulation is very 
+important to advancement of the field.  In fact, this is strong motivation
+for this dissertation.  In developing and analyzing dynamical models of 
+Grover's algorithm, can we learn more about how to develop similar models 
+for general quantum algorithms?  Grover's algorithm is simple enough that,
+hopefully, it can lead the way.
+
+Before pressing further into the exciting world of quantum computation, 
+it will be useful to review some notions of classical computation.
+There are several excellent overviews of quantum computation in the literature
+\cite{Preskill:98,Shor:00,Braunstein:96,Steane:97,Lo/Popescu/Spiller:00,
+Deutsch/Ekert/Lupacchini:99,Preskill:96}
+and I will not attempt to reproduce them here.  Instead, the following
+sections are streamlined to include only what is necessary for the remaining
+work.  They are taken, along with parts of chapter \ref{chap:quantumAlgorithms}, 
+shamelessly from the likes of Preskill\cite{Preskill:98}, Shor\cite{Shor:00}, 
+Braunstein\cite{Braunstein:96}, and Steane\cite{Steane:97}.
+
+The reader is encouraged to pursue the subject of quantum computation 
+further as there are many interesting
+areas that, unfortunately, would be a bit far afield for the current work.
+In particular, I avoid such topics as: quantum information theory, 
+entanglement, optimal measurements, teleportation, quantum cloning,
+quantum cryptography (key distibution), and the issue of actually 
+implementing a quantum computer.
+Additionally, I only briefly touch upon the extremely rich and interesting
+subject of quantum coding and error correction.  
+
+%I do need to discuss, however, the basics of
+%the theory of computation, quantum gates, quantum circuits, and spend a
+%large amount of time introducing quantum algorithms.
+
+
 
 %%--------------------------------------------------------------------------------   
 %%--------------------------------------------------------------------------------   
