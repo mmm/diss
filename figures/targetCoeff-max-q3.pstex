@@ -1,8 +1,8 @@
 %!PS-Adobe-2.0 EPSF-1.2
 %%BoundingBox: 13 57 405 565
 %%Title: targetCoeff-max-q3.pstex
-%%Creator: mmm@wildcard.ph.utexas.edu with xmgr
-%%CreationDate: Tue Aug 15 15:42:43 2000
+%%Creator: xmgr
+%%CreationDate: Fri Aug 18 15:18:33 2000
 %%EndComments
 80 dict begin
 /Pat0 { 0.000000 setgray } def
@@ -161,126 +161,126 @@ s
 1 setlinewidth
 /Times-Italic-ISOLatin1 findfont 60 scalefont setfont
 [] 0 setdash
-349 435 m
-349 445 l
-477 435 m
-477 445 l
-605 435 m
-605 445 l
-733 435 m
-733 445 l
-861 435 m
-861 445 l
-988 435 m
-988 445 l
-1116 435 m
-1116 445 l
-1244 435 m
-1244 445 l
-1372 435 m
-1372 445 l
-1500 435 m
-1500 445 l
-1628 435 m
-1628 445 l
-349 2115 m
-349 2105 l
-477 2115 m
-477 2105 l
-605 2115 m
-605 2105 l
-733 2115 m
-733 2105 l
-861 2115 m
-861 2105 l
-988 2115 m
-988 2105 l
-1116 2115 m
-1116 2105 l
-1244 2115 m
-1244 2105 l
-1372 2115 m
-1372 2105 l
-1500 2115 m
-1500 2105 l
-1628 2115 m
-1628 2105 l
+349 434 m
+349 444 l
+477 434 m
+477 444 l
+605 434 m
+605 444 l
+733 434 m
+733 444 l
+861 434 m
+861 444 l
+989 434 m
+989 444 l
+1116 434 m
+1116 444 l
+1244 434 m
+1244 444 l
+1372 434 m
+1372 444 l
+1500 434 m
+1500 444 l
+1628 434 m
+1628 444 l
+349 2114 m
+349 2104 l
+477 2114 m
+477 2104 l
+605 2114 m
+605 2104 l
+733 2114 m
+733 2104 l
+861 2114 m
+861 2104 l
+989 2114 m
+989 2104 l
+1116 2114 m
+1116 2104 l
+1244 2114 m
+1244 2104 l
+1372 2114 m
+1372 2104 l
+1500 2114 m
+1500 2104 l
+1628 2114 m
+1628 2104 l
 s
-349 435 m
-349 455 l
-605 435 m
-605 455 l
-861 435 m
-861 455 l
-1116 435 m
-1116 455 l
-1372 435 m
-1372 455 l
-1628 435 m
-1628 455 l
-349 2115 m
-349 2095 l
-605 2115 m
-605 2095 l
-861 2115 m
-861 2095 l
-1116 2115 m
-1116 2095 l
-1372 2115 m
-1372 2095 l
-1628 2115 m
-1628 2095 l
+349 434 m
+349 454 l
+605 434 m
+605 454 l
+861 434 m
+861 454 l
+1116 434 m
+1116 454 l
+1372 434 m
+1372 454 l
+1628 434 m
+1628 454 l
+349 2114 m
+349 2094 l
+605 2114 m
+605 2094 l
+861 2114 m
+861 2094 l
+1116 2114 m
+1116 2094 l
+1372 2114 m
+1372 2094 l
+1628 2114 m
+1628 2094 l
 /Times-Italic-ISOLatin1 findfont 60 scalefont setfont
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 s
-349 385 m
+349 384 m
 gsave
-349 385 translate
+349 384 translate
 0 rotate
 0 -20  m
 (0) CS
 (0) show
 grestore
 newpath
-605 385 m
+605 384 m
 gsave
-605 385 translate
+605 384 translate
 0 rotate
 0 -20  m
 (0.002) CS
 (0.002) show
 grestore
 newpath
-861 385 m
+861 384 m
 gsave
-861 385 translate
+861 384 translate
 0 rotate
 0 -20  m
 (0.004) CS
 (0.004) show
 grestore
 newpath
-1116 385 m
+1116 384 m
 gsave
-1116 385 translate
+1116 384 translate
 0 rotate
 0 -20  m
 (0.006) CS
 (0.006) show
 grestore
 newpath
-1372 385 m
+1372 384 m
 gsave
-1372 385 translate
+1372 384 translate
 0 rotate
 0 -20  m
 (0.008) CS
 (0.008) show
 grestore
 newpath
-1628 385 m
+1628 384 m
 gsave
-1628 385 translate
+1628 384 translate
 0 rotate
 0 -20  m
 (0.01) CS
@@ -288,113 +288,113 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-988 285 m
+988 284 m
 gsave
-988 285 translate
+988 284 translate
 0 rotate
 0 0  m
 (max noise level) CS
 (max noise level) show
 grestore
 newpath
-349 435 m
-359 435 l
-349 645 m
-359 645 l
-349 855 m
-359 855 l
-349 1065 m
-359 1065 l
-349 1275 m
-359 1275 l
-349 1485 m
-359 1485 l
-349 1695 m
-359 1695 l
-349 1905 m
-359 1905 l
-349 2115 m
-359 2115 l
-1628 435 m
-1618 435 l
-1628 645 m
-1618 645 l
-1628 855 m
-1618 855 l
-1628 1065 m
-1618 1065 l
-1628 1275 m
-1618 1275 l
-1628 1485 m
-1618 1485 l
-1628 1695 m
-1618 1695 l
-1628 1905 m
-1618 1905 l
-1628 2115 m
-1618 2115 l
+349 434 m
+359 434 l
+349 644 m
+359 644 l
+349 854 m
+359 854 l
+349 1064 m
+359 1064 l
+349 1274 m
+359 1274 l
+349 1484 m
+359 1484 l
+349 1694 m
+359 1694 l
+349 1904 m
+359 1904 l
+349 2114 m
+359 2114 l
+1628 434 m
+1618 434 l
+1628 644 m
+1618 644 l
+1628 854 m
+1618 854 l
+1628 1064 m
+1618 1064 l
+1628 1274 m
+1618 1274 l
+1628 1484 m
+1618 1484 l
+1628 1694 m
+1618 1694 l
+1628 1904 m
+1618 1904 l
+1628 2114 m
+1618 2114 l
 s
-349 435 m
-369 435 l
-349 855 m
-369 855 l
-349 1275 m
-369 1275 l
-349 1695 m
-369 1695 l
-349 2115 m
-369 2115 l
-1628 435 m
-1608 435 l
-1628 855 m
-1608 855 l
-1628 1275 m
-1608 1275 l
-1628 1695 m
-1608 1695 l
-1628 2115 m
-1608 2115 l
+349 434 m
+369 434 l
+349 854 m
+369 854 l
+349 1274 m
+369 1274 l
+349 1694 m
+369 1694 l
+349 2114 m
+369 2114 l
+1628 434 m
+1608 434 l
+1628 854 m
+1608 854 l
+1628 1274 m
+1608 1274 l
+1628 1694 m
+1608 1694 l
+1628 2114 m
+1608 2114 l
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 s
-311 435 m
+311 434 m
 gsave
-311 435 translate
+311 434 translate
 0 rotate
 0 -20  m
 (0.6) RJ
 (0.6) show
 grestore
 newpath
-311 855 m
+311 854 m
 gsave
-311 855 translate
+311 854 translate
 0 rotate
 0 -20  m
 (0.7) RJ
 (0.7) show
 grestore
 newpath
-311 1275 m
+311 1274 m
 gsave
-311 1275 translate
+311 1274 translate
 0 rotate
 0 -20  m
 (0.8) RJ
 (0.8) show
 grestore
 newpath
-311 1695 m
+311 1694 m
 gsave
-311 1695 translate
+311 1694 translate
 0 rotate
 0 -20  m
 (0.9) RJ
 (0.9) show
 grestore
 newpath
-311 2115 m
+311 2114 m
 gsave
-311 2115 translate
+311 2114 translate
 0 rotate
 0 -20  m
 (1) RJ
@@ -402,9 +402,9 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-183 1275 m
+183 1274 m
 gsave
-183 1275 translate
+183 1274 translate
 90 rotate
 0 0  m
 (Probability of success) CS
@@ -412,9 +412,9 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 90 scalefont setfont
-988 2283 m
+988 2282 m
 gsave
-988 2283 translate
+988 2282 translate
 0 rotate
 0 0  m
 (Probability of success -v- max noise level) CS
@@ -422,9 +422,9 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-988 2165 m
+988 2164 m
 gsave
-988 2165 translate
+988 2164 translate
 0 rotate
 0 0  m
 (3 qubits) CS
@@ -432,35 +432,35 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-20 477 2104 da
-20 669 2053 da
-20 988 1884 da
-20 1308 1637 da
-20 1628 1352 da
+16 477 2104 dsq
+16 669 2053 dsq
+16 989 1884 dsq
+16 1308 1637 dsq
+16 1628 1352 dsq
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 20 477 2087 dt1
 20 669 1959 dt1
-20 988 1604 dt1
+20 989 1604 dt1
 20 1308 1152 dt1
 20 1628 740 dt1
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 0.000000 0.000000 0.000000 setrgbcolor
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 20 477 2108 dt3
 20 669 2078 dt3
-20 988 1978 dt3
+20 989 1978 dt3
 20 1308 1822 dt3
 20 1628 1623 dt3
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 0.000000 0.000000 0.000000 setrgbcolor
-349 435 m
-349 2115 l
-1628 2115 l
-1628 435 l
-349 435 l
+349 434 m
+349 2114 l
+1628 2114 l
+1628 434 l
+349 434 l
 s
 end
 showpage

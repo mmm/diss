@@ -1,8 +1,8 @@
 %!PS-Adobe-2.0 EPSF-1.2
 %%BoundingBox: 13 57 405 565
 %%Title: targetCoeff-max-q7.pstex
-%%Creator: mmm@wildcard.ph.utexas.edu with xmgr
-%%CreationDate: Tue Aug 15 15:50:44 2000
+%%Creator: xmgr
+%%CreationDate: Fri Aug 18 15:48:36 2000
 %%EndComments
 80 dict begin
 /Pat0 { 0.000000 setgray } def
@@ -171,8 +171,8 @@ s
 733 444 l
 861 434 m
 861 444 l
-988 434 m
-988 444 l
+989 434 m
+989 444 l
 1116 434 m
 1116 444 l
 1244 434 m
@@ -193,8 +193,8 @@ s
 733 2104 l
 861 2114 m
 861 2104 l
-988 2114 m
-988 2104 l
+989 2114 m
+989 2104 l
 1116 2114 m
 1116 2104 l
 1244 2114 m
@@ -453,26 +453,26 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-20 477 1676 da
-20 669 1045 da
-20 988 650 da
-20 1308 544 da
-20 1628 500 da
+16 477 1676 dsq
+16 669 1045 dsq
+16 989 650 dsq
+16 1308 544 dsq
+16 1628 500 dsq
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 20 477 1469 dt1
 20 669 826 dt1
-20 988 561 dt1
+20 989 561 dt1
 20 1308 495 dt1
 20 1628 469 dt1
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 0.000000 0.000000 0.000000 setrgbcolor
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 20 477 1864 dt3
 20 669 1341 dt3
-20 988 838 dt3
+20 989 838 dt3
 20 1308 643 dt3
 20 1628 562 dt3
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont

@@ -1,8 +1,8 @@
 %!PS-Adobe-2.0 EPSF-1.2
 %%BoundingBox: 53 57 394 565
-%%Title: Bures-q5-0.01.pstex
-%%Creator: mmm@wildcard.ph.utexas.edu with xmgr
-%%CreationDate: Tue Aug  8 17:38:49 2000
+%%Title: Bures-5q-0.01.pstex
+%%Creator: xmgr
+%%CreationDate: Fri Aug 18 16:02:19 2000
 %%EndComments
 80 dict begin
 /Pat0 { 0.000000 setgray } def
@@ -608,7 +608,7 @@ s
 1628 1831 l
 s
 0.000000 0.000000 0.000000 setrgbcolor
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 349 435 m
 354 739 l
 364 933 l

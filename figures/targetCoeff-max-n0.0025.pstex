@@ -1,8 +1,8 @@
 %!PS-Adobe-2.0 EPSF-1.2
 %%BoundingBox: 4 57 394 565
 %%Title: targetCoeff-max-n0.0025.pstex
-%%Creator: mmm@wildcard.ph.utexas.edu with xmgr
-%%CreationDate: Tue Aug 15 16:07:30 2000
+%%Creator: xmgr
+%%CreationDate: Fri Aug 18 15:53:38 2000
 %%EndComments
 80 dict begin
 /Pat0 { 0.000000 setgray } def
@@ -432,15 +432,15 @@ gsave
 grestore
 newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-20 349 2108 da
-20 605 2084 da
-20 861 2010 da
-20 1116 1805 da
-20 1372 1306 da
-20 1628 777 da
+16 349 2108 dsq
+16 605 2084 dsq
+16 861 2010 dsq
+16 1116 1805 dsq
+16 1372 1306 dsq
+16 1628 777 dsq
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 20 349 2106 dt1
 20 605 2037 dt1
 20 861 1909 dt1
@@ -450,7 +450,7 @@ newpath
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
 0.000000 0.000000 0.000000 setrgbcolor
 /Helvetica-ISOLatin1 findfont 60 scalefont setfont
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 20 349 2110 dt3
 20 605 2096 dt3
 20 861 2033 dt3

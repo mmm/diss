@@ -53,7 +53,7 @@
 @    subtitle size 1.000000
 @    subtitle color 1
 @    subtitle linewidth 1
-@    s9 symbol 2
+@    s9 symbol 3
 @    s9 symbol size 1.000000
 @    s9 symbol fill 0
 @    s9 symbol color 1
@@ -81,7 +81,7 @@
 @    s10 symbol 5
 @    s10 symbol size 1.000000
 @    s10 symbol fill 0
-@    s10 symbol color 3
+@    s10 symbol color 2
 @    s10 symbol linewidth 1
 @    s10 symbol linestyle 1
 @    s10 symbol center false
@@ -106,7 +106,7 @@
 @    s11 symbol 7
 @    s11 symbol size 1.000000
 @    s11 symbol fill 0
-@    s11 symbol color 3
+@    s11 symbol color 2
 @    s11 symbol linewidth 1
 @    s11 symbol linestyle 1
 @    s11 symbol center false

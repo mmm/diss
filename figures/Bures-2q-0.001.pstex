@@ -1,95 +1,10 @@
 %!PS-Adobe-2.0 EPSF-1.2
 %%BoundingBox: 53 57 394 565
 %%Title: Bures-2q-0.001.pstex
-%%Creator: mmm@wildcard.ph.utexas.edu with xmgr
-%%CreationDate: Tue Aug  8 16:47:47 2000
+%%Creator: xmgr
+%%CreationDate: Fri Aug 18 16:00:00 2000
 %%EndComments
 80 dict begin
-/languagelevel where
-{pop /gs_languagelevel languagelevel def}
-{/gs_languagelevel 1 def} ifelse
-gs_languagelevel 1 gt {
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<0000000000000000000000000000000000000000000000000000000000000000>} image end }
-			>> 	matrix makepattern /Pat0 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<1111000044440000111100004444000011110000444400001111000044440000>} image end }
-			>> 	matrix makepattern /Pat1 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<1111444411114444111144441111444411114444111144441111444411114444>} image end }
-			>> 	matrix makepattern /Pat2 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<aaaa5555aaaa5555aaaa5555aaaa5555aaaa5555aaaa5555aaaa5555aaaa5555>} image end }
-			>> 	matrix makepattern /Pat3 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<eeeebbbbeeeebbbbeeeebbbbeeeebbbbeeeebbbbeeeebbbbeeeebbbbeeeebbbb>} image end }
-			>> 	matrix makepattern /Pat4 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<eeeeffffbbbbffffeeeeffffbbbbffffeeeeffffbbbbffffeeeeffffbbbbffff>} image end }
-			>> 	matrix makepattern /Pat5 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<f77dffffbeeffffff77dffffbeeffffff77dffffbeeffffff77dffffbeefffff>} image end }
-			>> 	matrix makepattern /Pat6 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff>} image end }
-			>> 	matrix makepattern /Pat7 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<e1e1f0f078783c3c1e1e0f0f8787c3c3e1e1f0f078783c3c1e1e0f0f8787c3c3>} image end }
-			>> 	matrix makepattern /Pat8 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<87870f0f1e1e3c3c7878f0f0e1e1c3c387870f0f1e1e3c3c7878f0f0e1e1c3c3>} image end }
-			>> 	matrix makepattern /Pat9 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc>} image end }
-			>> 	matrix makepattern /Pat10 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<00000000ffffffff00000000ffffffff00000000ffffffff00000000ffffffff>} image end }
-			>> 	matrix makepattern /Pat11 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<7e7ebdbddbdbe7e7e7e7dbdbbdbd7e7e7e7ebdbddbdbe7e7e7e7dbdbbdbd7e7e>} image end }
-			>> 	matrix makepattern /Pat12 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<fd7e7ebfbfdfdfefeff7f7fbfbfdfd7e7ebfbfdfdfefeff7f7fbfbfdfd7e7ebf>} image end }
-			>> 	matrix makepattern /Pat13 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<7ebffd7efbfdf7fbeff7dfefbfdf7ebffd7efbfdf7fbeff7dfefbfdf7ebffd7e>} image end }
-			>> 	matrix makepattern /Pat14 exch def 
-<</PaintType 1 /PatternType 1 /TilingType 1
-			/BBox [0 0 12 12] /XStep 12 /YStep 12 /PaintProc{ begin 
-			12 12 scale 16 16 1 [16 0 0 16 0 0] 
-{<fffffbdff3dfebdfdbdfbbdf7bdffbdefbddfbdbfbd7fbcffbdfffffffffffff>} image end }
-			>> 	matrix makepattern /Pat15 exch def 
-}{
 /Pat0 { 0.000000 setgray } def
 /Pat1 { 0.062500 setgray } def
 /Pat2 { 0.125000 setgray } def
@@ -107,7 +22,6 @@ gs_languagelevel 1 gt {
 /Pat14 { 0.875000 setgray } def
 /Pat15 { 0.937500 setgray } def
 /setpattern { } def
-} ifelse
 /m {moveto} bind def
 /l {lineto} bind def
 /s {stroke} bind def
@@ -715,7 +629,7 @@ s
 1628 1990 l
 s
 0.000000 0.000000 0.000000 setrgbcolor
-0.000000 1.000000 0.000000 setrgbcolor
+1.000000 0.000000 0.000000 setrgbcolor
 349 435 m
 354 479 l
 364 515 l

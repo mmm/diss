@@ -22,7 +22,7 @@
 @timestamp rot 0
 @timestamp font 4
 @timestamp char size 1.000000
-@timestamp def "Tue Aug 15 15:41:52 2000"
+@timestamp def "Fri Aug 18 15:17:39 2000"
 @with g0
 @g0 on
 @g0 label off
@@ -53,7 +53,7 @@
 @    subtitle size 1.000000
 @    subtitle color 1
 @    subtitle linewidth 1
-@    s0 symbol 2
+@    s0 symbol 3
 @    s0 symbol size 1.000000
 @    s0 symbol fill 0
 @    s0 symbol color 1
@@ -81,7 +81,7 @@
 @    s1 symbol 5
 @    s1 symbol size 1.000000
 @    s1 symbol fill 0
-@    s1 symbol color 3
+@    s1 symbol color 2
 @    s1 symbol linewidth 1
 @    s1 symbol linestyle 1
 @    s1 symbol center false
@@ -106,7 +106,7 @@
 @    s2 symbol 7
 @    s2 symbol size 1.000000
 @    s2 symbol fill 0
-@    s2 symbol color 3
+@    s2 symbol color 2
 @    s2 symbol linewidth 1
 @    s2 symbol linestyle 1
 @    s2 symbol center false
