@@ -1,0 +1,21 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{fwrap.h}{2000}{8}{7}{16:34}{376}
+\L{\LB{\C{}//_fwrap.h\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#ifndef}_\V{\_FWRAP\_H\_}}}
+\L{\LB{\K{\#define}_\V{\_FWRAP\_H\_}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\<\V{complex}\>}}
+\L{\LB{\K{\#include}_\<\V{tnt}/\V{tnt}.\V{h}\>}}
+\L{\LB{\K{\#include}_\<\V{tnt}/\V{vec}.\V{h}\>}}
+\L{\LB{\K{\#include}_\<\V{tnt}/\V{fmat}.\V{h}\>}}
+\L{\LB{}}
+\L{\LB{\K{using}_\K{namespace}_\V{TNT};}}
+\L{\LB{\C{}//Vector\<double\>_Hermitian\_eigenvalue\_solve(const_Fortran\_Matrix\<std::complex\<double\>_\>\&_A);\CE{}}}
+\L{\LB{\V{Vector}\<\K{double}\>_\V{Hermitian\_eigenvalue\_solve}(\V{Fortran\_Matrix}\<\V{std::complex}\<\K{double}\>_\>\&_\V{A});}}
+\L{\LB{}}
+\L{\LB{\K{double}_\V{get\_eps}(\K{void});}}
+\L{\LB{}}
+\L{\LB{\K{\#endif}_\C{}//_\_FWRAP\_H\_\CE{}}}

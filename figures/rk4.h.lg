@@ -1,0 +1,15 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{rk4.h}{2000}{6}{7}{20:21}{188}
+\L{\LB{\C{}//_rk4.h\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#ifndef}_\V{\_RK4\_H\_}}}
+\L{\LB{\K{\#define}_\V{\_RK4\_H\_}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\S{}\3myvalarray.h\3\SE{}}}
+\L{\LB{}}
+\L{\LB{\K{extern}_\V{valarray}\<\K{double}\>_}}
+\L{\LB{\V{stepRk4}(_\K{const}_\K{double}_\V{x},_\K{const}_\V{valarray}\<\K{double}\>\&_\V{y},_\K{const}_\K{double}_\V{stepSize}_);}}
+\L{\LB{}}
+\L{\LB{\K{\#endif}_\C{}//\_RK4\_H\_\CE{}}}

@@ -1,0 +1,20 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{Bures.h}{2000}{8}{6}{17:26}{285}
+\L{\LB{\C{}//_Bures.h\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#ifndef}_\V{\_BURES\_H\_}}}
+\L{\LB{\K{\#define}_\V{\_BURES\_H\_}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\<\V{complex}\>}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\<\V{tnt}/\V{tnt}.\V{h}\>}}
+\L{\LB{\K{\#include}_\<\V{tnt}/\V{cmat}.\V{h}\>}}
+\L{\LB{}}
+\L{\LB{\K{using}_\K{namespace}_\V{TNT};}}
+\L{\LB{}}
+\index{distBures}\Proc{distBures}\L{\LB{\K{extern}_\K{double}_\V{distBures}(_\K{const}_\V{Matrix}\<\V{complex}\<\K{double}\>_\>\&_\V{mat1},_}}
+\L{\LB{}\Tab{25}{\K{const}_\V{Matrix}\<\V{complex}\<\K{double}\>_\>\&_\V{mat2}_);}}
+\L{\LB{}}
+\L{\LB{\K{\#endif}_\C{}//_\_BURES\_H\_\CE{}}}

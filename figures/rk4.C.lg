@@ -1,0 +1,25 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{rk4.C}{2000}{6}{6}{19:36}{502}
+\L{\LB{\K{\#define}_\V{\_POSIX\_SOURCE}_\N{1}}}
+\L{\LB{\C{}//_rk4.C\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\S{}\3derivs.h\3\SE{}}}
+\L{\LB{\K{\#include}_\S{}\3rk4.h\3\SE{}}}
+\L{\LB{}}
+\L{\LB{}}
+\L{\LB{\K{extern}_\V{valarray}\<\K{double}\>_}}
+\index{stepRk4}\Proc{stepRk4}\L{\LB{\V{stepRk4}(_\K{const}_\K{double}_\V{x},_\K{const}_\V{valarray}\<\K{double}\>\&_\V{y},_\K{const}_\K{double}_\V{stepSize}_)_\{}}
+\L{\LB{}\Tab{4}{}}
+\L{\LB{}\Tab{4}{\V{valarray}\<\K{double}\>_\V{k1}_=_\V{stepSize}_*_\V{dydx}(_\V{x},_\V{y}_);}}
+\L{\LB{}}
+\L{\LB{}\Tab{4}{\V{valarray}\<\K{double}\>_\V{k2}_=_\V{stepSize}_*_\V{dydx}(_\V{x}_+_\V{stepSize}/\N{2.0},_\V{y}_+_\V{k1}/\N{2.0}_);}}
+\L{\LB{}}
+\L{\LB{}\Tab{4}{\V{valarray}\<\K{double}\>_\V{k3}_=_\V{stepSize}_*_\V{dydx}(_\V{x}_+_\V{stepSize}/\N{2.0},_\V{y}_+_\V{k2}/\N{2.0}_);}}
+\L{\LB{}}
+\L{\LB{}\Tab{4}{\V{valarray}\<\K{double}\>_\V{k4}_=_\V{stepSize}_*_\V{dydx}(_\V{x}_+_\V{stepSize},_\V{y}_+_\V{k3}_);}}
+\L{\LB{}}
+\L{\LB{}\Tab{4}{\K{return}_\V{k1}/\N{6.0}_+_\V{k2}/\N{3.0}_+_\V{k3}/\N{3.0}_+_\V{k4}/\N{6.0};}}
+\L{\LB{}}
+\L{\LB{\}}}

@@ -1,0 +1,14 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{exceptions.C}{2000}{8}{6}{19:29}{171}
+\L{\LB{\C{}//_exceptions.C\CE{}}}
+\L{\LB{\K{\#include}_\<\V{iostream}\>}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\S{}\3exceptions.h\3\SE{}}}
+\L{\LB{}}
+\L{\LB{}}
+\index{Fpe::what}\Proc{Fpe::what}\L{\LB{\K{const}_\K{char}*_\V{Fpe::what}(\K{void})_\K{const}_\{}}
+\L{\LB{}\Tab{4}{\V{cerr}_\<\<_\V{Fpe::\_message}_\<\<_\V{endl};}}
+\L{\LB{}\Tab{4}{\K{return}_\S{}\3Oops.\,.\,._in_Fpe::what\3\SE{};}}
+\L{\LB{\}}}

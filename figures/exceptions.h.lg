@@ -1,0 +1,24 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{exceptions.h}{2000}{8}{6}{19:29}{316}
+\L{\LB{\C{}//_exceptions.h\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#ifndef}_\V{\_EXCEPTIONS\_H\_}}}
+\L{\LB{\K{\#define}_\V{\_EXCEPTIONS\_H\_}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\<\V{exception}\>}}
+\L{\LB{}}
+\L{\LB{\K{class}_\V{Fpe:}_\K{public}_\V{exception}_\{}}
+\L{\LB{}\Tab{2}{\K{public:}}}
+\L{\LB{}\Tab{4}{\V{Fpe}(\K{const}_\K{char}*_\V{message})\V{:}_\V{\_message}(\V{message})_\{\};}}
+\L{\LB{}}
+\L{\LB{}\Tab{4}{\C{}//_overrides_exception::what()\CE{}}}
+\index{what}\Proc{what}\L{\LB{}\Tab{4}{\K{const}_\K{char}*_\V{what}(\K{void})_\K{const};}}
+\L{\LB{}}
+\L{\LB{}\Tab{2}{\K{private:}}}
+\L{\LB{}\Tab{4}{\K{const}_\K{char}*_\V{\_message};}}
+\L{\LB{\};}}
+\L{\LB{}}
+\L{\LB{}}
+\L{\LB{\K{\#endif}_\C{}//_\_EXCEPTIONS\_H\_\CE{}}}

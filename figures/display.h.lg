@@ -1,0 +1,23 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{display.h}{2000}{8}{12}{19:11}{606}
+\L{\LB{\C{}//_display.h\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#ifndef}_\V{\_DISPLAY\_H\_}}}
+\L{\LB{\K{\#define}_\V{\_DISPLAY\_H\_}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\<\V{fstream}\>}}
+\L{\LB{\K{\#include}_\S{}\3State.h\3\SE{}}}
+\L{\LB{}}
+\L{\LB{\K{extern}_\K{void}_\V{showProgress}(_\K{const}_\K{int}_\V{step},_\K{const}_\K{int}_\V{numSteps},_\K{const}_\K{int}_\V{numQubits}_);}}
+\index{printDiffs}\Proc{printDiffs}\L{\LB{\K{extern}_\K{void}_\V{printDiffs}(_\V{ofstream}\&_\V{outFile},_}}
+\L{\LB{}\Tab{24}{\K{const}_\K{double}_\V{time},}}
+\L{\LB{}\Tab{24}{\K{const}_\V{State}_*\K{const}_\V{rho1},_}}
+\L{\LB{}\Tab{24}{\K{const}_\V{State}_*\K{const}_\V{rho2}_);}}
+\L{\LB{\K{extern}_\K{void}_\V{printLeadingEVals}(_\V{ofstream}\&_\V{outFile},_}}
+\L{\LB{}\Tab{31}{\K{const}_\K{double}_\V{time},}}
+\L{\LB{}\Tab{31}{\K{const}_\V{State}_*\K{const}_\V{rho1},_}}
+\L{\LB{}\Tab{31}{\K{const}_\V{State}_*\K{const}_\V{rho2}_);}}
+\L{\LB{}}
+\L{\LB{\K{\#endif}_\C{}//_\_DISPLAY\_H\_\CE{}}}

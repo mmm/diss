@@ -1,0 +1,13 @@
+% Remember to use the lgrind style
+
+\Head{}
+\File{derivs.h}{2000}{6}{7}{20:21}{172}
+\L{\LB{\C{}//_derivs.h\CE{}}}
+\L{\LB{}}
+\L{\LB{\K{\#ifndef}_\V{\_DERIVS\_H\_}}}
+\L{\LB{\K{\#define}_\V{\_DERIVS\_H\_}}}
+\L{\LB{}}
+\L{\LB{\K{\#include}_\S{}\3myvalarray.h\3\SE{}}}
+\L{\LB{\K{extern}_\V{valarray}\<\K{double}\>_\V{dydx}(_\K{const}_\K{double}_\V{x},_\K{const}_\V{valarray}\<\K{double}\>\&_\V{y}_);}}
+\L{\LB{}}
+\L{\LB{\K{\#endif}_\C{}//\_DERIVS\_H\_\CE{}}}
