@@ -1,15 +1,33 @@
 % chapter-code.tex
 
+%\baselineskip=15.5pt plus .5pt minus .2pt
+
 \chapter{The Code}
 \label{chap:code}
 \index{Code@\emph{Code}}
 
-\section{The \texttt{valarray} Template}
+\baselineskip=15.5pt plus .5pt minus .2pt
+
+
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+\section{Organization of the Code}
+
+%-----------------------------------------------------------------
+\subsection{Classes Used}
+
+%-----------------------------------------------------------------
+\subsection{Libraries Used}
+
+%-----------------------------------------------------------------
+\subsection{The \texttt{valarray} Template}
 \index{Code@\emph{Code}!Valarray}
 
 This chapter will contain details of the computer programs used
 in the various numerical simulations of Grover's algorithm, and
 will be added to the final draft.
+
+
 
 
 %-----------------------------------------------------------------
@@ -18,17 +36,112 @@ will be added to the final draft.
 
 %-----------------------------------------------------------------
 \subsection{main.C}
-%\begin{verbatim}
-%\end{verbatim}
-\verbatiminput{/home/mmm/src/numerical/stepper/diffs/main.C}
 
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/diffs/main.C}}
+
+%-----------------------------------------------------------------
+\subsection{State.h}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/State.h}}
 
 %-----------------------------------------------------------------
 \subsection{PureState.h}
-\begin{verbatim}
-\end{verbatim}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/PureState.h}}
 
 %-----------------------------------------------------------------
 \subsection{PureState.C}
-\begin{verbatim}
-\end{verbatim}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/PureState.C}}
+
+%-----------------------------------------------------------------
+\subsection{MixedState.h}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/MixedState.h}}
+
+%-----------------------------------------------------------------
+\subsection{MixedState.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/MixedState.C}}
+
+%-----------------------------------------------------------------
+\subsection{derivs.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/diffs/derivs.C}}
+
+%-----------------------------------------------------------------
+\subsection{rk4.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/rk4.C}}
+
+%-----------------------------------------------------------------
+\subsection{Bures.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/Bures.C}}
+
+%-----------------------------------------------------------------
+\subsection{Matrices.h}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/Matrices.h}}
+
+%-----------------------------------------------------------------
+\subsection{Matrices.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/Matrices.C}}
+
+%-----------------------------------------------------------------
+\subsection{display.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/diffs/display.C}}
+
+%-----------------------------------------------------------------
+\subsection{exceptions.h}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/exceptions.h}}
+
+%-----------------------------------------------------------------
+\subsection{exceptions.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/exceptions.C}}
+
+%-----------------------------------------------------------------
+\subsection{fwrap.C}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/fwrap.C}}
+
+%-----------------------------------------------------------------
+\subsection{myvalarray.h}
+
+\texttt{
+\small
+\verbatiminput{/home/mmm/src/numerical/stepper/common/myvalarray.h}}
