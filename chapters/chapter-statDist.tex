@@ -1,0 +1,188 @@
+
+%---------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
+\chapter{Statistical distance and Hilbert space}
+\label{sec:statisticalDistance}
+\index{Statistical Distance@\emph{Statistical Distance}}%
+
+
+In classical probability, the \emph{distance} between two distinguishable 
+events in state space can be characterized in terms of the maximum number
+of mutually distinguishable intermediate events.  This notion was 
+generalized to quantum states by Wooters\cite{Wooters:81}, who found
+that the \emph{statistical distance} between two quantum states coincides with
+the \emph{metric distance} between two rays in Hilbert space.
+
+Optimization of the statistical distinguishability of quantum
+states leads to a natural Hermitian metric on the space of density
+operators\cite{Braunstein/Caves:94}.  This metric is, for pure states,
+the usual Fubini--Study metric on projective Hilbert space\cite{Gibbons:92}.
+It can be extended to general density operators with little difficulty.
+
+\section{Classical statistical distance}
+
+\mmm{Is this really necessary?}
+
+It is worth noting, that statistical distance on a classical state space 
+is not just the Euclidean distance between two probabilities $|p_1-p_2|$.  
+This is due to the fact that probabilities near $\frac{1}{2}$ are harder 
+to distinguish due to higher statistical fluctuations than probabilities 
+near 0 or 1.
+
+As an example, consider two differently weighted coins.  Coin $i$ has
+an {\it a priori} probability $p_i$ of obtaining heads in a given toss.
+The probability space is one dimensional, just the probability 
+$p_i$ of heads for each coin.
+Define\footnote{After Wooters\cite{Wooters:81}} 
+the statistical distance between two coins in this probability space as
+\begin{equation}
+d(p_1,p_2) = \lim_{n\to\infty} \frac{1}{\sqrt{n}}\times
+    \left[\begin{matrix}
+        \text{\scriptsize maximum number of mutually distinguishable}\\
+        \text{\scriptsize (in {\it n} trials) intermediate probabilities}
+    \end{matrix}\right],
+\label{e:ClassicalDistance}
+\end{equation}
+where two intermediate probabilities $p$ and $p^\prime$ are distinguishable
+in $n$ trials if 
+\begin{equation}
+\left| p-p^\prime \right| \ge \Delta p + \Delta p^\prime.
+\end{equation}
+An expression for $\Delta p$ can be given in the spirit of experimental
+uncertainty as RMS deviation
+\begin{equation}
+\Delta p = \left[ \frac{p(1-p)}{n} \right]^\frac{1}{2}.
+\end{equation}
+\mmm{???}
+
+
+\section{A geometrical approach}
+
+I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Wooters:81}
+geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
+to get the Fubini--Study metric for projective Hilbert space\dots
+\begin{equation}
+                ds_{\text{SP}}^2 = \sum_i \frac{(dp_i)^2}{p_i} + 
+                \left( 
+                    \sum_i p_i(d\phi_i)^2 - \left( \sum_i p_i d\phi_i \right)^2
+                \right)     
+\end{equation}
+
+Consider two pure states:
+\begin{equation}
+\begin{split}
+    \ket{\psi} =& \sum_j \sqrt{p_j}e^{i\phi_j}\ket{j},\\
+    \ket{\tilde\psi} = \ket{\psi} + \ket{d\psi} =& 
+              \sum_j \sqrt{p_j + dp_j}e^{i(\phi_j + d\phi_j)}\ket{j}.
+\end{split}
+\end{equation}
+If we define $\ket{d\psi_\perp} = \ket{d\psi} - \ket{\psi}\braket{\psi}{d\psi}$, 
+then
+\begin{equation}
+    \braket{d\psi_\perp}{d\psi_\perp} = 
+        \braket{d\psi}{d\psi} - \left| \braket{\psi}{d\psi} \right|^2.
+\label{e:dPsi_perp}
+\end{equation}
+Since $\ket{d\psi} = \ket{\tilde\psi} - \ket{\psi}$, we can write
+\begin{equation}
+\begin{split}
+    \braket{d\psi}{d\psi} 
+        =& \left(\bra{\tilde\psi}-\bra{\psi}\right)
+           \left(\ket{\tilde\psi}-\ket{\psi}\right)\\
+        =& \braket{\tilde\psi}{\tilde\psi} - \braket{\tilde\psi}{\psi}
+          - \braket{\psi}{\tilde\psi} + \braket{\psi}{\psi}\\
+        =& \,2 - \braket{\psi}{\tilde\psi} - \braket{\tilde\psi}{\psi}\\
+        =& \,2 - \left(
+                      \sum_j\sqrt{p_j}\sqrt{p_j+dp_j}e^{id\phi_j}
+                \right) 
+                - \left(
+                      \sum_j\sqrt{p_j}\sqrt{p_j+dp_j}e^{-id\phi_j}
+                \right)\\
+        =& \,2 - 2 \sum_j\sqrt{p_j}\sqrt{p_j+dp_j}
+                \,\cos(d\phi_j).
+\end{split}
+\end{equation}
+Now, we can expand to second order in $d\phi$ and $dp$ to get
+\begin{equation}
+\begin{split}
+    \braket{d\psi}{d\psi}
+        \approx& \,2\left\lbrace1 - \sum_jp_j\left(1+\frac{dp_j}{p_j}\right)^\frac{1}{2} 
+                    \left[ 1 - \frac{(d\phi_j)^2}{2}\right]
+            \right\rbrace\\
+        \approx& \,2\left\lbrace1 - \sum_jp_j
+                    \left[1+\frac{1}{2}\left(\frac{dp_j}{p_j}\right)
+                           -\frac{1}{8}\left(\frac{dp_j}{p_j}\right)^2\right]
+                    \left[ 1 - \frac{(d\phi_j)^2}{2}\right]
+            \right\rbrace\\
+        =& \,2\left\lbrace1 - \sum_j
+                    \left( p_j + \frac{1}{2}dp_j 
+                           -\frac{1}{8}\frac{(dp_j)^2}{p_j}
+                           -\frac{1}{2}p_j(d\phi_j)^2
+                    \right)
+            \right\rbrace.\\
+\end{split}
+\end{equation}
+Now, $\lbrace p_i\rbrace$ are probabilities, so $\sum_jp_j=1$ and $\sum_jdp_j = 0$,
+which gives
+\begin{equation}
+    \braket{d\psi}{d\psi}
+        \approx \sum_j 
+                    \left( 
+                           \frac{1}{4}\frac{(dp_j)^2}{p_j}
+                           +p_j(d\phi_j)^2
+                    \right).
+\end{equation}
+%
+Similarly, 
+\begin{equation}
+\begin{split}
+    \braket{\psi}{d\psi}
+        =& \bra{\psi} \left(\ket{\tilde\psi} - \ket{\psi}\right)
+        = \braket{\psi}{\tilde\psi} - \braket{\psi}{\psi}\\
+        =& \braket{\psi}{\tilde\psi} - 1\\
+        =& \sum_j\sqrt{p_j}\sqrt{p_j+dp_j}\,e^{id\phi_j} - 1
+\end{split}
+\end{equation}
+Expanding to first order in $dp$ and $d\phi$, we get
+\begin{equation}
+\begin{split}
+    \braket{\psi}{d\psi}
+        \approx& \left\lbrace \sum_jp_j
+                    \left[1+\frac{1}{2}\left(\frac{dp_j}{p_j}\right)
+                           %-\frac{1}{8}\left(\frac{dp_j}{p_j}\right)^2
+                    \right]
+                    \left[ 1 + id\phi_j 
+                            %- \frac{(d\phi_j)^2}{2}
+                    \right]
+                 \right\rbrace
+            - 1\\ 
+        \approx& \sum_j \left( p_j + \frac{1}{2}dp_j + ip_jd\phi_j
+                  \right) -1\\
+        =& i \sum_j p_jd\phi_j.
+\end{split}
+\end{equation}
+and then equation (\ref{e:dPsi_perp}) gives
+\begin{equation}
+\begin{split}
+    \braket{d\psi_\perp}{d\psi_\perp} 
+        =& \braket{d\psi}{d\psi} - \left| \braket{\psi}{d\psi} \right|^2.\\
+        \approx& \sum_j 
+                    \left( 
+                           \frac{1}{4}\frac{(dp_j)^2}{p_j}
+                           +p_j(d\phi_j)^2
+                    \right)
+            - \left( \sum_jp_jd\phi_j \right)^2\\
+        \approx& \sum_j \frac{1}{4}\frac{(dp_j)^2}{p_j}
+                  + \left[ 
+                           \sum_j p_j(d\phi_j)^2
+                           - \left( \sum_jp_jd\phi_j \right)^2
+                    \right].
+\end{split}
+\end{equation}
+
+
+%\lemma This sucks. This really sucks. to the $\tr\rho$, or
+%maybe $\tr{\rho}$, or maybe even $\tr[\rho]$.  Is this $\C$, or
+%does $\ket{i}$.
+%
+%\proof This is the proof.\qed

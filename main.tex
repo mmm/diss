@@ -82,6 +82,8 @@
 %          Here some macros that I need in this document
 
 
+\include{mmm_macros}
+
 \newcommand{\latexe}{{\LaTeX\kern.125em2%
                       \lower.5ex\hbox{$\varepsilon$}}}
 
@@ -143,7 +145,9 @@ This is my dissertation.
 
 % Actual text starts here %
 
-\input{chapter-intro.tex}
+\input{chapters/chapter-intro.tex}
+\input{chapters/chapter-statDist.tex}
+\input{chapters/chapter-quantAlgs.tex}
 
 % Appendix
 
@@ -185,7 +189,7 @@ include its own source.
 
 
 \bibliographystyle{plain}  % Here the bibliography 
-\bibliography{diss}        % is inserted.
+\bibliography{tmpdiss}        % is inserted.
 \index{Bibliography@\emph{Bibliography}}%
 
 % Vita page %

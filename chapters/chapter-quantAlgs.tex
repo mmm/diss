@@ -1,0 +1,174 @@
+% chapter1
+
+
+
+\chapter{Quantum Algorithms}
+\index{Quantum Algorithms@\emph{Quantum Algorithms}}%
+
+\section{Prime Factorization}
+
+\section{Quantum Searching}
+
+\section{Complex Projective Space}
+
+\subsection{The Fubini--Study Metric}
+\index{Complex Projective Space!Fubini--Study Metric}
+
+For any two vectors $X,Y\in T_p\C P^n$, we can define
+$g\colon T_p\C P^n \to T_p\C P^n$ by
+\begin{equation}
+g(X,Y) = \Omega(X,JY),
+\end{equation}
+where $\Omega$ is the K\"ahler form and $J$ is the complex structure.
+
+\mmm{fill this}
+
+Nash\cite{Nash:?} gives 
+\begin{equation}
+ds_{FS}^2 = g_{i\overline{j}}\, dz^i\otimes d\overline{z}^j,
+\end{equation}
+where 
+\begin{equation}
+g_{i\overline{j}} = 4\,\frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
+                    { \left( 1 + \left| z\right|^2 \right)^2 }.
+\label{e:fsmetric}
+\end{equation}
+The inverse metric is easily shown to be
+\begin{equation}
+g^{\overline{i}j} = \frac{1}{4}\left( 
+                    1+\left| z\right|^2 
+                \right) \left[
+                    \delta^{ij} + \overline{z}^iz^j
+                \right]
+\label{e:fsinvmetric}
+\end{equation}
+The only non--vanishing Christoffel symbols are $\Gamma^a_{bc}$ and
+$\Gamma^{\overline{a}}_{\overline{b}\overline{c}}$ ( $=\overline{\Gamma^a_{bc}}$ ), 
+so the geodesic equations become
+\begin{equation}
+\begin{split}
+    \ddot{z}^l + \Gamma^l_{ik}\dot{z}^i\dot{z}^k =&\, 0\\
+    \ddot{\overline{z}}^l + \Gamma^{\overline{l}}_{\overline{i}\overline{k}}
+            \dot{\overline{z}}^i\dot{\overline{z}}^k =&\, 0.
+\end{split}
+\label{e:geodesics}
+\end{equation}
+Metric compatibility with the complex structure insures
+\begin{equation}
+\begin{split}
+    \Gamma^a_{bc} =& g^{\overline{s}a} g_{c\overline{s},b}\\
+    \Gamma^{\overline{a}}_{\overline{b}\overline{c}} =& g^{\overline{a}s} 
+                            g_{s\overline{c},b}.
+\end{split}
+\label{e:xsymb}
+\end{equation}
+Using equation (\ref{e:fsmetric}), we get 
+\begin{equation}
+\begin{split}
+    g_{i\overline{j},k} =&\,4\, \frac{\partial}{\partial z^k} 
+            \left(
+                 \frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
+                      { \left( 1 + \left| z\right|^2 \right)^2 }
+            \right)\\
+        =&\,4\, \left\lbrace
+            \frac{\partial}{\partial z^k} \left(
+                \frac{\delta_{ij}}{ \left( 1 + \left| z\right|^2 \right) }
+            \right)
+            - \frac{\partial}{\partial z^k} \left(
+                \frac{z_i\overline{z}_j}{ 
+                    \left( 1 + \left| z\right|^2 \right)^2 
+                }
+            \right)
+        \right\rbrace\\
+        =&\,4\,\left\lbrace
+            -\frac{\delta_{ij}\overline{z}_k}{ 
+                \left( 1 + \left| z\right|^2 \right)^2 
+             }
+            +2\,\frac{z_i\overline{z}_j\overline{z}_k}{
+                    \left( 1 + \left| z\right|^2 \right)^3 
+             }
+            -\frac{\delta_{ik}\overline{z}_j}{ 
+                \left( 1 + \left| z\right|^2 \right)^2 
+             }
+        \right\rbrace\\
+        =&\,\frac{4}{
+                \left( 1 + \left| z\right|^2 \right)^3 
+            }
+            \biggl\lbrace
+                2\,z_i\overline{z}_j\overline{z}_k
+                - \left( 1 + \left| z\right|^2 \right) \left[
+                    \delta_{ij}\overline{z}_k 
+                    + \delta_{ik}\overline{z}_j 
+                \right]
+            \biggr\rbrace,
+\end{split}
+\end{equation}
+which from equation (\ref{e:xsymb}) gives Christoffel symbols
+\begin{equation}
+\begin{split}
+    \Gamma^l_{ik} =& g^{\overline{j}l} g_{i\overline{j},k}\\
+        =& \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            \delta^{jl} + \overline{z}^jz^l
+        \biggr\rbrace
+        \biggl\lbrace
+            2z_i\overline{z}_j\overline{z}_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \delta_{ij}\overline{z}_k 
+                + \delta_{ik}\overline{z}_j 
+            \right]
+        \biggr\rbrace\\
+        =& 
+        \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            2z_i\overline{z}_j\overline{z}_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \delta_{ij}\overline{z}_k 
+                + \delta_{ik}\overline{z}_j 
+            \right]\\
+        &\qquad\qquad\qquad    + 2\left( z\cdot z\right) z^lz_i\overline{z}_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \overline{z}_i z^l\overline{z}_k 
+                + \left( z\cdot z\right)\delta_{ik}z^l 
+            \right]
+        \biggr\rbrace
+\end{split}
+\end{equation}
+
+The geodesic equations of motion (\ref{e:geodesics}) now become
+\begin{multline}
+    \dot{w} = \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \left( \overline{z}\cdot w \right)
+            \biggr] w^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right)\left( w\cdot w \right)
+                    - 2\left( z\cdot w \right)\left( \overline{z}\cdot w \right)
+            \biggr] \overline{z}^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \bigl[ 
+                      \left(\overline{z}\cdot w\right)\left(\overline{z}\cdot w\right)
+                      +\left(\overline{z}\cdot\overline{z}\right)\left(w\cdot w\right)
+                    \bigr]
+                    - 2\left(\overline{z}\cdot\overline{z}\right) 
+                        \left( z\cdot w \right)\left( \overline{z}\cdot w \right)
+            \biggr] z^l
+        \biggr\rbrace,
+\end{multline}
+where $w=\dot{z}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
