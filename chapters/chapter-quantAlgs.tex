@@ -808,8 +808,59 @@ A careful analysis of this is presented in the following section.
 %--------------------------------------------------------------------------------   
 \subsection{Complexity Analysis}
 
-
 \subsubsection{A Classical Search}
+
+In order to understand the complexity of Grover's algorithm,
+it is useful to discuss the complexity associated with a 
+similar search on a classical computer.
+
+The relevant clasical search problem is as follows:  
+start with a large unsorted database containing $N>>1$ items.
+Find one particular item in this database\dots
+search for a ``needle in a haystack'' as Grover puts
+it\cite{Grover:96}.  As discussed earlier, this database can 
+be represented by a table or a function $f(x)$ where
+$x\in\lbrace 0,1,\ldots,N-1\rbrace$.
+The item searched for is guaranteed to be in the database
+exactly once, so $f(x)=a$ for only a single 
+value of $x$. Now, given $a$, find $x$.
+
+If the database has been sorted, $x$ can be found by 
+evaluating the function for only $\log N$ possible 
+values of the domain before the value $a$ is obtained.
+
+Suppose $N$ is a power of 2, say $N=2^n$.  Then the search
+would start by evaluating $f(x)$ for $x=2^{n-1}-1$,
+and then comparing the result to the desired result, $a$.
+If $f(x)$ is greater than $a$, then repeat the search
+step by evaluating $f(x)$ on $x=2^{n-2}-1$ and comparing,
+etc.  
+
+Consider, for a nice concrete example, a database consisting
+of file folders.  The oracle function $f$ is simply to read
+the name on the folder, the value of the desired folder being
+the name $a$.  If the database is ordered, lexicographically say,
+then the search would start by grabbing the middle folder
+($x=2^n-1$), reading the name on the folder (evaluating the
+function $f$), and then comparing this name to the name $a$.
+If the name $a$ is later in the list, choose a folder three
+quarters of the way back and try again.  In a worst--case
+scenario, you will have to look at $\log_2 N$ different 
+folders to find the one with the name $a$.  
+Another example of this kind of search
+is, knowing a person's name, looking up their phone number in
+the phone book.  These are all searches of an ordered database.
+
+On the other hand, if the database is not ordered the search
+becomes much more difficult.  Take, for instance, the seemingly
+intractable problem of using the phone book to look up a 
+person's name given their phone number.  This is essentially
+looking for an item in an unordered list -- searching for a 
+needle in a haystack.  Considerably more function evaluations
+would be required in this instance.  It requires $\frac{N}{2}$
+lookups or evaluations before the probability of success is 
+greater than $\frac{1}{2}$.
+
 
 \subsubsection{Grover}
 
