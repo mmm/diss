@@ -411,9 +411,9 @@ and everything else $\ket{\omega_\perp}$ as
 \ket{S} = \ket{\omega}\braket{\omega}{S} + 
              \ket{\omega_\perp}\braket{\omega_\perp}{S}.
 \end{equation}
-The oracle query acting on $\ket{S}$
+The oracle query ${\bf U_\omega}$ acting on $\ket{S}$
 \begin{equation}
-\biggl( {\bf 1} - 2\ketbra{\omega}{\omega} \biggr) \ket{S}
+{\bf U_\omega}\ket{S} = \biggl( {\bf 1} - 2\ketbra{\omega}{\omega} \biggr) \ket{S}
 \label{e:oracle}
 \end{equation}
 simply flips the state $\ket{S}$ about the (hyper)plane
@@ -423,6 +423,7 @@ state is rotated by $\pi$ radians (see figure
 (\ref{fig:phaseFlip})).  
 The resulting state will look like
 \begin{equation}
+{\bf U_\omega}\ket{S} =
 \biggl( {\bf 1} - 2\ketbra{\omega}{\omega} \biggr) \ket{S}
 = - \ket{\omega}\braket{\omega}{S} + 
              \ket{\omega_\perp}\braket{\omega_\perp}{S}.
@@ -459,6 +460,7 @@ The resulting state will look like
     \put(20,20){$\ket{\omega_\perp}$}
     \put(65,100){$\ket{\omega}$}
     \put(140,90){$\ket{S}$}
+    \put(145,-5){${\bf U_\omega}\ket{S}$}
     \put(75,35){\vector(1,1){60}}
     \dashline[+30]{3}[80](75,35)(102,16)
     \put(102,16){\vector(3,-2){40}}
@@ -473,6 +475,7 @@ where $\ket{\omega}$ is in the state expansion.  This operation
 still works despite the fact that it's not possible to write this
 down in terms of a matrix such as
 \begin{equation}
+{\bf U_\omega}\ket{S} =
 \begin{bmatrix}
     1       &0      &\cdots &      &0  \\
     0       &\ddots &       &      &   \\
@@ -502,35 +505,159 @@ algorithm, even classically, that examines each input and tests
 for successful (``yes'') function evaluation.  This issue
 has already been resolved by simply writing the
 transformation as the operator 
-$\bigl( {\bf 1} - 2\ketbra{\omega}{\omega} \bigr)$.
+\begin{equation}
+{\bf U_\omega} = \bigl( {\bf 1} - 2\ketbra{\omega}{\omega} \bigr).
+\end{equation}
 
 
 \subsubsection{Inversion About the Average}
 \label{ssec:diffusion}
 
-In step (\ref{fig:grover:diffusion}) of Grover's algorithm
+Step (\ref{fig:grover:diffusion}) of Grover's algorithm
 (figure \ref{fig:grover}) is an inversion of the state about
 the {\sl average} state.  This so called 
 \emph{diffusion transformation}
-looks like
+can be written
 \begin{equation}
-\begin{pmatrix}
+{\bf U_s} = 2\ketbra{s}{s} - {\bf 1},
+\label{e:diffusion}
+\end{equation}
+where, as before, 
+\begin{equation}
+\ket{s} = \frac{1}{\sqrt{N}}\sum_{i=0}^{N-1} \ket{i}
+\end{equation}
+is the equally--weighted
+superposition of all computational basis states.
+This transformation preserves $\ket{s}$, but flips 
+the sign of any vector orthogonal to $\ket{s}$.
+It \emph{rotates} a vector around $\ket{s}$.
+
+Now, rewrite (\ref{e:diffusion}) as
+\begin{equation}
+\begin{split}
+{\bf U_s} =& \frac{2}{N}\sum_{i,j} \ketbra{i}{j} - {\bf 1}\\
+=& \frac{2}{N}\begin{pmatrix}
+                    1 & 1 & \cdots & 1 \\
+                    1 & 1 & &  \\
+                    \vdots &  & \ddots & \vdots \\
+                    1 & \cdots && 1 
+              \end{pmatrix} - {\bf 1} \\
+=& \begin{pmatrix}
     \frac{2-N}{N} & \frac{2}{N} & \cdots & \frac{2}{N} \\
     \frac{2}{N}   & \frac{2-N}{N} & &  \\
     \vdots &  & \ddots & \vdots \\
     \frac{2}{N}   & \cdots && \frac{2-N}{N} 
 \end{pmatrix}.
+\end{split}
+\end{equation}
+
+Each iteration in Grover's algorithm can be written as
+the unitary transformation
+\begin{equation}
+{\bf U}_{\text{Grover}} = {\bf U}_s {\bf U}_\omega,
+\end{equation}
+which is just a query of the oracle followed by a flip
+about the average.
+This combined unitary operator cannot be written in matrix
+form (because of ${\bf U_\omega}$), but the effect upon
+the input state can be calculated.
+Consider the state
+\begin{equation}
+\ket{\Psi} = k\ket{\omega} + l\ket{\omega_\perp}.
+\end{equation}
+A single Grover iteration applied to this state
+gives
+\begin{equation}
+\begin{split}
+{\bf U}_{\text{Grover}}\ket\Psi
+\quad =&\quad  {\bf U_s}{\bf U_\omega} \left(
+                k\ket{\omega} + l\ket{\omega_\perp}
+             \right) \\
+=&\quad  {\bf U_s} \left(
+               -k\ket{\omega} + l\ket{\omega_\perp}
+             \right) \\
+=&\quad \bigl\lbrace 2\ketbra{s}{s} - {\bf 1} \bigr\rbrace
+             \left(
+                -k\ket{\omega} + l\ket{\omega_\perp}
+             \right) \\
+=&\quad \biggl\lbrace 
+                    \frac{2}{N} \sum_{i,j}\ketbra{i}{j}
+                    - {\bf 1} \biggr\rbrace
+             \left(
+                -k\ket{\omega} + l\ket{\omega_\perp}
+             \right) \\
+=&\quad 
+                k\ket{\omega} - l\ket{\omega_\perp}
+                + \frac{2}{N} \sum_{i,j} \biggl\lbrace
+                                    - k\ket{i}\braket{j}{\omega}
+                                    + l\ket{i}\braket{j}{\omega_\perp}
+                              \biggr\rbrace \\
+=&\quad 
+                k\ket{\omega} - l\ket{\omega_\perp}
+                + \frac{2}{N} \sum_i \ket{i} \biggl\lbrace
+                                    - k\sum_j\braket{j}{\omega}
+                                    + l\sum_j\braket{j}{\omega_\perp}
+                              \biggr\rbrace.
+\end{split}
+\end{equation}
+Since the ket $\ket\omega$ was chosen an element of the orthonormal
+basis $\ket{i}$,
+\begin{equation}
+\sum_j \braket{j}{\omega} = 1,\qquad\text{and}\qquad
+\sum_j \braket{j}{\omega_\perp} = N-1.
+\end{equation}
+Then, a single step of Grover looks like
+\begin{equation}
+{\bf U}_{\text{Grover}}\ket\Psi
+\quad =\quad 
+                k\ket{\omega} - l\ket{\omega_\perp}
+                + \frac{2}{N} \sum_i \ket{i} \left(
+                                    - k + l(N-1)
+                              \right).
+\end{equation}
+To find the coefficients for the state after this iteration,
+take
+\begin{equation}
+\begin{split}
+k_{\text{new}} =& \bra{\omega}{\bf U}_{\text{Grover}}\ket\Psi\\
+=& k\braket{\omega}{\omega} + \frac{2}{N} \left( -k + l(N-1) \right)
+\braket{\omega}{\omega}\\
+=& \frac{N-2}{N}k + \frac{2(N-1)}{N}l
+\end{split}
+\end{equation}
+and 
+\begin{equation}
+\begin{split}
+l_{\text{new}} =& \bra{\omega_\perp}{\bf U}_{\text{Grover}}\ket\Psi\\
+=& -l\braket{\omega_\perp}{\omega_\perp}
++ \frac{2}{N} \left( -k + l(N-1) \right) \braket{\omega_\perp}{\omega_\perp}\\
+=& -\frac{2}{N}k + \frac{N-2}{N}l.
+\end{split}
+\end{equation}
+
+So, under the action of Grover's algorithm, the state at any given
+iteration can be described by
+\begin{equation}
+\ket{\Psi_i} = k_i\ket{\omega} + l_i\ket{\omega_\perp},
+\end{equation}
+where $k_i$ and $l_i$ are determined iteratively by
+\begin{equation}
+\begin{split}
+k_{i+1} =& \frac{N-2}{N}k_i + \frac{2(N-1)}{N}l_i\\
+l_{i+1} =& -\frac{2}{N}k_i + \frac{N-2}{N}l_i.
+\end{split}
 \end{equation}
 
 
+
+                
 \subsubsection{Measurement}
 
 The final step in Grover's algorithm is simply to measure the
 resulting state after the appropriate number of iterations.
-The desired state should be measured with probability of at
+The desired state should then be measured with probability of at
 least $\frac{1}{2}$.
-A careful analysis of these two important aspects of the 
-algorithm is presented in the following section.
+A careful analysis of this is presented in the following section.
 
 %--------------------------------------------------------------------------------   
 \subsection{Complexity Analysis}
