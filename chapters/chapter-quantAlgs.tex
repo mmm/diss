@@ -6,9 +6,9 @@
 
 A quantum algorithm is a set of states and operations performed
 with a quantum computer in order to arrive at an answer to a particular
-specified problem.
-There are no simple prescriptions for contructing a quantum algorithm.
-There are no rules by which one can take an existing classical algorithm,
+problem.
+There are no simple prescriptions for constructing a quantum algorithm.
+In fact, there are no rules by which one can take an existing classical algorithm,
 an algorithm developed to run on a classical computer, and construct
 a corresponding quantum algorithm.  There are not even many tools or concepts
 used in developing classical algorithms that carry over into the quantum
@@ -46,7 +46,7 @@ discussed.
 %--------------------------------------------------------------------------------   
 \subsection{Deutsch's Algorithm}
 
-Deutsch\cite{Deutsch:?} gives a simple example of a problem that
+Deutsch\cite{Deutsch:85a,Deutsch:85b} gives a simple example of a problem that
 can be solved faster on a quantum computer than its classical
 counterpart.
 Consider some black box that evaluates a function 
@@ -81,11 +81,12 @@ U_f\colon \ket{x}\ket{y} \to \ket{x}\ket{y\oplus f(x)},
 \end{equation}
 where the second bit is flipped if $f(x)=1$ and left alone
 if $f(x)=0$.
+
 Just as in the classical case, this computer can determine
 if the function is constant or balanced with multiple evaluations
 of $f(x)$.  Still taking 48 hours to arrive at an answer.
 
-Because the black box is a quantum computer, it can accept
+Because the black box is a {\sl quantum} computer, it can accept
 as an input a superposition of states $\ket{0}$ and $\ket{1}$.
 If the second qubit is initially prepared in the state
 $\frac{1}{\sqrt{2}}\left( \ket{0} - \ket{1} \right)$, then
@@ -122,7 +123,7 @@ parallelism in execution.  The computer essentially evaluates all inputs
 at the same time, storing the information in correlations between the states
 that make up the input and output registers.  This information
 is only really available via specifically prepared measurements, but it is
-there.  The output of the quantum computation does encode this ``global''
+there.  The output of the quantum computation encodes this ``global''
 information about the function.
 
 The quantum circuit to compute Deutsch's algorithm is shown in figure
@@ -159,22 +160,24 @@ The quantum circuit to compute Deutsch's algorithm is shown in figure
 Of course, the simple function $\lbrace 0,1\rbrace\to\lbrace 0,1\rbrace$
 discussed above is not particularly useful for anything other than
 providing a simple example with which to exhibit a quantum algorithm.
-However, the same principles apply to a more useful function
+However, the same principles apply to a more useful 
+(section (\ref{ssec:classicalComp})) function
 $f\colon\lbrace 0,1\rbrace^N\to\lbrace 0,1\rbrace$.
 Again, construct the unitary operator
 \begin{equation}
 U_f\colon\ket{x}\ket{0}\to\ket{x}\ket{f(x)}.
 \end{equation}
-Then, via a Hadamard tranformation ({\it c.f.}, chapter
-(\ref{chap:quantumComputation})), choose the input register to 
+Then, via a Hadamard tranformation ({\it c.f.}, section
+(\ref{sssec:Hadamaard})), 
+choose the input register to 
 be in the state
 \begin{equation}
 \left[\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)\right]^N
-= \frac{1}{2^{N/2}}\sum_{x=0}^{2^N-1}\ket{x}.
+= \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1}\ket{x}.
 \end{equation}
 A single function evaluation leaves 
 \begin{equation}
-    \frac{1}{2^{N/2}}\sum_{x=0}^{2^N-1}\ket{x}\ket{f(x)},
+    \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1}\ket{x}\ket{f(x)},
 \end{equation}
 which encodes ``global'' information about the function.
 The trick is to now extract this information via specialized
@@ -283,6 +286,9 @@ a\cdot y_n =&\, 0\\
 \end{equation}
 for $a$.
 
+The value $a$ is then the period of the function $f$ and the
+solution to the problem.  This solution was obtained in only polynomial 
+time -- a considerable speedup over the case of a classical computer.
 
 
 
@@ -290,12 +296,12 @@ for $a$.
 %--------------------------------------------------------------------------------   
 \section{Prime Factorization}
 
-Shor\dots
 
-Braunstein\cite{Braunstein:96} has an excellent overview of Shor's algorithm,
-along with more detailed accounts by\dots
+For an excellent overview of Shor's algorithm,
+see \cite{Braunstein:96}.  More detailed accounts
+of the algorithm can be found in \cite{Shor:94,Shor:00}.
 
-The goal of the algorithm is to factor an integer $N$.
+The goal of the following algorithm is to factor an integer $N$.
 For the first step, randomly choose an integer $x$ that
 is relatively prime to $N$.  If $x$ and $N$ did share a 
 factor, Euclid's algorithm could be used to efficiently 
@@ -400,7 +406,7 @@ U_f \left( \sum_{x} \ket{x}\ket{0} \right)
 \end{equation}
 The two quantum registers are now entangled\dots operations on
 one will affect the other.  For the next step, 
-perform a measurement 
+perform a measurement such as
 \begin{equation}
 1\otimes \ketbra{c}{c}
 \end{equation}
@@ -408,10 +414,10 @@ on the second register to get
 \begin{equation}
 %\frac{1}{\sqrt{2^n}} \sum_x \ket{x}\ket{c}.
 \sum_{x\in f^{-1}(c)} \ket{x}\ket{c}.
+\label{e:shorB}
 \end{equation}
 This has collapsed the first register into an equally weighted
-superposition of states $\ket{x}$ such that 
-$f(x) = c$.  
+superposition of states $\ket{x}$ such that $f(x) = c$.  
 %\mmm{}
 %This is depicted in figure (\ref{fig:shor}).
 %\begin{figure}[h]
@@ -425,11 +431,12 @@ $f(x) = c$.
 %\end{center}
 %\end{figure}
 
-All that's really needed from this is the period of the function
+All that's really needed at this point is the period of the function
 $f$, so the next step is simply a Fourier transform of the first 
-register to find $r$.  
+register in order to find $r$.  
 
 \subsubsection{The Quantum Discrete Fourier Transform}
+\index{The Quantum Discrete Fourier Transform}
 
 An $N$--dimensional quantum register $\ket{x}$ under a Fourier 
 transform will look like 
@@ -437,22 +444,81 @@ transform will look like
 \ket{x} \mapsto 
 \frac{1}{\sqrt{N}}
 \sum_{y=0}^{N-1} e^{\frac{2\pi ixy}{N}}\ket{y}.
+\label{e:qdft}
 \end{equation}
 This operation is, of course, unitary and hence reversible.
 There have also been very efficient techniques developed to
-calculate this with a quantum circuit\cite{Coppersmith:94}
+calculate this via a quantum circuit\cite{Coppersmith:94}
+of one-- and two--qubit quantum gates.
+
+A quantum Fourier transform applied to (\ref{e:shorB})
+will give
+\begin{equation}
+\sum_{x\in f^{-1}(c)}\sum_{y=0}^{N-1} e^{\frac{2\pi ixy}{N}}\ket{y}\ket{c}.
+\label{e:shorC}
+\end{equation}
+Now, with a little cleanup work, measurements of the first 
+register yield the period $r$.  The sum over $y$ in 
+(\ref{e:shorC}) will yield constructive interference from
+the Fourier coefficients 
+%$e^{\frac{2\pi ixy}{N}}$ 
+only when $\frac{y}{N}$ is a multiple of $\frac{1}{r}$.
+So, a measurement of the first register will give 
+some (random) multiple of $\frac{1}{r}$ with high probability.
+This must be repeated until the multiple of $\frac{1}{r}$ is
+relatively prime to $r$, allowing $r$ to be uniquely determined.
 
 
+\subsubsection{An Example}
 
+An example of Shor's algorithm is presented here directly
+from \cite{Braunstein:96}.
 
-
+Consider factoring the number $N=91$.  Initially, we randomly choose
+$x=3$ and find the function $f(a)=3^a\pmod{91}$ will evaluate to
+\begin{equation}
+\begin{tabular}{rrrrrrrrrl}
+a:& 0,& 1,& 2,& 3,& 4,& 5,& 6,& 7,& \dots\\
+$3^a$:& 1,& 3,& 9,& 27,& 81,& 243,& 729,& 2187,& \dots\\
+$3^a\pmod{91}$:& 1,& 3,& 9,& 27,& 81,& 61,& 1,& 3,& \dots
+\end{tabular}
+\label{e:shorExample}
+\end{equation}
+The version of the algorithm running on a quantum computer
+will, of course, compute the period with a Fourier transform.
+Here, however, we'll resort to \emph{wet--ware} of the human
+sort.  By inspection of (\ref{e:shorExample}), the period 
+$r=6$.  This is even, so the algorithm may proceed.
+Rearranging $3^6\equiv 1\pmod{91}$ as
+\begin{equation}
+3^6-1\equiv 0\pmod{91},
+\end{equation}
+and so 
+\begin{equation}
+\begin{split}
+\left(3^3+1\right)\left(3^3-1\right) &\equiv 0\pmod{91}\\
+(28)(26)&\equiv 0\pmod{91}.
+\end{split}
+\end{equation}
+So, this implies that either
+\begin{equation}
+\gcd(91,26)=13
+\end{equation}
+or
+\begin{equation}
+\gcd(91,28)=7
+\end{equation}
+will be a non--trivial factor of 91.
+In this case, both are factors of $91=7\times 13$,
+and the problem is completed.
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Searching a Quantum Database}
 \label{sec:grover}
 
-As discussed in section (\ref{sec:quantCompAlgs}), Grover's algorithm is
+%As discussed in section (\ref{sec:quantCompAlgs}), 
+Grover's algorithm is
 a version of the ubiquitous searching algorithm that will run on a quantum
 computer.  Consider the {\sl quantum} solution to a simple search problem of 
 the following form: A
@@ -847,7 +913,7 @@ In order to understand the complexity of Grover's algorithm,
 it is useful to discuss the complexity associated with a 
 similar search on a classical computer.
 
-The relevant clasical search problem is as follows:  
+The relevant classical search problem is as follows:  
 start with a large unsorted database containing $N>>1$ items.
 Find one particular item in this database\dots
 search for a ``needle in a haystack'' as Grover puts
@@ -865,7 +931,8 @@ values of the domain before the value $a$ is obtained.
 Suppose $N$ is a power of 2, say $N=2^n$.  Then the search
 would start by evaluating $f(x)$ for $x=2^{n-1}-1$,
 and then comparing the result to the desired result, $a$.
-If $f(x)$ is greater than $a$, then repeat the search
+If $f(x)$ is greater than $a$, then, taking advantage of the
+fact that the database is ordered, repeat the search
 step by evaluating $f(x)$ on $x=2^{n-2}-1$ and comparing,
 etc.  
 
@@ -884,7 +951,7 @@ Another example of this kind of search
 is, knowing a person's name, looking up their phone number in
 the phone book.  These are all searches of an ordered database.
 
-On the other hand, if the database is not ordered the search
+On the other hand, if the database is {\sl not} ordered the search
 becomes much more difficult.  Take, for instance, the seemingly
 intractable problem of using the phone book to look up a 
 person's name given their phone number.  This is essentially
@@ -894,8 +961,9 @@ would be required in this instance.  It requires $\frac{N}{2}$
 lookups or evaluations before the probability of success is 
 greater than $\frac{1}{2}$.
 
-Grover's algorithm manages to get to this probability of success
-in about the order of $\sqrt{N}$ evaluations.
+On a {\sl quantum computer}, Grover's algorithm manages to get 
+to a probability of success of at least $\frac{1}{2}$ 
+in only about $\sqrt{N}$ evaluations.
 \mmm{probability of measuring desired state as a function of
 number of iterations}
 
@@ -911,8 +979,8 @@ number of iterations}
 \subsubsection{Start from an Arbitrary Initial Distribution}
 
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Developing New Quantum Algorithms}
-
-NP--Complete?
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Developing New Quantum Algorithms}
+%
+%NP--Complete?

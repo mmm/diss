@@ -38,6 +38,7 @@
 
 %--------------------------------------------------------------------------------   
 \subsection{Classical Theory of Computation}
+\label{ssec:classicalComp}
 
 A classical computer can be viewed simply as a
 system that evaluates a function of the following
@@ -60,8 +61,9 @@ They encode the solution to a problem whose answer, based on
 the input, requires only a YES or NO.  There are many such
 decision problems that can be useful, but it is important to note
 that there are also many apparently non--decision--type problems 
-that can be transformed into decision problems.  Consider
-\mmm{examples}
+that can be transformed into decision problems.  
+%Consider
+%\mmm{examples}
 
 To be evaluated on an actual computing device,
 each of the basic functions must then be broken down into a 
@@ -187,10 +189,7 @@ can be defined as ({\bf P} for Polynomial)
 \end{equation}
 Decision problems in {\bf P} are easy, otherwise, they are hard.
 
-\mmm{exponential lookup table stuff}
-
-\mmm{NP}
-
+%\mmm{exponential lookup table stuff and introduce NP}
 
 
 
@@ -203,9 +202,7 @@ will need to be implemented as unitary tranformations of quantum
 states, and hence will need to be reversible.
 
 \subsubsection{Reversibility}
-
-Classical logic gates are not, in general, reversible.
-For example, consider\mmm{example}.
+\index{reversibility}
 
 A reversible computation will evaluate an invertible function
 such as
@@ -260,6 +257,7 @@ and hence into a reversible computation.
 
 Now, how can this reversible function be made up from basic gates?
 Are there {\sl reversible} universal gates?
+Classical logic gates are, in general, not reversible.
 The trivial gate, which takes an input directly to an output,
 as well as the \texttt{NOT} gate are obviously reversible.
 \texttt{AND} and \texttt{OR} are not.  However, 
@@ -505,6 +503,7 @@ to be developed.  Practically every computation involves the use of
 at least one Hadamaard transformation.
 
 \subsubsection{The Hadamaard Transformation}
+\label{sssec:Hadamaard}
 \index{Hadamaard transformation}
 
 The one--dimensional Hadamaard transformation takes a quantum bit into the
@@ -625,13 +624,13 @@ over $\left(\Z_2\right)^N$.
 
 
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Quantum Algorithms}
-\label{sec:quantCompAlgs}
-
-Grover\cite{Grover:96}\dots did some stuff!
-\mmm{maybe leave for next chapter?}
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Quantum Algorithms}
+%\label{sec:quantCompAlgs}
+%
+%Grover\cite{Grover:96}\dots did some stuff!
+%\mmm{maybe leave for next chapter?}
 
 %%--------------------------------------------------------------------------------   
 %%--------------------------------------------------------------------------------   
@@ -646,6 +645,6 @@ Grover\cite{Grover:96}\dots did some stuff!
 \subsubsection{ECCs}
 \subsubsection{Code bdles?}
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Quantum Hardware}
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Quantum Hardware}
