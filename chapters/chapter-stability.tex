@@ -40,6 +40,20 @@ Can anything be said about chaos?
 
 How does this compare with bit--flips?
 
+Try two different models\dots
+\begin{enumerate}
+\item Run density matrices.  Take finite Grover iterations, then add
+infinitesimal random Hermitian matrices.  This will model some general
+noise in Grover(?). This will take pure to mixed states.
+\mmm{Do mixed states really make sense for Grover?}
+\item Represent mixed state density matrices as
+\begin{equation}
+\rho = \sum\lambda_i\rho_i
+\end{equation}
+and let the $\rho_i$ flow as pure states.  Add in noise to $\lambda$s
+{\sl and} to the $\rho_i$ evolutions.
+\end{enumerate}
+
 
 
 %--------------------------------------------------------------------------------   
