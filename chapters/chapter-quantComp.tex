@@ -52,8 +52,7 @@ Start with the \emph{zero register}
 \index{zero register}
 \begin{equation}
 \ket{\bf 0}=\ket{0\ldots 0} = \bigotimes^N\ket{0},
-\end{equation}
-and then act
+\end{equation} and then act
 \begin{equation}
 \begin{split}
 H\ket{\bf 0} =& H_N\ket{0\ldots 0}\\
@@ -75,8 +74,24 @@ H\ket{\bf 0} =& \frac{1}{\sqrt{2^N}}\biggl\lbrace
 =& \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1} \ket{x}.
 \end{split}
 \end{equation}
-This will be useful in function evaluation. \ie, We think of a function
-from $\lbrace 0,1\rbrace^N\to\lbrace 0,1\rbrace$.
+This notation will be useful in function evaluation. 
+\ie, Consider a function such as $f\colon\lbrace 0,1\rbrace^N\to\lbrace 
+0,1\rbrace$.
+Since the following are equivalent
+\begin{equation}
+\begin{split}
+(0,0,0,\ldots,1,0)&\mapsto f(0,0,0,\ldots,1,0)\\
+\underset{2}{\underbrace{(000\ldots 10)}}&
+\mapsto f\underset{2}{\underbrace{(000\ldots 10)}}\\
+(2)&\mapsto f(2),
+\end{split}
+\end{equation}
+%Instead of thinking of this function as 
+%\begin{equation}
+%(0,0,0,\ldots,1,0)\mapsto f(0,0,0,\ldots,1,0),
+%\end{equation}
+one can simply think of this function as $x\mapsto f(x)$.
+
 
 
 
