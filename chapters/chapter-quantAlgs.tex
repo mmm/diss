@@ -126,6 +126,7 @@ there.  The output of the quantum computation does encode this ``global''
 information about the function.
 
 \subsubsection{The Deutsch--Jozsa Algorithm}
+\label{ss:deutschJosza}
 
 Of course, the simple function $\lbrace 0,1\rbrace\to\lbrace 0,1\rbrace$
 discussed above is not particularly useful for anything other than
@@ -356,6 +357,7 @@ Grover\cite{Grover:96}\dots did some stuff!
 \subsubsection{reflections -n- stuff}
 
 \mmm{Zalka says Grover is least time... use this to show Grover geodesic}
+
 \mmm{introduce $n$ and $N$ up here}
 
 \subsubsection{The Algorithm: Overview}
@@ -373,9 +375,10 @@ Grover's algorithm is briefly outlined in figure (\ref{fig:grover}).
             \item Next, repeat the following sequence $O(\sqrt{N})$ 
             times\footnote{exactly when to stop is important here.}:
             \begin{enumerate}
-                \item Query the oracle.  Given any state, say $\ket{S}$, rotate 
-                the phase of the desired state $\pi$ radians.
-                \item Flip the state about the ``average'' by applying
+                \item Query the oracle.  Given any state $\ket{S}$, rotate  
+                the phase of the component in the direction of the desired state
+                by $\pi$ radians.
+                \item Flip the state about its ``average'' by applying
                 what Grover refers to as the diffusion transform, $D\ket{S}$.
             \end{enumerate}
             \item Finally, measure the resulting state.  This should be the
@@ -391,14 +394,20 @@ states is, of course, obtained by hitting the $n$-dimensional zero
 register with the Hadamaard transformation
 \begin{equation}
 H\ket{0} = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x} 
-= \left[ \begin{matrix}
+= 
+  \left[ \begin{matrix}
             \frac{1}{\sqrt{2^n}}\\
             \frac{1}{\sqrt{2^n}}\\
             \vdots\\
             \frac{1}{\sqrt{2^n}}
          \end{matrix} 
   \right].
+\label{e:groverStart}
 \end{equation}
+The numbers in the $2^n$--dimensional column vector on the right 
+of equation (\ref{e:groverStart}) are the (now equal) weights of each 
+of the $2^n$ basis vectors for $\Z_2^n$ that make up the state of the
+register.
 For simplicity, write $N=2^n$ so that
 \begin{equation}
 H\ket{0} = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}\ket{x} 
@@ -410,14 +419,145 @@ H\ket{0} = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}\ket{x}
          \end{matrix} 
   \right].
 \end{equation}
+
 The concept of an \emph{oracle} in step (2a) of figure (\ref{fig:grover}) 
-can be confusing at first glance.  The idea is that there is some criteria
+can be confusing at first glance.  The idea is that there are criteria
 by which the search algorithm decides that the desired item has been found.
 This is often thought of in terms of a function
 \begin{equation}
 f\colon\quad\lbrace\mbox{Search Domain}\rbrace\quad\mapsto\quad\lbrace Y,N\rbrace,
 \end{equation}
-that obtains a ``yes'' result for only a single particular input.
+that obtains a ``yes'' result for only a single {\sl desired} input.
+Of course, this function will look a little more like 
+\begin{equation}
+f\colon\quad\lbrace 0,1\rbrace^n\quad\mapsto\quad\lbrace 0,1\rbrace
+\end{equation}
+for a search domain consisting of $N=2^n$ inputs.
+When the details of this function evaluation are known, searches can
+be optimized accordingly.  On the other hand, when this function is 
+evaluated as a \emph{black box}, where nothing is known about the function 
+except perhaps bounds on the complexity of evaluation, then this is 
+considered an \textbf{oracle query}.
+\index{oracle query}
+
+In classical searches, the decision function might be something like
+a lexicographical 
+compare of each name on file folders to some desired name.  
+This function might also be treated classically as a black 
+box \mmm{example}.
+
+For Grover's algorithm, the decision function is evaluated as a black box.
+Nothing is known about the function evaluation except that it will be
+implemented via some quantum circuit like that introduced by the 
+Deutsch--Josza algorithm (section \ref{ss:deutschJosza}).
+How can this be implemented physically if nothing is known about the 
+function evaluation? 
+Consider the query of the oracle in Grover's algorithm:
+\begin{quote}
+Query the oracle.  Given any state $\ket{S}$, rotate  
+the phase of the component in the direction of the desired state
+by $\pi$ radians.
+\end{quote}
+Denote the desired state in the search by $\ket{\omega}$.
+Any state can then be expanded in terms of $\ket{\omega}$ 
+and everything else $\ket{\omega_\perp}$ as 
+\begin{equation}
+\ket{S} = \ket{\omega}\braket{\omega}{S} + 
+             \ket{\omega_\perp}\braket{\omega_\perp}{S}.
+\end{equation}
+The oracle query acting on $\ket{S}$
+\begin{equation}
+\biggl( {\bf 1} - 2\ketbra{\omega}{\omega} \biggr) \ket{S}
+\label{e:oracle}
+\end{equation}
+simply flips the state $\ket{S}$ about the (hyper)plane
+spanned by $\ket{\omega_\perp}$.  \ie, The phase of the
+component of the state in the direction of the desired
+state is rotated by $\pi$ radians (see figure 
+(\ref{fig:phaseFlip})).  
+The resulting state will look like
+\begin{equation}
+\biggl( {\bf 1} - 2\ketbra{\omega}{\omega} \biggr) \ket{S}
+= - \ket{\omega}\braket{\omega}{S} + 
+             \ket{\omega_\perp}\braket{\omega_\perp}{S}.
+\end{equation}
+%\begin{figure}[h]
+%\begin{center}
+%\begin{picture}(150,150)
+%    \thicklines
+%    \path(0,0)(20,50)
+%    \path(20,50)(150,70)
+%    \path(150,70)(130,20)
+%    \path(130,20)(0,0)
+%    \put(75,35){\vector(-1,4){20}}
+%    \put(20,20){$\ket{\omega_\perp}$}
+%    \put(65,100){$\ket{\omega}$}
+%    \put(140,90){$\ket{S}$}
+%    \put(75,35){\vector(1,1){60}}
+%    \put(75,35){\vector(3,-2){70}}
+%\end{picture}
+%\caption{The oracle query in Grover's algorithm reflects the state $\ket{S}$ through the
+%plane $\ket{\omega_\perp}$.}
+%\label{fig:phaseFlip}
+%\end{center}
+%\end{figure}
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(150,150)
+    \thicklines
+    \path(0,0)(20,50)
+    \path(20,50)(150,70)
+    \path(150,70)(130,20)
+    \path(130,20)(0,0)
+    \put(75,35){\vector(-1,4){20}}
+    \put(20,20){$\ket{\omega_\perp}$}
+    \put(65,100){$\ket{\omega}$}
+    \put(140,90){$\ket{S}$}
+    \put(75,35){\vector(1,1){60}}
+    \dashline[+30]{3}[80](75,35)(102,16)
+    \put(102,16){\vector(3,-2){40}}
+\end{picture}
+\caption{The oracle query in Grover's algorithm reflects the state $\ket{S}$ through the
+plane $\ket{\omega_\perp}$.}
+\label{fig:phaseFlip}
+\end{center}
+\end{figure}
+Note that this operation can be implemented without knowing exactly
+where $\ket{\omega}$ is in the state expansion.  This operation
+still works despite the fact that it's not possible to write this
+down in terms of a matrix such as
+\begin{equation}
+\begin{bmatrix}
+    1       &0      &\cdots &      &0  \\
+    0       &\ddots &       &      &   \\
+    \vdots  &       &e^{i\pi}&     &\vdots   \\
+            &       &       &\ddots&   \\
+    0       &       &\cdots &      &1  \\
+\end{bmatrix}
+\begin{bmatrix}
+            \frac{1}{\sqrt{N}}\\
+            \vdots\\
+            \frac{1}{\sqrt{N}}\\
+            \vdots\\
+            \frac{1}{\sqrt{N}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+            \frac{1}{\sqrt{N}}\\
+            \vdots\\
+            -\frac{1}{\sqrt{N}}\\
+            \vdots\\
+            \frac{1}{\sqrt{N}}
+\end{bmatrix},
+\end{equation}
+because you don't initially know where to put the phase shift.
+This is not a problem because it \emph{is} possible to write an
+algorithm, even classically, that examines each input and tests
+for successful (``yes'') function evaluation.  This issue
+has already been resolved by the operator 
+$\bigl( {\bf 1} - 2\ketbra{\omega}{\omega} \bigr)$.
+
+
 
 
 
