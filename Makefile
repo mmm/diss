@@ -12,15 +12,23 @@ LOG = build.log
 #	rm -f $*.log
 #
 %.ps :  %.dvi 
+	@echo "--- ps ---"
+	@echo "--- ps ---" >> $(LOG)
 	dvips -o $@ $<
 
 %.ps :  %.pdf 
+	@echo "--- ps ---"
+	@echo "--- ps ---" >> $(LOG)
 	pdf2ps $< $@
 
 %.pdf : %.ps
+	@echo "--- pdf ---"
+	@echo "--- pdf ---" >> $(LOG)
 	ps2pdf $< $@ 
 
 2up%.ps : %.ps
+	@echo "--- 2up-ps ---"
+	@echo "--- 2up-ps ---" >> $(LOG)
 	2psred $< 
 
 ##### TARGETS #####
@@ -32,14 +40,17 @@ main.dvi: main.aux main.bbl main.ind
 	@echo "--- dvi ---" >> $(LOG)
 	@latex main >> $(LOG) 
 
-main.bbl: main.aux $(BIBS)
+tmpdiss.bib: $(BIBS)
+	@echo "--- bib ---"
+	@echo "--- bib ---" >> $(LOG)
+	@( cat $(BIBS) > tmpdiss.bib )
+
+main.bbl: main.aux tmpdiss.bib
 	@echo "--- bbl ---"
 	@echo "--- bbl ---" >> $(LOG)
-	@( cat $(BIBS) > tmpdiss.bib )
 	@bibtex main >> $(LOG)  # generates bbl file
 	@latex main >> $(LOG)  # generates new aux file
 	@latex main >> $(LOG)  # resolves crossrefs
-	@rm -f tmpdiss.bib
 
 main.ind: main.idx
 	@echo "--- ind ---"
@@ -61,11 +72,11 @@ clean:
 
 realclean: clean
 	-rm -f $(PROGS).dvi $(PROGS).ps $(PROGS).pdf
-	-rm -f *.log *~
+	-rm -f *.log *~ 
 
 clobber: clean
 #	-rm -f *.log *.aux *.toc *~
-	-rm -f *.log *.aux *.toc *.idx *.lof *.lot *.ind *.bbl *.blg *.ilg *~ chapters/*~
+	-rm -f *.log *.aux *.toc *.idx *.lof *.lot *.ind *.bbl *.blg *.ilg *~ chapters/*~ tmpdiss.bib
 
 targets: $(PROGS)
 
