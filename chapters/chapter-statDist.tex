@@ -4,7 +4,7 @@
 
 %---------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------
-\section{Statistical distance and Hilbert space}
+\section{Statistical Distance and Hilbert Space}
 \label{sec:statisticalDistance}
 \index{Statistical Distance@\emph{Statistical Distance}}%
 
@@ -23,7 +23,7 @@ the usual Fubini--Study metric on projective Hilbert space\cite{Gibbons:92}.
 It can be extended to general density operators with little difficulty.
 
 %--------------------------------------------------------------------------------   
-\subsection{Classical statistical distance}
+\subsection{Classical Statistical Distance}
 
 \mmm{Is this really necessary?}
 
@@ -61,7 +61,7 @@ uncertainty as RMS deviation
 
 
 %--------------------------------------------------------------------------------   
-\subsection{A geometrical approach}
+\subsection{A Quantum Mechanical Approach}
 
 I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Wooters:81}
 geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
@@ -204,7 +204,12 @@ and then equation (\ref{e:dPsi_perp}) gives
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
-\section{Complex Projective Space}
+\section{The Geometry of Quantum Mechanics}
+\label{sec:geometryQM}
+\index{Quantum Geometry}
+
+%--------------------------------------------------------------------------------   
+\subsection{Complex Projective Space}
 \index{complex!projective space}
 
 The complex projective space $\CP^n$ is the set of complex lines
@@ -289,7 +294,73 @@ g_{i\overline{j}} = 4\,\frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - 
 { \left( 1 + \left| z\right|^2 \right)^2 }.
 \label{e:fsmetric}
 \end{equation}
-The inverse metric is easily shown to be
+
+
+\subsubsection{Fubini--Study as Statistical Distance}
+
+The Fubini--Study metric is a notion of distance on a projective
+Hilbert space that corresponds exactly to expressions of statistical
+distance previously discussed.  To see this, consider the 
+line element from the Fubini--Study
+metric 
+(equation (\ref{e:fsmetric})) 
+\begin{equation}
+\begin{split}
+ds^2 =& \biggl(
+            \frac{\delta_{ij}\left( 1 + |z|^2 \right) - \overline{z}_iz_j}
+                 { \left( 1 + |z|^2 \right)^2 }
+       \biggr)
+       dz^id\overline{z}^j\\
+=& \frac{ dz^id\overline{z}^i }{ \left( 1 + |z|^2 \right) }
+- \frac{ \overline{z}_idz^iz_jd\overline{z}^j }
+                 { \left( 1 + |z|^2 \right)^2 }.
+\end{split}
+\end{equation}
+In polar coordinates
+\begin{equation}
+\begin{split}
+z_j=&\,r_je^{i\phi_j}\\
+\overline{z}_j=&\,r_je^{-i\phi_j},
+\end{split}
+\end{equation}
+with derivatives
+\begin{equation}
+\begin{split}
+dz_j =& \left( dr_j + ir_jd\phi_j \right) e^{i\phi_j}\\
+d\overline{z}_j =& \left( dr_j - ir_jd\phi_j \right) e^{-i\phi_j},
+\end{split}
+\end{equation}
+this metric looks like
+\begin{equation}
+\begin{split}
+ds^2 =& \frac{1}{\left( 1+r^2 \right)}
+    \biggl[\left(dr_i\right)^2 + r_i^2\left(d\phi_i\right)^2\biggr]
+- \frac{1}{\left( 1+r^2 \right)^2}
+    \biggl[\biggl(\sum_i r_idr_i\biggr)^2
+           + \biggl(\sum_i r_i^2d\phi_i\biggr)^2
+    \biggr].
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%--------------------------------------------------------------------------------   
+\subsection{Geodesics}
+\index{complex!projective space!geodesics}
+
+The inverse of the Fubini--Study metric, as written in
+equation (\ref{e:fsmetric}), is easily shown to be
 \begin{equation}
 g^{\overline{i}j} = \frac{1}{4}\left( 
                     1+\left| z\right|^2 
