@@ -292,6 +292,124 @@ for $a$.
 
 Shor\dots
 
+Braunstein\cite{Braunstein:96} has an excellent overview of Shor's algorithm,
+along with more detailed accounts by\dots
+
+The goal of the algorithm is to factor an integer $N$.
+For the first step, randomly choose an integer $x$ that
+is relatively prime to $N$.  If $x$ and $N$ did share a 
+factor, Euclid's algorithm could be used to efficiently 
+reduce the problem to a simpler one.
+
+Next, consider the function
+\begin{equation}
+f(a) = x^a\pmod{N}.
+\label{e:shorfunc}
+\end{equation}
+The first few evaluations of this function will look like
+\begin{equation}
+\begin{split}
+1,x,\ldots,x^{r-1},             &\,x^r,x^{r+1},\ldots\\
+\underbrace{1,x,\ldots,x^{r-1},}_{\text{r terms}}
+&\underbrace{1^{\phantom{x}},x^{\phantom{r-1}},\ldots,\phantom{x^{r-1},}}_{\text{r terms}}
+\underbrace{ 1,x,\ldots\phantom{,x^{r-1},}}_{\text{r terms}},
+\end{split}
+\end{equation}
+where the top row is just $f(a)$ and the bottom is reduced modulo $N$.
+The period of this function is just $r$.  This period is difficult to
+obtain classically -- requiring many function evaluations until a pattern
+is recognizable.  However, Shor's algorithm can efficiently compute this
+period.  What does this period have to do with factoring $N$?
+
+In this algorithm, consider only even periods $r$.
+For randomly chosen $x$, the period $r$ of the function (\ref{e:shorfunc})
+will be even fifty percent of the time.  If $r$ is odd, start over with
+a new (randomly chosen) $x$.  This should not take too many 
+tries\cite{Shor:94,Ekert/Jozsa:96}.
+
+The (now even) period $r$ is just the smallest number such that
+\begin{equation}
+x^r\equiv 1\pmod{N}.
+\end{equation}
+Rewrite this as the difference of squares
+\begin{equation}
+\left(x^\frac{r}{2}\right)^2 - 1 \equiv 0\pmod{N},
+\end{equation}
+so that
+\begin{equation}
+\left(x^\frac{r}{2} + 1\right)
+\left(x^\frac{r}{2} - 1\right)
+\equiv 0\pmod{N}.
+\label{e:product}
+\end{equation}
+This says one or the other of the factors in the product on the left 
+hand side of (\ref{e:product}) share a factor with $N$.  So, just
+compute\footnote{ 
+\emph{Efficient} classical algorithms exist to compute the greatest
+common divisor of two numbers\cite{Hardy/Wright:79}.
+}
+\begin{equation}
+\gcd
+\left(x^\frac{r}{2} + 1, N \right)
+\end{equation}
+and
+\begin{equation}
+\gcd
+\left(x^\frac{r}{2} - 1, N \right).
+\end{equation}
+Any non--trivial divisor will be a factor of $N$.
+
+%--------------------------------------------------------------------------------   
+\subsection{Shor's Algorithm}
+
+How can a quantum circuit find the period of a function
+such as (\ref{e:shorfunc})?  First, the algorithm starts
+with two $n$--bit zero--registers
+\begin{equation}
+\ket{0}\ket{0}.
+\end{equation}
+Next, as probably anticipated by now, comes a Hadamaard
+transformation on the first register 
+\begin{equation}
+\left( H\otimes 1 \right) \ket{0}\ket{0}
+\end{equation}
+leaving
+\begin{equation}
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1} \ket{x}\ket{0}.
+\label{e:step2}
+\end{equation}
+Now, construct the unitary operator
+\begin{equation}
+U_f\colon\ket{x}\ket{0}\to\ket{x}\ket{f(x)}
+\end{equation}
+that evaluates the function
+\begin{equation}
+f(a) = x^a\pmod{N}.
+\end{equation}
+Act with this operator on (\ref{e:step2}) to get
+\begin{equation}
+U_f \left( \sum_{x} \ket{x}\ket{0} \right)
+= \sum_{x} \ket{x}\ket{f(x)}.
+\end{equation}
+The quantum registers are now entangled\dots operations on
+one will affect the other.  For the next step, 
+perform a measurement 
+\begin{equation}
+1\otimes \ketbra{c}{c}
+\end{equation}
+on the second register to get
+\begin{equation}
+%\frac{1}{\sqrt{2^n}} \sum_x \ket{x}\ket{c}.
+\sum_x \ket{x}\ket{c}.
+\end{equation}
+This has collapsed the first register into an equally weighted
+superposition of states $\ket{x}$ such that 
+$f(x) = c$.  All that's needed is the period of the function
+$f$, so why not simply Fourier transform the first register
+to determine the period?
+
+
+
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Searching a Quantum Database}
