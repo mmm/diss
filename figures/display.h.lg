@@ -1,8 +1,23 @@
-% Remember to use the lgrind style
+\documentclass[a4paper,twoside]{article}
+\usepackage[procnames,noindent]{lgrind}
+\usepackage{fancyhdr,a4wide}
+\usepackage{german}
+\usepackage{makeidx}
+\pagestyle{fancy}
 
-\Head{}
-\File{display.h}{2000}{8}{12}{19:11}{606}
-\L{\LB{\C{}//_display.h\CE{}}}
+\makeindex
+
+\begin{document}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[C]{\lgrindhead}
+\fancyhead[LO,RE]{\lgrindfilesize~Bytes\\\lgrindmodtime}
+\fancyhead[RO,LE]{\bfseries \lgrindfilename\\\lgrindmodday.\lgrindmodmonth.\lgrindmodyear}
+\fancyfoot[C]{\bfseries\thepage}
+\setlength{\headheight}{24pt}
+\begin{lgrind}
+\BGfont
+\File{stdin}{2000}{9}{5}{18:42}{0}
+\L{\LB{//_\V{display}.\V{h}}}
 \L{\LB{}}
 \L{\LB{\K{\#ifndef}_\V{\_DISPLAY\_H\_}}}
 \L{\LB{\K{\#define}_\V{\_DISPLAY\_H\_}}}
@@ -10,14 +25,17 @@
 \L{\LB{\K{\#include}_\<\V{fstream}\>}}
 \L{\LB{\K{\#include}_\S{}\3State.h\3\SE{}}}
 \L{\LB{}}
-\L{\LB{\K{extern}_\K{void}_\V{showProgress}(_\K{const}_\K{int}_\V{step},_\K{const}_\K{int}_\V{numSteps},_\K{const}_\K{int}_\V{numQubits}_);}}
+\L{\LB{\K{extern}_\K{void}_\V{showProgress}(_\V{const}_\K{int}_\V{step},_\V{const}_\K{int}_\V{numSteps},_\V{const}_\K{int}_\V{numQubits}_);}}
 \index{printDiffs}\Proc{printDiffs}\L{\LB{\K{extern}_\K{void}_\V{printDiffs}(_\V{ofstream}\&_\V{outFile},_}}
-\L{\LB{}\Tab{24}{\K{const}_\K{double}_\V{time},}}
-\L{\LB{}\Tab{24}{\K{const}_\V{State}_*\K{const}_\V{rho1},_}}
-\L{\LB{}\Tab{24}{\K{const}_\V{State}_*\K{const}_\V{rho2}_);}}
+\L{\LB{}\Tab{24}{\V{const}_\K{double}_\V{time},}}
+\L{\LB{}\Tab{24}{\V{const}_\V{State}_*\V{const}_\V{rho1},_}}
+\L{\LB{}\Tab{24}{\V{const}_\V{State}_*\V{const}_\V{rho2}_);}}
 \L{\LB{\K{extern}_\K{void}_\V{printLeadingEVals}(_\V{ofstream}\&_\V{outFile},_}}
-\L{\LB{}\Tab{31}{\K{const}_\K{double}_\V{time},}}
-\L{\LB{}\Tab{31}{\K{const}_\V{State}_*\K{const}_\V{rho1},_}}
-\L{\LB{}\Tab{31}{\K{const}_\V{State}_*\K{const}_\V{rho2}_);}}
+\L{\LB{}\Tab{31}{\V{const}_\K{double}_\V{time},}}
+\L{\LB{}\Tab{31}{\V{const}_\V{State}_*\V{const}_\V{rho1},_}}
+\L{\LB{}\Tab{31}{\V{const}_\V{State}_*\V{const}_\V{rho2}_);}}
 \L{\LB{}}
-\L{\LB{\K{\#endif}_\C{}//_\_DISPLAY\_H\_\CE{}}}
+\L{\LB{\K{\#endif}_//_\V{\_DISPLAY\_H\_}}}
+\end{lgrind}
+\printindex
+\end{document}

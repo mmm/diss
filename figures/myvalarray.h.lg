@@ -1,15 +1,30 @@
-% Remember to use the lgrind style
+\documentclass[a4paper,twoside]{article}
+\usepackage[procnames,noindent]{lgrind}
+\usepackage{fancyhdr,a4wide}
+\usepackage{german}
+\usepackage{makeidx}
+\pagestyle{fancy}
 
-\Head{}
-\File{myvalarray.h}{2000}{8}{2}{13:50}{996}
+\makeindex
+
+\begin{document}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[C]{\lgrindhead}
+\fancyhead[LO,RE]{\lgrindfilesize~Bytes\\\lgrindmodtime}
+\fancyhead[RO,LE]{\bfseries \lgrindfilename\\\lgrindmodday.\lgrindmodmonth.\lgrindmodyear}
+\fancyfoot[C]{\bfseries\thepage}
+\setlength{\headheight}{24pt}
+\begin{lgrind}
+\BGfont
+\File{stdin}{2000}{9}{5}{18:42}{0}
 \L{\LB{\K{\#ifndef}_\V{\_MYVALARRAY\_H\_}}}
 \L{\LB{\K{\#define}_\V{\_MYVALARRAY\_H\_}}}
 \L{\LB{}}
 \L{\LB{\K{\#include}_\<\V{valarray}\>}}
-\L{\LB{\C{}//extern_double_std::operator*(_const_valarray\<double\>\&_a,_const_valarray\<double\>\&_b_);\CE{}}}
-\L{\LB{\K{inline}_\K{double}_\V{std::operator}*(_\K{const}_\V{valarray}\<\K{double}\>\&_\V{a},_\K{const}_\V{valarray}\<\K{double}\>\&_\V{b}_)_\{}}
+\L{\LB{\V{inline}_\K{double}_}}
+\L{\LB{\V{std}::\V{operator}*(_\V{const}_\V{valarray}\<\K{double}\>\&_\V{a},_\V{const}_\V{valarray}\<\K{double}\>\&_\V{b}_)_\{}}
 \L{\LB{}}
-\index{if}\Proc{if}\L{\LB{}\Tab{4}{\K{if}_(_\V{a}.\V{size}()_!=_\V{b}.\V{size}()_)_\K{throw};}}
+\index{if}\Proc{if}\L{\LB{}\Tab{4}{\K{if}_(_\V{a}.\V{size}()_!=_\V{b}.\V{size}()_)_\V{throw};}}
 \L{\LB{}}
 \L{\LB{}\Tab{4}{\K{double}_\V{sum}_=_\N{0.0};}}
 \L{\LB{}\Tab{4}{\K{for}_(_\K{unsigned}_\K{int}_\V{i}_=_\N{0};_\V{i}_\<_\V{a}.\V{size}();_\V{i}++_)_\{}}
@@ -20,11 +35,11 @@
 \L{\LB{\}}}
 \L{\LB{}}
 \L{\LB{\K{\#include}_\<\V{complex}\>}}
-\L{\LB{\C{}//extern_double_std::operator*(_const_valarray\<double\>\&_a,_const_valarray\<double\>\&_b_);\CE{}}}
-\L{\LB{\K{inline}_\V{complex}\<\K{double}\>_\V{std::operator}*(_\K{const}_\V{valarray}\<\V{complex}\<\K{double}\>_\>\&_\V{a},_}}
-\L{\LB{}\Tab{30}{\K{const}_\V{valarray}\<\V{complex}\<\K{double}\>_\>\&_\V{b}_)_\{}}
+\L{\LB{\V{inline}_\V{complex}\<\K{double}\>_}}
+\L{\LB{\V{std}::\V{operator}*(_\V{const}_\V{valarray}\<\V{complex}\<\K{double}\>_\>\&_\V{a},_}}
+\L{\LB{}\Tab{16}{\V{const}_\V{valarray}\<\V{complex}\<\K{double}\>_\>\&_\V{b}_)_\{}}
 \L{\LB{}}
-\index{if}\Proc{if}\L{\LB{}\Tab{4}{\K{if}_(_\V{a}.\V{size}()_!=_\V{b}.\V{size}()_)_\K{throw};}}
+\index{if}\Proc{if}\L{\LB{}\Tab{4}{\K{if}_(_\V{a}.\V{size}()_!=_\V{b}.\V{size}()_)_\V{throw};}}
 \L{\LB{}}
 \L{\LB{}\Tab{4}{\V{complex}\<\K{double}\>_\V{sum}_=_\N{0.0};}}
 \L{\LB{}\Tab{4}{\K{for}_(_\K{unsigned}_\K{int}_\V{i}_=_\N{0};_\V{i}_\<_\V{a}.\V{size}();_\V{i}++_)_\{}}
@@ -34,8 +49,8 @@
 \L{\LB{}\Tab{4}{\K{return}_\V{sum};}}
 \L{\LB{\}}}
 \L{\LB{}}
-\L{\LB{\C{}//\#include_\<complex\>\CE{}}}
-\L{\LB{\C{}//extern_double_std::operator*(_const_valarray\<complex\<double\>_\>\&_a,_const_valarray\<_complex\<double\>_\>\&_b_);\CE{}}}
+\L{\LB{\K{\#endif}_//_\V{\_MYVALARRAY\_H\_}}}
 \L{\LB{}}
-\L{\LB{\K{\#endif}_\C{}//_\_MYVALARRAY\_H\_\CE{}}}
-\L{\LB{}}
+\end{lgrind}
+\printindex
+\end{document}
