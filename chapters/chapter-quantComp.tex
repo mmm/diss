@@ -198,7 +198,125 @@ Decision problems in {\bf P} are easy, otherwise, they are hard.
 %--------------------------------------------------------------------------------   
 \subsection{Quantum Theory of Computation}
 
+The circuit model of classical computation will need to be generalized
+for a quantum computer.  The universal gates in these quantum circuits
+will need to be implemented as unitary tranformations of quantum
+states, and hence will need to be reversible.
+
 \subsubsection{Reversibility}
+
+Classical logic gates are not, in general, reversible.
+For example, consider\mmm{example}.
+
+A reversible computation will evaluate an invertible function
+such as
+\begin{equation}
+f\colon\lbrace 0,1\rbrace^n \to\lbrace 0,1\rbrace^n.
+\end{equation}
+This computation will need to be able to run in either direction,
+obtaining output from input and vice--versa, and so the function
+will need to be bijective.  Bijective maps of $\Z_2^n$ to itself
+can be represented by permutations of the set.
+
+Note that a non--invertible function
+\begin{equation}
+f\colon\lbrace 0,1\rbrace^n \to\lbrace 0,1\rbrace^m
+\end{equation}
+can be made into an invertible function
+\begin{equation}
+{\tilde f}\colon\lbrace 0,1\rbrace^{n+m} \to\lbrace 0,1\rbrace^{n+m}
+\end{equation}
+such that
+\begin{equation}
+{\tilde f}\colon
+    \begin{bmatrix}
+        \left.
+        \begin{matrix}
+            x_1\\ 
+            x_2\\
+            \vdots\\
+            x_n
+        \end{matrix}\right\rbrace\text{n}\\
+        \left.
+        \begin{matrix}
+            0_{\phantom{i}}\\
+            \vdots\\
+            0_{\phantom{i}}
+        \end{matrix}\right\rbrace\text{m}
+    \end{bmatrix}
+\mapsto
+    \begin{bmatrix}
+        \begin{matrix}
+            x_1\\ 
+            x_2\\
+            \vdots\\
+            x_n
+        \end{matrix}\\
+        f_1(x)\\
+        \vdots\\
+        f_m(x) 
+    \end{bmatrix},
+\end{equation}
+and hence into a reversible computation.
+
+Now, how can this reversible function be made up from basic gates?
+Are there {\sl reversible} universal gates?
+The trivial gate, which takes an input directly to an output,
+as well as the \texttt{NOT} gate are obviously reversible.
+\texttt{AND} and \texttt{OR} are not.  However, 
+the next simplest reversible gate is the conrolled--\texttt{NOT}
+(\texttt{CNOT}) or the exclusive--\texttt{OR} (\texttt{XOR}) gate
+\begin{equation}
+\texttt{XOR}\colon (x,y)\mapsto (x, x\oplus y).
+\end{equation}
+%
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(40,50)
+    \put(20,40){\circle*{4}}
+    \put(20,10){\circle{6}}
+    \put(-20,7){$y$}
+    \put(-20,37){$x$}
+    \put(50,7){$y\oplus x$}
+    \put(50,37){$x$}
+    \path(0,10)(40,10)
+    \path(0,40)(40,40)
+    \path(20,7)(20,40)
+\end{picture}
+\caption{A controlled--\texttt{NOT} (\texttt{CNOT}) or exclusive--\texttt{OR}
+(\texttt{XOR}) gate.}
+\label{fig:xor}
+\end{center}
+\end{figure}
+%
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    $x$&$y$&$x\oplus y$\\
+    \hline
+    0&0&0\\
+    0&1&1\\
+    1&0&1\\
+    1&1&0\\
+    \hline
+\end{tabular}
+\end{center}
+\caption{Truth table for an exclusive--\texttt{OR} (\texttt{XOR}) gate.}
+\label{tab:xor}
+\end{table}
+%
+This gate flips the second bit when the first is set as shown in 
+figure (\ref{fig:xor}) and table (\ref{tab:xor}).  Notice that this
+could be used as a copy operation if the second bit ($y$) is initially set
+to zero
+\begin{equation}
+\texttt{XOR}\colon (x,0)\mapsto (x, x).
+\end{equation}
+      
+
+
+
 \subsubsection{Universal Computation}
 \subsubsection{Quantum Circuits}
 
@@ -228,22 +346,6 @@ Decision problems in {\bf P} are easy, otherwise, they are hard.
 \end{figure}
 
 
-\begin{figure}
-\begin{center}
-\begin{picture}(40,50)
-    \put(20,40){\circle*{4}}
-    \put(20,10){\circle{6}}
-    \put(-20,7){$\ket{y}$}
-    \put(-20,37){$\ket{x}$}
-    \put(50,7){$\ket{y\oplus x}$}
-    \put(50,37){$\ket{x}$}
-    \path(0,10)(40,10)
-    \path(0,40)(40,40)
-    \path(20,7)(20,40)
-\end{picture}
-\caption{A controlled--\texttt{NOT} (\texttt{CNOT}) gate}
-\end{center}
-\end{figure}
 
 \begin{figure}
 \begin{center}
