@@ -3,9 +3,13 @@
 \label{chap:quantumComputation}
 \index{Quantum Computation@\emph{Quantum Computation}}%
 
+\subsubsection{General QC intro}
+
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Information Theory}
+
+\subsubsection{Why do we care?}
 
 %--------------------------------------------------------------------------------   
 \subsection{Classical}
@@ -20,6 +24,7 @@
 
 \subsubsection{Entropy}
 \subsubsection{Information}
+\subsubsection{Measurement (POVMs and Optimal Measurements?)}
 \subsubsection{Entanglement}
 \subsubsection{Coding}
 \subsubsection{Dense Coding and Channel Capacity}
@@ -43,7 +48,93 @@
 \subsection{Quantum}
 
 \subsubsection{Reversibility}
+\subsubsection{Universal Computation}
 \subsubsection{Quantum Circuits}
+
+\mmm{testing}
+\begin{figure}
+\begin{center}
+\begin{picture}(100,50)
+    \put(10,0){\framebox(20,20){\bf{$H$}}}
+    \put(10,30){\framebox(20,20){\bf{$H$}}}
+    \put(70,30){\framebox(20,20){\bf{$H$}}}
+    \put(40,0){\framebox(20,20){\bf{$U_f$}}}
+    \put(-20,7){$\ket{x}$}
+    \put(-20,37){$\ket{0}$}
+    \put(110,7){$\ket{f(x)}$}
+    \put(110,37){$\ket{0}$}
+    \put(50,40){\circle*{4}}
+    \path(0,10)(10,10)
+    \path(30,10)(40,10)
+    \path(60,10)(100,10)
+    \path(0,40)(10,40)
+    \path(30,40)(70,40)
+    \path(90,40)(100,40)
+    \path(50,20)(50,40)
+\end{picture}
+\caption{Deutsch's circuit}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{picture}(50,60)
+    \put(20,0){\framebox(20,20){\bf{$H$}}}
+    \put(-20,7){$\ket{1}$}
+    \put(-20,37){$\ket{0}$}
+    \put(30,40){\circle*{4}}
+    \path(0,10)(20,10)
+    \path(40,10)(60,10)
+    \path(0,40)(60,40)
+    \path(30,20)(30,40)
+\end{picture}
+\caption{A quantum circuit applying a Hadamaard transformation to one of
+two qubits with intersecting lines}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{picture}(40,50)
+    \put(20,40){\circle*{4}}
+    \put(20,10){\circle{6}}
+    \put(-20,7){$\ket{y}$}
+    \put(-20,37){$\ket{x}$}
+    \put(50,7){$\ket{y\oplus x}$}
+    \put(50,37){$\ket{x}$}
+    \path(0,10)(40,10)
+    \path(0,40)(40,40)
+    \path(20,7)(20,40)
+\end{picture}
+\caption{A controlled--\texttt{NOT} (\texttt{CNOT}) gate}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{picture}(40,80)
+    \put(20,70){\circle*{4}}
+    \put(20,40){\circle*{4}}
+    \put(20,10){\circle{6}}
+    \put(-20,7){$\ket{z}$}
+    \put(-20,37){$\ket{y}$}
+    \put(-20,67){$\ket{x}$}
+    \put(50,7){$\ket{z\oplus y\oplus x}$}
+    \put(50,37){$\ket{y}$}
+    \put(50,67){$\ket{x}$}
+    \path(0,10)(40,10)
+    \path(0,40)(40,40)
+    \path(0,70)(40,70)
+    \path(20,7)(20,70)
+\end{picture}
+\caption{A controlled--controlled--\texttt{NOT} (\texttt{CCNOT}) gate}
+\end{center}
+\end{figure}
+
+
+
+
+
 \subsubsection{Complexity Classes}
 \subsubsection{The Hadamaard Transformation}
 \index{Hadamaard transformation}
@@ -152,12 +243,19 @@ over $\left(\Z_2\right)^N$.
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Quantum Algorithms}
+\label{sec:quantCompAlgs}
 
+Grover\cite{Grover:96}\dots did some stuff!
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Quantum Cryptography}
 
+\subsubsection{QKDs \& proofs}
+
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Quantum Error Correction}
+
+\subsubsection{ECCs}
+\subsubsection{Code bdles?}

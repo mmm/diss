@@ -59,6 +59,7 @@ uncertainty as RMS deviation
 \end{equation}
 \mmm{???}
 
+\mmm{Add in Konstantine's stuff here}
 
 %--------------------------------------------------------------------------------   
 \subsection{A Quantum Mechanical Approach}
@@ -288,11 +289,12 @@ space.\cite{Fubini:?,Study:?}
 \mmm{How is it natural?}
 The Fubini--Study metric can be given, in inhomogeneous coordinates, as
 \begin{equation}
-ds_{FS}^2 = g_{i\overline{j}}\, dz^i\otimes d\overline{z}^j,
+ds_{FS}^2 = g_{\overline{i}j}\, dz^i\otimes d\overline{z}^j,
 \end{equation}
 where 
 \begin{equation}
-g_{i\overline{j}} = 4\,\frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
+g_{\overline{i}j} = 4\,\frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - 
+                                                    \overline{z}_i z_j }
 { \left( 1 + \left| z\right|^2 \right)^2 }.
 \label{e:fsmetric}
 \end{equation}
@@ -385,15 +387,16 @@ with
 z_i = \sqrt{\frac{p_i}{p_0}} e^{i\phi_i}.
 \label{e:inhomoB}
 \end{equation}
-A normalized version of $\ket{\Psi}$ would, of course, look like
-\begin{equation}
-\ket\Psi =\, \frac{1}{1+|z|^2}\biggl( \ket{0} + z_1\ket{1} + \cdots + z_n\ket{n}
-                        \biggr). 
-\end{equation}
+%A normalized version of $\ket{\Psi}$ would, of course, look like
+%\begin{equation}
+%\ket\Psi =\, \frac{1}{1+|z|^2}\biggl( \ket{0} + z_1\ket{1} + \cdots + z_n\ket{n}
+%                        \biggr). 
+%\end{equation}
 
 The polar form of the Fubini--Study metric (\ref{e:fsPolar}),
-can now be written in terms of probabilities $p_i$ to obtain the
-expected expression for statistical distance (\ref{e:fsStatistical}).
+can now be written in terms of probabilities $p_i$ to obtain 
+(\ref{e:fsStatistical}),
+the expected expression for statistical distance.
 If 
 \begin{equation}
 r_i = \sqrt{\frac{p_i}{p_0}}\qquad(i= 1\ldots n),
