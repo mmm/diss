@@ -1,174 +1,218 @@
-% chapter1
-
 
 
 \chapter{Quantum Algorithms}
-\index{Quantum Algorithms@\emph{Quantum Algorithms}}%
+\label{chap:quantumAlgorithms}
+\index{Quantum Algorithms}%
+%\index{Quantum Algorithms@\emph{Quantum Algorithms}}%
 
+A quantum algorithm is a set of states and operations performed
+with a quantum computer in order to arrive at an answer to a particular
+specified problem.
+There are no simple prescriptions for contructing a quantum algorithm.
+There are no rules by which one can take an existing classical algorithm,
+an algorithm developed to run on a classical computer, and construct
+a corresponding quantum algorithm.  There are not even many tools or concepts
+used in developing classical algorithms that carry over into the quantum
+domain.
+
+As discussed in Chapter \ref{chap:quantumComputation}, 
+the advent of universal quantum gates
+allows the representation of any computable function on a 
+quantum computer.  However, the uniquely quantum operations that 
+must be performed 
+require a wider range of tricks to be used when developing
+algorithms to be run on a quantum computer.
+
+Despite the difficulty involved, there have been a few, seemingly
+inspired, algorithms developed for a quantum computer.
+In fact, the entire field essentially owes its existence to 
+an algorithm developed by Peter Shor\cite{Shor:94}
+to solve FACTORIZATION\footnote{The convention, originating in computer 
+science, of YELLING the proper names of particular problems to be solved 
+will be followed throughout this text.}, where the quantum version 
+enjoys an \emph{exponential} speedup over the classical.  
+The discovery of this algorithm has reduced the complexity class of 
+this problem, a feat to which many in computer science aspire.
+
+The following sections outline several aspects of quantum
+algorithms.  A few existing algorithms are described, along
+with the basic framework needed to determine their computational
+complexity.  An approach to possible new algorithms is then 
+discussed.
+
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Simple Quantum Algorithms}
+
+%--------------------------------------------------------------------------------   
+\subsection{Deutsch's Algorithm}
+
+Deutsch\cite{Deutsch:?} gives a simple example of a problem that
+can be solved faster on a quantum computer than its classical
+counterpart.
+Consider some black box that evaluates a function 
+$f\colon\lbrace 0,1\rbrace\to\lbrace 0,1\rbrace$,
+where each evaluation, for whatever reason, 
+takes a long period of time to compute, say 24 hours.
+The problem is to determine, as quickly as possible, 
+information about the function
+using only inputs and outputs of the black box.
+
+The obvious approach is to simply set an input value,
+then read the output value when the computation is done
+(24 hours later).  Do this for all possible input values
+($0$ or $1$), then, 48 hours later, you have all possible 
+information about the function.
+
+What if that time is not good enough?  Even if we are only 
+interested in limited information about the function, 
+such as is it \emph{constant} $\left( f(0) = f(1) \right)$ or
+\emph{balanced} $\left( f(0) \ne f(1) \right)$, it would still
+require full function evaluation (48 hours).
+
+Is there a quicker way?  Yes, if there exists a quantum
+black box that computes $f(x)$, then the problem can be solved
+with a single function evaluation.  
+
+First, insure reversability of the computation, even if the 
+quantum black box itself is
+not reversible, by constructing the unitary transformation
+\begin{equation}
+U_f\colon \ket{x}\ket{y} \to \ket{x}\ket{y\oplus f(x)},
+\end{equation}
+where the second bit is flipped if $f(x)=1$ and left alone
+if $f(x)=0$.
+Just as in the classical case, this computer can determine
+if the function is constant or balanced with multiple evaluations
+of $f(x)$.  Still taking 48 hours to arrive at an answer.
+
+Because the black box is a quantum computer, it can accept
+as an input a superposition of states $\ket{0}$ and $\ket{1}$.
+If the second qubit is initially prepared in the state
+$\frac{1}{\sqrt{2}}\left( \ket{0} - \ket{1} \right)$, then
+\begin{equation}
+\begin{split}
+U_f\colon \ket{x}\otimes\frac{1}{\sqrt{2}}\left( \ket{0} - \ket{1} \right)
+\quad\to&\quad\ket{x}\otimes\frac{1}{\sqrt{2}}\bigl(\ket{f(x)} - \ket{1\oplus f(x)}\bigr)\\
+=&\quad\ket{x}\otimes(-1)^{f(x)}\frac{1}{\sqrt{2}}\left( \ket{0} - \ket{1} \right).
+\end{split}
+\end{equation}
+Now, prepare the first qubit in the superposition 
+$\frac{1}{\sqrt{2}}\left( \ket{0} + \ket{1} \right)$.
+The black box now acts
+\begin{multline}
+U_f\colon \frac{1}{\sqrt{2}}\left( \ket{0} + \ket{1} \right)
+        \otimes\frac{1}{\sqrt{2}}\left( \ket{0} - \ket{1} \right) \quad\to\\
+        \frac{1}{\sqrt{2}}\bigl( (-1)^{f(0)}\ket{0} + (-1)^{f(1)}\ket{1} \bigr)
+        \otimes\frac{1}{\sqrt{2}}\left( \ket{0} - \ket{1} \right).
+\end{multline}
+Now, we simply perform a measurement that projects the first qubit into
+the basis
+\begin{equation}
+\ket{\pm} = \frac{1}{\sqrt{2}}\left( \ket{0} \pm \ket{1} \right),
+\end{equation}
+to learn, after a single function evaluation, that the function is
+balanced if you measure $\ket{+}$, constant if $\ket{-}$.
+
+So, here, the quantum computer gets an answer in around 24 hours, where
+the classical one would require 48.  This speedup is attributed to
+the concept of \emph{quantum parallelism}.  The quantum computer is not
+limited to computing just a single $f(0)$ or $f(1)$ at a time, but in acting on
+superpositions of states, it behaves as if there were a sort of 
+parallelism in execution.  The computer essentially evaluates all inputs
+at the same time, storing the information in correlations between the states
+that make up the input and output registers.  This information
+is only really available via specifically prepared measurements, but it is
+there.  The output of the quantum computation does encode this ``global''
+information about the function.
+
+Of course, the simple function $\lbrace 0,1\rbrace\to\lbrace 0,1\rbrace$
+discussed above is not particularly useful for anything other than
+providing a simple example with which to exhibit a quantum algorithm.
+However, the same principles apply to a more useful function
+$f\colon\lbrace 0,1\rbrace^N\to\lbrace 0,1\rbrace$.
+Again, construct the unitary operator
+\begin{equation}
+U_f\colon\ket{x}\ket{0}\to\ket{x}\ket{f(x)}.
+\end{equation}
+Then, via a Hadamard tranformation ({\it c.f.}, chapter
+(\ref{chap:quantumComputation})), choose the input register to 
+be in the state
+\begin{equation}
+\left[\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)\right]^N
+= \frac{1}{2^{N/2}}\sum_{x=0}^{2^N-1}\ket{x}.
+\end{equation}
+A single function evaluation leaves 
+\begin{equation}
+    \frac{1}{2^{N/2}}\sum_{x=0}^{2^N-1}\ket{x}\ket{f(x)},
+\end{equation}
+which encodes ``global'' information about the function.
+The trick is to now extract this information via specialized
+measurements.
+
+Consider the classical version of the above computation.
+Depending on what sort of information we are trying to obtain
+about the function, there are \emph{many}(!) function evaluations
+required.  For $N>>1$, this quickly becomes intractable. 
+The quantum case required only one.  For obvious reasons, this is 
+considered ``massive quantum parallelism'' in the literature.
+
+%--------------------------------------------------------------------------------   
+\subsection{Simon's Algorithm}
+
+In the last section it was shown how quantum algorithms can
+exhibit a speedup over algorithms designed to run on a classical
+computer.  How much faster can certain problems be solved?
+Do the problems remain in the same complexity class ({\it c.f.},
+chapter (\ref{chap:quantumComputation})), or like for Shor's 
+algorithm, will the quantum algorithm change the actual 
+complexity class of the problem?
+
+Simon's algorithm is the simplest algorithm where the problem to
+be solved is classically \emph{hard}, but can be computed in
+polynomial time on a quantum computer.
+
+Consider a function 
+\begin{equation}
+f\colon\lbrace 0,1\rbrace^n\to\lbrace 0,1\rbrace^n,
+\end{equation}
+that is 2--to--1 and periodic when viewed as a map 
+$\left(\Z_2\right)^n\to\left(\Z_2\right)^n$
+(as opposed to $\Z_{2^n}\to\Z_{2^n}$).
+\ie, If the period of $f$ is $a$, then
+\begin{equation}
+f(x) = f(x\oplus a).
+\end{equation}
+The problem is: given a quantum black box that evaluates such a function,
+find its period.
+
+This problem is classically hard\footnote{According to Preskill (?)},
+The function will need to be evaluated an exponentially large number
+of times to find $a$.
+
+
+
+
+
+
+
+
+
+
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
 \section{Prime Factorization}
 
-\section{Quantum Searching}
+Shor\dots
 
-\section{Complex Projective Space}
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Searching a Quantum Database}
 
-\subsection{The Fubini--Study Metric}
-\index{Complex Projective Space!Fubini--Study Metric}
+Grover\dots
 
-For any two vectors $X,Y\in T_p\C P^n$, we can define
-$g\colon T_p\C P^n \to T_p\C P^n$ by
-\begin{equation}
-g(X,Y) = \Omega(X,JY),
-\end{equation}
-where $\Omega$ is the K\"ahler form and $J$ is the complex structure.
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Developing New Quantum Algorithms}
 
-\mmm{fill this}
-
-Nash\cite{Nash:?} gives 
-\begin{equation}
-ds_{FS}^2 = g_{i\overline{j}}\, dz^i\otimes d\overline{z}^j,
-\end{equation}
-where 
-\begin{equation}
-g_{i\overline{j}} = 4\,\frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
-                    { \left( 1 + \left| z\right|^2 \right)^2 }.
-\label{e:fsmetric}
-\end{equation}
-The inverse metric is easily shown to be
-\begin{equation}
-g^{\overline{i}j} = \frac{1}{4}\left( 
-                    1+\left| z\right|^2 
-                \right) \left[
-                    \delta^{ij} + \overline{z}^iz^j
-                \right]
-\label{e:fsinvmetric}
-\end{equation}
-The only non--vanishing Christoffel symbols are $\Gamma^a_{bc}$ and
-$\Gamma^{\overline{a}}_{\overline{b}\overline{c}}$ ( $=\overline{\Gamma^a_{bc}}$ ), 
-so the geodesic equations become
-\begin{equation}
-\begin{split}
-    \ddot{z}^l + \Gamma^l_{ik}\dot{z}^i\dot{z}^k =&\, 0\\
-    \ddot{\overline{z}}^l + \Gamma^{\overline{l}}_{\overline{i}\overline{k}}
-            \dot{\overline{z}}^i\dot{\overline{z}}^k =&\, 0.
-\end{split}
-\label{e:geodesics}
-\end{equation}
-Metric compatibility with the complex structure insures
-\begin{equation}
-\begin{split}
-    \Gamma^a_{bc} =& g^{\overline{s}a} g_{c\overline{s},b}\\
-    \Gamma^{\overline{a}}_{\overline{b}\overline{c}} =& g^{\overline{a}s} 
-                            g_{s\overline{c},b}.
-\end{split}
-\label{e:xsymb}
-\end{equation}
-Using equation (\ref{e:fsmetric}), we get 
-\begin{equation}
-\begin{split}
-    g_{i\overline{j},k} =&\,4\, \frac{\partial}{\partial z^k} 
-            \left(
-                 \frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
-                      { \left( 1 + \left| z\right|^2 \right)^2 }
-            \right)\\
-        =&\,4\, \left\lbrace
-            \frac{\partial}{\partial z^k} \left(
-                \frac{\delta_{ij}}{ \left( 1 + \left| z\right|^2 \right) }
-            \right)
-            - \frac{\partial}{\partial z^k} \left(
-                \frac{z_i\overline{z}_j}{ 
-                    \left( 1 + \left| z\right|^2 \right)^2 
-                }
-            \right)
-        \right\rbrace\\
-        =&\,4\,\left\lbrace
-            -\frac{\delta_{ij}\overline{z}_k}{ 
-                \left( 1 + \left| z\right|^2 \right)^2 
-             }
-            +2\,\frac{z_i\overline{z}_j\overline{z}_k}{
-                    \left( 1 + \left| z\right|^2 \right)^3 
-             }
-            -\frac{\delta_{ik}\overline{z}_j}{ 
-                \left( 1 + \left| z\right|^2 \right)^2 
-             }
-        \right\rbrace\\
-        =&\,\frac{4}{
-                \left( 1 + \left| z\right|^2 \right)^3 
-            }
-            \biggl\lbrace
-                2\,z_i\overline{z}_j\overline{z}_k
-                - \left( 1 + \left| z\right|^2 \right) \left[
-                    \delta_{ij}\overline{z}_k 
-                    + \delta_{ik}\overline{z}_j 
-                \right]
-            \biggr\rbrace,
-\end{split}
-\end{equation}
-which from equation (\ref{e:xsymb}) gives Christoffel symbols
-\begin{equation}
-\begin{split}
-    \Gamma^l_{ik} =& g^{\overline{j}l} g_{i\overline{j},k}\\
-        =& \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
-        \biggl\lbrace
-            \delta^{jl} + \overline{z}^jz^l
-        \biggr\rbrace
-        \biggl\lbrace
-            2z_i\overline{z}_j\overline{z}_k
-            - \left( 1 + \left| z\right|^2 \right) \left[
-                \delta_{ij}\overline{z}_k 
-                + \delta_{ik}\overline{z}_j 
-            \right]
-        \biggr\rbrace\\
-        =& 
-        \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
-        \biggl\lbrace
-            2z_i\overline{z}_j\overline{z}_k
-            - \left( 1 + \left| z\right|^2 \right) \left[
-                \delta_{ij}\overline{z}_k 
-                + \delta_{ik}\overline{z}_j 
-            \right]\\
-        &\qquad\qquad\qquad    + 2\left( z\cdot z\right) z^lz_i\overline{z}_k
-            - \left( 1 + \left| z\right|^2 \right) \left[
-                \overline{z}_i z^l\overline{z}_k 
-                + \left( z\cdot z\right)\delta_{ik}z^l 
-            \right]
-        \biggr\rbrace
-\end{split}
-\end{equation}
-
-The geodesic equations of motion (\ref{e:geodesics}) now become
-\begin{multline}
-    \dot{w} = \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
-        \biggl\lbrace
-            \biggl[ \left( 1 + \left| z\right|^2 \right) 
-                    \left( \overline{z}\cdot w \right)
-            \biggr] w^l\\
-            +
-            \biggl[ \left( 1 + \left| z\right|^2 \right)\left( w\cdot w \right)
-                    - 2\left( z\cdot w \right)\left( \overline{z}\cdot w \right)
-            \biggr] \overline{z}^l\\
-            +
-            \biggl[ \left( 1 + \left| z\right|^2 \right) 
-                    \bigl[ 
-                      \left(\overline{z}\cdot w\right)\left(\overline{z}\cdot w\right)
-                      +\left(\overline{z}\cdot\overline{z}\right)\left(w\cdot w\right)
-                    \bigr]
-                    - 2\left(\overline{z}\cdot\overline{z}\right) 
-                        \left( z\cdot w \right)\left( \overline{z}\cdot w \right)
-            \biggr] z^l
-        \biggr\rbrace,
-\end{multline}
-where $w=\dot{z}$.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+NP--Complete?

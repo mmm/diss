@@ -1,7 +1,10 @@
+\chapter{Quantum Geometry}
+\label{chap:quantumGeometry}
+\index{Quantum Geometry@\emph{Quantum Geometry}}
 
 %---------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------
-\chapter{Statistical distance and Hilbert space}
+\section{Statistical distance and Hilbert space}
 \label{sec:statisticalDistance}
 \index{Statistical Distance@\emph{Statistical Distance}}%
 
@@ -19,7 +22,8 @@ operators\cite{Braunstein/Caves:94}.  This metric is, for pure states,
 the usual Fubini--Study metric on projective Hilbert space\cite{Gibbons:92}.
 It can be extended to general density operators with little difficulty.
 
-\section{Classical statistical distance}
+%--------------------------------------------------------------------------------   
+\subsection{Classical statistical distance}
 
 \mmm{Is this really necessary?}
 
@@ -56,7 +60,8 @@ uncertainty as RMS deviation
 \mmm{???}
 
 
-\section{A geometrical approach}
+%--------------------------------------------------------------------------------   
+\subsection{A geometrical approach}
 
 I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Wooters:81}
 geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
@@ -65,7 +70,7 @@ to get the Fubini--Study metric for projective Hilbert space\dots
                 ds_{\text{SP}}^2 = \sum_i \frac{(dp_i)^2}{p_i} + 
                 \left( 
                     \sum_i p_i(d\phi_i)^2 - \left( \sum_i p_i d\phi_i \right)^2
-                \right)     
+                \right).
 \end{equation}
 
 Consider two pure states:
@@ -75,8 +80,8 @@ Consider two pure states:
     \ket{\tilde\psi} = \ket{\psi} + \ket{d\psi} =& 
               \sum_j \sqrt{p_j + dp_j}e^{i(\phi_j + d\phi_j)}\ket{j}.
 \end{split}
+\label{e:purestates}
 \end{equation}
-
 For $\ket{\psi}$ and $\ket{\tilde\psi}$ normalized, we expect
 \begin{equation}
 \braket{\psi}{\tilde\psi} = cos(\theta),
@@ -89,10 +94,8 @@ notion of state distinguishability.  \ie,
     \left[ \cos^{-1}\left(\left|
                         \braket{\psi}{\tilde\psi}
                     \right|\right)
-    \right]^2
+    \right]^2.
 \end{equation}
-
-
 If we define $\ket{d\psi_\perp} = \ket{d\psi} - \ket{\psi}\braket{\psi}{d\psi}$, 
 then
 \begin{equation}
@@ -100,7 +103,8 @@ then
         \braket{d\psi}{d\psi} - \left| \braket{\psi}{d\psi} \right|^2.
 \label{e:dPsi_perp}
 \end{equation}
-Since $\ket{d\psi} = \ket{\tilde\psi} - \ket{\psi}$, we can write
+Since (from (\ref{e:purestates})) 
+$\ket{d\psi} = \ket{\tilde\psi} - \ket{\psi}$, we can write
 \begin{equation}
 \begin{split}
     \braket{d\psi}{d\psi} 
@@ -157,7 +161,7 @@ Similarly,
         =& \bra{\psi} \left(\ket{\tilde\psi} - \ket{\psi}\right)
         = \braket{\psi}{\tilde\psi} - \braket{\psi}{\psi}\\
         =& \braket{\psi}{\tilde\psi} - 1\\
-        =& \sum_j\sqrt{p_j}\sqrt{p_j+dp_j}\,e^{id\phi_j} - 1
+        =& \sum_j\sqrt{p_j}\sqrt{p_j+dp_j}\,e^{id\phi_j} - 1.
 \end{split}
 \end{equation}
 Expanding to first order in $dp$ and $d\phi$, we get
@@ -175,7 +179,7 @@ Expanding to first order in $dp$ and $d\phi$, we get
             - 1\\ 
         \approx& \sum_j \left( p_j + \frac{1}{2}dp_j + ip_jd\phi_j
                   \right) -1\\
-        =&\, i \sum_j p_jd\phi_j.
+        =&\, i \sum_j p_jd\phi_j,
 \end{split}
 \end{equation}
 and then equation (\ref{e:dPsi_perp}) gives
@@ -203,3 +207,215 @@ and then equation (\ref{e:dPsi_perp}) gives
 %does $\ket{i}$.
 %
 %\proof This is the proof.\qed
+
+
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Complex Projective Space}
+
+%--------------------------------------------------------------------------------   
+\subsection{The Fubini--Study Metric}
+\index{Complex Projective Space!Fubini--Study Metric}
+
+For any two vectors $X,Y\in T_p\C P^n$, we can define
+$g\colon T_p\C P^n \to T_p\C P^n$ by
+\begin{equation}
+g(X,Y) = \Omega(X,JY),
+\end{equation}
+where $\Omega$ is the K\"ahler form and $J$ is the complex structure.
+
+\mmm{fill this}
+
+Nash\cite{Nash:?} gives 
+\begin{equation}
+ds_{FS}^2 = g_{i\overline{j}}\, dz^i\otimes d\overline{z}^j,
+\end{equation}
+where 
+\begin{equation}
+g_{i\overline{j}} = 4\,\frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
+                    { \left( 1 + \left| z\right|^2 \right)^2 }.
+\label{e:fsmetric}
+\end{equation}
+The inverse metric is easily shown to be
+\begin{equation}
+g^{\overline{i}j} = \frac{1}{4}\left( 
+                    1+\left| z\right|^2 
+                \right) \left[
+                    \delta^{ij} + \overline{z}^iz^j
+                \right].
+\label{e:fsinvmetric}
+\end{equation}
+The only non--vanishing Christoffel symbols are $\Gamma^a_{bc}$ and
+$\Gamma^{\overline{a}}_{\overline{b}\overline{c}}$ ( $=\overline{\Gamma^a_{bc}}$ ), 
+so the geodesic equations become
+\begin{equation}
+\begin{split}
+    \ddot{z}^l + \Gamma^l_{ik}\dot{z}^i\dot{z}^k =&\, 0\\
+    \ddot{\overline{z}}^l + \Gamma^{\overline{l}}_{\overline{i}\overline{k}}
+            \dot{\overline{z}}^i\dot{\overline{z}}^k =&\, 0.
+\end{split}
+\label{e:geodesics}
+\end{equation}
+Metric compatibility with the complex structure insures
+\begin{equation}
+\begin{split}
+    \Gamma^a_{bc} =& g^{\overline{s}a} g_{c\overline{s},b}\\
+    \Gamma^{\overline{a}}_{\overline{b}\overline{c}} =& g^{\overline{a}s} 
+                            g_{s\overline{c},b}.
+\end{split}
+\label{e:xsymb}
+\end{equation}
+Using equation (\ref{e:fsmetric}), we can calculate partials of the metric 
+\begin{equation}
+\begin{split}
+    g_{i\overline{j},k} =&\,4\, \frac{\partial}{\partial z^k} 
+            \left(
+                 \frac{\delta_{ij}\left( 1 + \left| z \right|^2 \right) - z_i\overline{z}_j }
+                      { \left( 1 + \left| z\right|^2 \right)^2 }
+            \right)\\
+        =&\,4\, \left\lbrace
+            \frac{\partial}{\partial z^k} \left(
+                \frac{\delta_{ij}}{ \left( 1 + \left| z\right|^2 \right) }
+            \right)
+            - \frac{\partial}{\partial z^k} \left(
+                \frac{z_i\overline{z}_j}{ 
+                    \left( 1 + \left| z\right|^2 \right)^2 
+                }
+            \right)
+        \right\rbrace\\
+        =&\,4\,\left\lbrace
+            -\frac{\delta_{ij}\overline{z}_k}{ 
+                \left( 1 + \left| z\right|^2 \right)^2 
+             }
+            +2\,\frac{z_i\overline{z}_j\overline{z}_k}{
+                    \left( 1 + \left| z\right|^2 \right)^3 
+             }
+            -\frac{\delta_{ik}\overline{z}_j}{ 
+                \left( 1 + \left| z\right|^2 \right)^2 
+             }
+        \right\rbrace\\
+        =&\,\frac{4}{
+                \left( 1 + \left| z\right|^2 \right)^3 
+            }
+            \biggl\lbrace
+                2\,z_i\overline{z}_j\overline{z}_k
+                - \left( 1 + \left| z\right|^2 \right) \left[
+                    \delta_{ij}\overline{z}_k 
+                    + \delta_{ik}\overline{z}_j 
+                \right]
+            \biggr\rbrace,
+\end{split}
+\end{equation}
+and
+\begin{equation}
+    g_{i\overline{j},\overline{k}} 
+        =\,\frac{4}{
+                \left( 1 + \left| z\right|^2 \right)^3 
+            }
+            \biggl\lbrace
+                2\,z_i\overline{z}_jz_k
+                - \left( 1 + \left| z\right|^2 \right) \left[
+                    \delta_{ij}z_k 
+                    + \delta_{jk}z_i 
+                \right]
+            \biggr\rbrace.
+\end{equation}
+Equation (\ref{e:xsymb}) gives Christoffel symbols
+\begin{equation}
+\begin{split}
+    \Gamma^l_{ik} =& g^{\overline{j}l} g_{i\overline{j},k}\\
+        =& \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            \delta^{jl} + \overline{z}^jz^l
+        \biggr\rbrace
+        \biggl\lbrace
+            2z_i\overline{z}_j\overline{z}_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \delta_{ij}\overline{z}_k 
+                + \delta_{ik}\overline{z}_j 
+            \right]
+        \biggr\rbrace\\
+        =& 
+        \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            2z_i\overline{z}^l\overline{z}_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \delta_i^l\overline{z}_k 
+                + \delta_{ik}\overline{z}^l 
+            \right]\\
+        &\qquad\qquad\qquad    + 2\left( \overline{z}\cdot 
+                                         \overline{z}\right) z^lz_i\overline{z}_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \overline{z}_i z^l\overline{z}_k 
+                + \left( \overline{z}\cdot \overline{z}\right)\delta_{ik}z^l 
+            \right]
+        \biggr\rbrace,
+\end{split}
+\end{equation}
+and
+\begin{multline}
+    \Gamma^{\overline{l}}_{\overline{i}\overline{k}} 
+        = 
+        \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            2\overline{z}_iz^lz_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                \delta_i^lz_k 
+                + \delta_{ik}z^l 
+            \right]\\
+        + 2\left( z\cdot z\right) \overline{z}^l\overline{z}_iz_k
+            - \left( 1 + \left| z\right|^2 \right) \left[
+                z_i \overline{z}^lz_k 
+                + \left( z\cdot z\right)\delta_{ik}\overline{z}^l 
+            \right]
+        \biggr\rbrace.
+\end{multline}
+The geodesic equations of motion (\ref{e:geodesics}) now become
+\begin{multline}
+    \dot{w}^l = \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \left( \overline{z}\cdot w \right)
+            \biggr] w^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right)\left( w\cdot w \right)
+                    - 2\left( z\cdot w \right)\left( \overline{z}\cdot w \right)
+            \biggr] \overline{z}^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \bigl[ 
+                      \left(\overline{z}\cdot w\right)\left(\overline{z}\cdot w\right)
+                      +\left(\overline{z}\cdot\overline{z}\right)\left(w\cdot w\right)
+                    \bigr]
+                    - 2\left(\overline{z}\cdot\overline{z}\right) 
+                        \left( z\cdot w \right)\left( \overline{z}\cdot w \right)
+            \biggr] z^l
+        \biggr\rbrace,
+\end{multline}
+and
+\begin{multline}
+    \dot{\overline{w}}^l = \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \left( z\cdot \overline{w} \right)
+            \biggr] \overline{w}^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right)\left( 
+                            \overline{w}\cdot \overline{w} \right)
+                    - 2\left( \overline{z}\cdot \overline{w} \right)
+                        \left( z\cdot \overline{w} \right)
+            \biggr] z^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \bigl[ 
+                      \left(z\cdot \overline{w}\right)\left(z\cdot \overline{w}\right)
+                      +\left(z\cdot z\right)\left(\overline{w}\cdot\overline{w}\right)
+                    \bigr]
+                    - 2\left(z\cdot z\right) 
+                        \left( \overline{z}\cdot \overline{w} \right)
+                        \left( z\cdot \overline{w} \right)
+            \biggr] \overline{z}^l
+        \biggr\rbrace,
+\end{multline}
+where $w=\dot{z}$ and $\overline{w}=\dot{\overline{z}}$.
+
