@@ -19,13 +19,14 @@ the \emph{metric distance} between two rays in Hilbert space.
 Optimization of the statistical distinguishability of quantum
 states leads to a natural Hermitian metric on the space of density
 operators\cite{Braunstein/Caves:94}.  This metric is, for pure states,
-the usual Fubini--Study metric on projective Hilbert space\cite{Gibbons:92}.
-It can be extended to general density operators\cite{Braunstein/Caves:94}.
+the usual Fubini--Study metric on projective Hilbert space\cite{Gibbons:92},
+and can be extended to general density operators for mixed 
+states\cite{Braunstein/Caves:94}.
 
 %--------------------------------------------------------------------------------   
 \subsection{Classical Statistical Distance}
 
-It is worth noting, that statistical distance on a classical state space 
+It is worth noting, that statistical distance on a classical probability space 
 is not just the Euclidean distance between two probabilities $|p_1-p_2|$.  
 This is due to the fact that probabilities near $\frac{1}{2}$ are harder 
 to distinguish due to higher statistical fluctuations than probabilities 
@@ -33,7 +34,7 @@ near 0 or 1.
 
 As an example, consider two differently weighted coins.  Coin $i$ has
 an {\it a priori} probability $p_i$ of obtaining heads in a given toss.
-The probability space is one dimensional, just the probability 
+The probability space is one dimensional -- just the probability 
 $p_i$ of heads for each coin.
 Define, following Wooters\cite{Wooters:81},
 the statistical distance between two coins in this probability space as
@@ -62,16 +63,20 @@ d(p_1,p_2) =& \lim_{n\to\infty} \frac{1}{\sqrt{n}}\times
 \int_{p_1}^{p_2}\,\frac{dp}{2\Delta p}\\
 =& \lim_{n\to\infty} \frac{1}{\sqrt{n}}\times
 \int_{p_1}^{p_2}\,\frac{\sqrt{n}dp}{2\sqrt{p(1-p)}}\\
-=& \int_{p_1}^{p_2}\,\frac{dp}{2\sqrt{p(1-p)}}\\
-=& \cos^{-1}\left( 
+=& \int_{p_1}^{p_2}\,\frac{dp}{2\sqrt{p(1-p)}},
+\end{split}
+\end{equation}
+or
+\begin{equation}
+d(p_1,p_2) = \cos^{-1}\left( 
     \sqrt{p_1} \sqrt{p_2} 
     +\sqrt{q_1}\sqrt{q_2}
 \right),
-\end{split}
 \end{equation}
-where $q_1 = 1-p_1$ and $q_2=1-p_2$.  So, the statistical distance
-is not the Euclidean distance ($\left| p_2 - p_1 \right|$) on probability
-space.
+where $q_1 = 1-p_1$ and $q_2=1-p_2$,  
+which is obviously quite different from the ordinary Euclidean distance 
+$\left| p_2 - p_1 \right|$ on the space of probabilities.
+
 It is easy to generalize this distance when the system has 
 more that just two outcomes, $p$ and $q$.
 When there are countably infinite outcomes, the notion of statistical
@@ -79,11 +84,32 @@ distance becomes
 \begin{equation}
 d(p_1,p_2) = \cos^{-1}\left\lbrack 
     \sum_{i=1}^\infty
-    \sqrt{p_1} \sqrt{p_2} 
+    \sqrt{p^{(i)}_1} \sqrt{p^{(i)}_2} 
 \right\rbrack.
 \end{equation}
 
-
+For this notion of distance to apply to a quantum mechanical system,
+some sort of measurement apparatus must be chosen.  The statistical
+distance between two states can then be given \emph{with respect to
+this measuring device}.  For instance, if $\phi_1,\ldots,\phi_N$ form
+an eigenbasis for the measuring device $A$, then the statistical
+distance between two different states $\psi_1$ and $\psi_2$ is given
+by
+\begin{equation}
+d_A(\psi_1,\psi_2) = \cos^{-1}\left\lbrack 
+    \sum_{i=1}^N
+    \bigl| \left(\phi_i,\psi_1 \right) \bigr|
+    \bigl| \left(\phi_i,\psi_2 \right) \bigr|
+\right\rbrack.
+\end{equation}
+The ``absolute'' statistical distance will be the maximum statistical
+distance over all possible measuring devices, which is given, not
+surprisingly, by
+\begin{equation}
+d(\psi_1,\psi_2) = \cos^{-1}\biggl\lbrack 
+    \bigl| \left(\psi_1,\psi_2 \right) \bigr|
+\biggr\rbrack.
+\end{equation}
 
 
 %--------------------------------------------------------------------------------   
@@ -105,8 +131,17 @@ For $\ket{\psi}$ and $\ket{\tilde\psi}$ normalized, we expect
 \braket{\psi}{\tilde\psi} = cos(\theta),
 \end{equation}
 where $\theta$ is the ``angle'' between these two states in 
-(projective) Hilbert space.  This angle presents a measure of the
+(projective) Hilbert space.  As seen in the last section, 
+this angle presents a measure of the
 notion of state distinguishability.  \ie,
+\begin{equation}
+\frac{1}{4}ds_{\text{\tiny Pure States}}^2 = 
+    \left[ \cos^{-1}\left(\left|
+                        \braket{\tilde\psi}{\psi}
+                    \right|\right)
+    \right]^2.
+\end{equation}
+Notice that this can also be written
 \begin{equation}
 \frac{1}{4}ds_{\text{\tiny Pure States}}^2 = 
     \left[ \cos^{-1}\left(\left|
@@ -220,13 +255,9 @@ and then equation (\ref{e:dPsi_perp}) gives
                     \right].
 \end{split}
 \end{equation}
-
-\mmm{fix this}
-I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Wooters:81}
-geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
-to get the Fubini--Study metric for projective Hilbert space\dots
+The absolute statistical distance for pure states is given by
 \begin{equation}
-                ds_{\text{SP}}^2 = \sum_i \frac{1}{4}\frac{(dp_i)^2}{p_i} + 
+                ds_{\text{Pure States}}^2 = \sum_i \frac{1}{4}\frac{(dp_i)^2}{p_i} + 
                 \left( 
                     \sum_i p_i(d\phi_i)^2 - \left( \sum_i p_i d\phi_i \right)^2
                 \right).
@@ -295,8 +326,8 @@ Nothing will be covered that is dependent upon which
 particular coordinate patch
 is used.
 
-For more on complex manifolds and projective spaces
-see Nash\cite{Nash:91} and Nakahara\cite{Nakahara:90}.
+For more on complex manifolds and/or projective spaces
+see \cite{Nakahara:90}, \cite{Yano:65}, or \cite{Nash:91}.
 
 
 
@@ -312,10 +343,9 @@ see Nash\cite{Nash:91} and Nakahara\cite{Nakahara:90}.
 %\end{equation}
 %where $\Omega$ is the K\"ahler form and $J$ is the complex structure.
 %
-A natural Hermitian metric can be defined on complex projective
-space.\cite{Fubini:?,Study:?}
-\mmm{How is it natural?}
-The Fubini--Study metric can be given, in inhomogeneous coordinates, as
+A natural Hermitian metric, the Fubini--Study metric\cite{Fubini:03,Study:05},
+can be defined on complex projective space.
+This metric is given, in inhomogeneous coordinates, as
 \begin{equation}
 ds_{FS}^2 = g_{\overline{i}j}\, dz^i\otimes d\overline{z}^j,
 \end{equation}
@@ -569,17 +599,23 @@ zero when specifying inhomogeneous coordinates ((\ref{e:inhomoA})
 to (\ref{e:inhomoB})), then $d\phi_0 = 0$, and all sums in 
 (\ref{e:fsPolarFinal}) can be extended to include the zero case.
 
-So then,
+So then
 \begin{equation}
 ds^2 = \sum_{i=0}^n\frac{1}{4}\frac{(dp_i)^2}{p_i}
     + \sum_{i=0}^n p_i\left(d\phi_i\right)^2
-    - \biggl(\sum_{i=0}^n p_id\phi_i\biggr)^2
+    - \biggl(\sum_{i=0}^n p_id\phi_i\biggr)^2,
 \end{equation}
-matches with the statistical distance (\ref{e:fsStatistical}).
+the statistical distance (\ref{e:fsStatistical}) for pure states,
+can be characterized geometrically as the Fubini--Study metric on
+projective Hilbert space.
 
 %--------------------------------------------------------------------------------   
 \subsection{Geodesics}
 \index{complex!projective space!geodesics}
+
+An explicit expression for the equations of motion 
+for geodesics of the Fubini--Study metric will be useful
+in the remaining chapters. 
 
 The inverse of the Fubini--Study metric, as written in
 equation (\ref{e:fsmetric}), is easily shown to be
@@ -591,10 +627,20 @@ g^{\overline{i}j} = \frac{1}{4}\left(
                 \right].
 \label{e:fsinvmetric}
 \end{equation}
-The only non--vanishing Christoffel symbols are $\Gamma^a_{bc}$ and
+Since $\CP^n$ is a K\"ahler manifold\cite{Nakahara:90}, 
+the only non--vanishing Christoffel symbols are $\Gamma^a_{bc}$ and
 $\Gamma^{\overline{a}}_{\overline{b}\overline{c}}$ ( $=\overline{\Gamma^a_{bc}}$ ), 
+given by
+\begin{equation}
+\begin{split}
+    \Gamma^a_{bc} =& g^{\overline{s}a} g_{c\overline{s},b}\\
+    \Gamma^{\overline{a}}_{\overline{b}\overline{c}} =& g^{\overline{a}s} 
+                            g_{s\overline{c},b}.
+\end{split}
+\label{e:xsymb}
+\end{equation}
 \index{complex!projective space!Christoffel symbols}
-so the geodesic equations become
+The geodesic equations become
 \begin{equation}
 \begin{split}
     \ddot{z}^l + \Gamma^l_{ik}\dot{z}^i\dot{z}^k =&\, 0\\
@@ -604,16 +650,8 @@ so the geodesic equations become
 \label{e:geodesics}
 \end{equation}
 \index{complex!projective space!geodesics}
-Metric compatibility ($\nabla_kg_{i\overline{j}} = \nabla_{\overline{k}}
-g_{i\overline{j}} = 0$) insures
-\begin{equation}
-\begin{split}
-    \Gamma^a_{bc} =& g^{\overline{s}a} g_{c\overline{s},b}\\
-    \Gamma^{\overline{a}}_{\overline{b}\overline{c}} =& g^{\overline{a}s} 
-                            g_{s\overline{c},b}.
-\end{split}
-\label{e:xsymb}
-\end{equation}
+%Metric compatibility ($\nabla_kg_{i\overline{j}} = \nabla_{\overline{k}}
+%g_{i\overline{j}} = 0$) insures \mmm{Why!!!}
 Using equation (\ref{e:fsmetric}), we can calculate partials of the metric 
 \begin{equation}
 \begin{split}
