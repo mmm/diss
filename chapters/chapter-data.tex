@@ -1,19 +1,32 @@
-\chapter{Data}
+\chapter{The Data}
 \label{chap:data}
 \index{Data@\emph{Data}}%
 
 \newlength{\dataheight}
-%\setlength{\dataheight}{3in}
 \setlength{\dataheight}{4in}
 \newlength{\datawidth}
 \setlength{\datawidth}{4.5in}
 
-%----------------------------------------------------------------------
-%----------------------------------------------------------------------
-\section{Probability of success -v- maximum tolerable noise for various
-numbers of qubits}
+Here, the data is presented as a series of figures organized
+into sections depending upon what information is graphed.
+
+Uncertainties in the numerical results are due almost exclusively
+to roundoff error.  The computer is limited in the amount of space
+used to approximate a real number, and this limitation causes rounding
+to occur at every step of the calculation.  These uncertainties
+are difficult to explicitly propagate through the calculations, but
+a good approximation of roundoff errors can be obtained by adjusting
+the resolution of integration.  The limits of uncertainty in the
+following figures were obtained by doubling/halving the step size
+while simultaneously halving/doubling the number of steps taken.
 
 \pagebreak
+
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+\section{Probability of success -v- maximum noise level for various
+numbers of qubits}
+
 
 %----------------------------------------------------------------------
 % leading coeff -v- noise for fixed number of qubits
