@@ -38,14 +38,165 @@
 \mmm{Show circuits for some explicit computable function}
 
 %--------------------------------------------------------------------------------   
-\subsection{Classical}
+\subsection{Classical Theory of Computation}
 
-\subsubsection{Universal Computation}
-\subsubsection{Classical Circuits}
-\subsubsection{Complexity Classes}
+A classical computer can be viewed simply as a
+system that evaluates a function of the following
+form
+\begin{equation}
+f\colon\lbrace 0,1\rbrace^n \mapsto \lbrace 0,1\rbrace^m.
+\end{equation}
+This ``computer'' takes $n$ bits of input and uniquely
+determines $m$ bits of output.
+Since each of $m$ components of this function is just a 
+simpler function to a single bit,
+the basic operation of a classical computer is just 
+\begin{equation}
+f\colon\lbrace 0,1\rbrace^n \mapsto \lbrace 0,1\rbrace.
+\end{equation}
+
+These simple functions with one--bit outputs are commonly
+referred to as \emph{decision problems}.\index{decision problems}
+They encode the solution to a problem whose answer, based on
+the input, requires only a YES or NO.  There are many such
+decision problems that can be useful, but it is important to note
+that there are also many apparently non--decision--type problems 
+that can be transformed into decision problems.  Consider
+\mmm{examples}
+
+To be evaluated on an actual computing device,
+each of the basic functions must then be broken down into a 
+sequence
+of elementary logic operations.  These elementary operations
+or {\sl logic gates}\index{logic gate} 
+can then be implemented on various types 
+of physical devices.
+
+Consider a simple function
+\begin{equation}
+f\colon\lbrace 0,1\rbrace^n \mapsto \lbrace 0,1\rbrace.
+\end{equation}
+The claim is that the evaluation of this function can be
+reduced to a sequence of elementary logical operations.
+This can be seen by first considering the set of inputs
+to the function.  Among the $2^n$ distinct inputs, distinguish
+between those inputs $x$ for which the function evaluates to 
+$f(x)=1$ and those for which $f(x)=0$.  
+For each element
+$x^{(i)}\in f^{-1}(1)$, define a {\sl characteristic function}
+for this input as
+\begin{equation}
+f^{(i)}(x) = \begin{cases}
+                1&x=x^{(i)}\\
+                0&\text{otherwise}
+             \end{cases}.
+\end{equation}
+This is the first step to a representation of the original function
+in terms of simpler gates,  leaving an intermediate representation
+of the function in terms of characteristic functions
+\begin{equation}
+f(x) = \bigvee_i f^{(i)}(x).
+\end{equation}
+The function $f$ is the logical OR ($\vee$) of the characteristic functions
+for all inputs that evaluate to 1. \ie, all $x\in f^{-1}(1)$.
+The way to interpret this representation is that $f(x)$ can evaluate
+to 1 by either $x^{(1)}$ evaluating to 1 or $x^{(2)}$ evaluating to 1 
+or\dots
+
+The next step is to consider how the characteristic functions themselves
+can be represented in terms of elementary logic gates.
+The characteristic function for the input
+\begin{equation}
+x^{(i)} = 111\ldots1
+\label{e:inputx}
+\end{equation}
+could be constructed as
+\begin{equation}
+f^{(i)} = x_1 \wedge x_2 \wedge \ldots\wedge x_n,
+\end{equation}
+the logical AND of all $n$ bits of the input $x^{(i)}$.
+Each $x_j\in\lbrace 0,1\rbrace$ is the $j$--th bit of $x^{(i)}$.  
+For this particular input (\ref{e:inputx}), all $x_j$'s are 1.
+Any other input $x^{(i^\prime )}$ will have at least one zero bit.  
+The characteristic function for this input is again the logical
+AND of all bits, but the zero bits are flipped with the logical
+NOT ($\neg$) operation.  For example, consider the input
+\begin{equation}
+x^{(i^\prime )} = 0110\ldots.
+\end{equation}
+The corresponding characteristic function would be 
+\begin{equation}
+f^{(i^\prime )}(x) = (\neg x_1 )\wedge x_2\wedge x_3\wedge (\neg x_4 )
+\wedge\ldots.
+\end{equation}
+
+The function $f$ can now be represented in terms of three elementary
+logical operations AND, OR, and NOT.\footnote{This representation of the 
+function is called, in the computer science literature, ``disjunctive
+normal form.''\index{disjunctive normal form}}
+In this way, a small number of elementary gates suffice to evaluate
+exactly any function of a finite input.  This is an important result
+in computer science and allows for arbitrarily complex computations
+to be built up out of very simple physical devices.
+
+\subsubsection{Circuits and Complexity}
+\index{circuit complexity}
+
+Computers have a few basic components that can perform elementary 
+operations on bits or pairs of bits.  A {\sl computation} is a 
+finite sequence of such operations (a \emph{circuit}) applied to a 
+specified string of input bits.
+\index{circuit}
+\index{computation}
+The complexity of a computation can be represented by 
+the complexity of the corresponding circuit.
+For a decision problem, a reasonable measure of the difficulty
+of the problem is the \emph{size} of the smallest circuit that
+computes the corresponding function 
+\begin{equation}    
+f\colon\lbrace 0,1\rbrace^n \mapsto \lbrace 0,1\rbrace.
+\end{equation}
+Here, size is measured by the number of elementary operations 
+(gates) that make up the circuit used to compute $f$.
+If more that one gate is allowed to act at once, then the
+\emph{time} it takes to complete the computation can be a measure
+of its difficulty.  In this case, the \emph{depth} of the circuit
+is the maximum number of time steps required to complete, or the 
+maximum length of a directed path from the input to the output of
+the circuit.  The \emph{width} of a circuit is the maximum number of
+gates that can act at any given timestep.
+
+Note that the size of a circuit discussed above
+will, in general, scale with the number of bits, the size, of the input.  
+The complexity of the circuit can then be determined by how 
+the size of the circuit will scale with the size of the input.
+Consider a circuit $C_f$ that evaluates a decision problem
+corresponding to the function $f$.  The input to this particular
+circuit has $n$ bits.  This circuit is considered to be of
+\emph{polynomial size} if the size of the circuit grows no faster
+than some polynomial of $n$, or
+\begin{equation}
+\text{Size}\left( C_f \right) \le \text{Poly}(n).
+\end{equation}
+Decision problems with circuits of polynomial size are considered
+to be ``easy,'' otherwise, ``hard.''
+A \emph{complexity class}\index{complexity class} of these problems 
+can be defined as ({\bf P} for Polynomial)
+\begin{equation}
+{\bf P} = \lbrace\text{decision problems with polynomial--sized circuits}
+          \rbrace.
+\end{equation}
+Decision problems in {\bf P} are easy, otherwise, they are hard.
+
+\mmm{exponential lookup table stuff}
+
+\mmm{NP}
+
+
+
 
 %--------------------------------------------------------------------------------   
-\subsection{Quantum}
+\subsection{Quantum Theory of Computation}
 
 \subsubsection{Reversibility}
 \subsubsection{Universal Computation}
@@ -76,22 +227,6 @@
 \end{center}
 \end{figure}
 
-\begin{figure}
-\begin{center}
-\begin{picture}(50,60)
-    \put(20,0){\framebox(20,20){\bf{$H$}}}
-    \put(-20,7){$\ket{1}$}
-    \put(-20,37){$\ket{0}$}
-    \put(30,40){\circle*{4}}
-    \path(0,10)(20,10)
-    \path(40,10)(60,10)
-    \path(0,40)(60,40)
-    \path(30,20)(30,40)
-\end{picture}
-\caption{A quantum circuit applying a Hadamaard transformation to one of
-two qubits with intersecting lines}
-\end{center}
-\end{figure}
 
 \begin{figure}
 \begin{center}
@@ -138,6 +273,23 @@ two qubits with intersecting lines}
 \subsubsection{Complexity Classes}
 \subsubsection{The Hadamaard Transformation}
 \index{Hadamaard transformation}
+
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(50,60)
+    \put(20,0){\framebox(20,50){\bf{$H$}}}
+    \put(-20,7){$\ket{1}$}
+    \put(-20,37){$\ket{0}$}
+    \path(0,10)(20,10)
+    \path(40,10)(60,10)
+    \path(0,40)(20,40)
+    \path(40,40)(60,40)
+    \put(65,7){$\frac{1}{\sqrt{2}}\left(\ket{0}-\ket{1}\right)$}
+    \put(65,37){$\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)$}
+\end{picture}
+\caption{A quantum circuit applying a Hadamaard transformation to two qubits.}
+\end{center}
+\end{figure}
 
 The one--dimensional Hadamaard transformation takes a quantum bit into the
 superposition given by
@@ -239,6 +391,9 @@ simply a binary dot product.  Note that the final form of equation
 over $\left(\Z_2\right)^N$.
 
 
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Quantum Hardware}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
