@@ -7,10 +7,7 @@
 %--------------------------------------------------------------------------------   
 \section{Grover}
 
-%--------------------------------------------------------------------------------   
-%\subsection{Sines and Cosines}
-\subsection{Grover is Optimal}
-\label{ssec:sincos}
+\label{sec:sincos}
 
 Grover's algorithm was introduced and discussed at great length in
 chapter (\ref{chap:quantumAlgorithms}).  There, it was mentioned that
@@ -126,6 +123,9 @@ l_{i+1} =& l_i\frac{N-2}{N} -k_i\frac{2}{N}.
 Since this is (\ref{e:discsincos}) as expected, $j\Rightarrow j+1$.
 \end{proof}
 
+%--------------------------------------------------------------------------------   
+\subsection{Grover is Optimal}
+
 \mmm{add Zalka stuff here}
 \mmm{add in multisearch stopping time here too (from Boyer et al)}
 
@@ -175,9 +175,9 @@ given by
 \gamma\colon \R\to\CP^N\colon t\mapsto 
 \begin{pmatrix}
     \sin(t)\\
-    \cos(t)\\
+    \frac{1}{\sqrt{N-1}}\cos(t)\\
     \vdots\\
-    \cos(t)
+    \frac{1}{\sqrt{N-1}}\cos(t)
 \end{pmatrix}.
 \label{e:gamma}
 \end{equation}
@@ -236,11 +236,10 @@ Duh!
 %--------------------------------------------------------------------------------   
 \section{Is there a Hamiltonian?}
 
-\mmm{Used to be Trotter Formula}
-
 The diffusion transformation in Grover's algorithm,
 as defined in section (\ref{ssec:diffusion}), looks like
 \begin{equation}
+{\bf U_s} =
 \begin{pmatrix}
     \frac{2-N}{N} & \frac{2}{N} & \cdots & \frac{2}{N} \\
     \frac{2}{N}   & \frac{2-N}{N} & &  \\
@@ -248,58 +247,89 @@ as defined in section (\ref{ssec:diffusion}), looks like
     \frac{2}{N}   & \cdots && \frac{2-N}{N} 
 \end{pmatrix}.
 \end{equation}
-This can be rewritten as
+With a little work, this can be rewritten as
 \begin{equation}
-\frac{2}{N}
-\begin{pmatrix}
-    1 & \cdots & 1 \\
-    \vdots & \ddots & \vdots \\
-    1 & \cdots & 1
-\end{pmatrix}
-- \textbf{1}.
+{\bf U_s} =
+- \exp \left\lbrace  i\frac{\pi}{N}
+                \begin{pmatrix}
+                    1      &        & \cdots &      & 1 \\
+                    \\
+                    \vdots &        & \ddots &      & \vdots \\
+                    \\
+                    1      &        & \cdots &      & 1
+                \end{pmatrix}
+\right\rbrace.
 \end{equation}
+For the purpose of argument, assume that the location (index) of
+the target state is known ahead of time.  In this case, the
+phase shift in Grover's algorithm (\ref{e:oracle}) can be written as
+\begin{equation}
+{\bf U_\omega} = 
+\exp \left\lbrace  i\pi
+                \begin{pmatrix}
+                    0       &        &        &        &  \\
+                            & \ddots &        &        &  \\
+                            &        & 1      &        &  \\
+                            &        &        & \ddots &  \\
+                            &        &        &        & 0
+                \end{pmatrix}
+\right\rbrace,
+\end{equation}
+and so the entire Grover iteration can be written
+\begin{equation}
+\begin{split}
+{\bf U}_{\text{Grover}} =& {\bf U}_s {\bf U}_\omega\\ 
+=& - \exp \left\lbrace  i\frac{\pi}{N}
+                \begin{pmatrix}
+                    1      &        & \cdots &      & 1 \\
+                    \\
+                    \vdots &        & \ddots &      & \vdots \\
+                    \\
+                    1      &        & \cdots &      & 1
+                \end{pmatrix}
+\right\rbrace
+\exp \left\lbrace  i\pi
+                \begin{pmatrix}
+                    0       &        &        &        &  \\
+                            & \ddots &        &        &  \\
+                            &        & 1      &        &  \\
+                            &        &        & \ddots &  \\
+                            &        &        &        & 0
+                \end{pmatrix}
+\right\rbrace.
+\end{split}
+\end{equation}
+\mmm{Does this help find a Hamiltonian?}
 
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Dynamical Maps}
 
-\subsubsection{Intro to dynamical maps}
-Open systems.
-What the hell are dynamical maps?
-
-Unfortunatley, physical systems do not exist in isolation.  There
-are always interactions with environments or baths that cause
-quantum mechanical systems to evolve by possibly more complicated
-means than unitary transformations.
-
-A somewhat more general approach to quantum evolution is to 
-consider dynamical evolution of a quantum mechanical system
-described as simply a map of density matrices to density
-matrices, the so--called \emph{dynamical map}.
-
-An even more general approach is to simply look at maps of
-density matrices, where the image itself doesn't necessarily have to
-be a physical density matrix.  It could be simply a subsystem
-of a physical system, and hence it's trace could be less than
-one.
-
-\mmm{Phase space stuff or configuration space stuff}
-
-%--------------------------------------------------------------------------------   
-\subsection{Numerical Model of Grover's Algorithm}
-
-\subsubsection{The actual model}
-
-\subsubsection{Simulation of Grover is a dynamical map}
-
-\subsubsection{How this relates to Noise}
-
-
-\mmm{show some baseline results before noise or stability is even considered???}
-\mmm{low dimensional examples of flow to do analytically and compare}
-
-
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Dynamical Maps}
+%
+%\subsubsection{Intro to dynamical maps}
+%Open systems.
+%What the hell are dynamical maps?
+%
+%Unfortunatley, physical systems do not exist in isolation.  There
+%are always interactions with environments or baths that cause
+%quantum mechanical systems to evolve by possibly more complicated
+%means than unitary transformations.
+%
+%A somewhat more general approach to quantum evolution is to 
+%consider dynamical evolution of a quantum mechanical system
+%described as simply a map of density matrices to density
+%matrices, the so--called \emph{dynamical map}.
+%
+%An even more general approach is to simply look at maps of
+%density matrices, where the image itself doesn't necessarily have to
+%be a physical density matrix.  It could be simply a subsystem
+%of a physical system, and hence it's trace could be less than
+%one.
+%
+%\mmm{Phase space stuff or configuration space stuff}
+%
+%
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Other Quantum Algorithms}

@@ -5,12 +5,73 @@
 
 
 
-Don't worry about Hamiltonian or non-Hamiltonian noise, this will encompass
-them both.
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Linear Stability Analysis}
+
+About the origin, the geodesic equations become those of a flat metric.
+Not useful, need a method that works even without a linearization.
+Gets hard\dots do numerical.
+
+\mmm{put details of this in?}
+
+%--------------------------------------------------------------------------------   
+%--------------------------------------------------------------------------------   
+\section{Numerical Model of Grover's Algorithm}
+
+The primary model used in this dissertation uses the fact
+that Grover can be approximated by a geodesic of the
+Fubini--Study metric as discussed in chapter \ref{chap:dynamics},
+
+A database consisting of $N=2^n$ items, is represented (using
+$n$ qubits) as an $N$--state system.
+The numerical model represents the states of this system as points 
+in $\CP^{N-1}$.  The evolution of the algorithm is then modelled by the
+numerical integration of the geodesic equations of motion
+(\ref{e:detailedGeodesics}), with 
+appropriate initial conditions supplied to mimic the behaviour of 
+the algorithm.  At this stage, this approach involves only pure 
+states, and the (unitary) evolution remains on this shell of pure 
+states.
+\mmm{show baseline results here?}
+\mmm{uncertainties here?}
+\mmm{pseudotime relates to number of Grover iterations}
+
+
+%--------------------------------------------------------------------------------   
+\subsection{Dynamical Maps}
+Open systems.
+What the hell are dynamical maps?
+
+Unfortunatley, physical systems do not exist in isolation.  There
+are always interactions with environments or baths that cause
+quantum mechanical systems to evolve by possibly more complicated
+means than unitary transformations.
+
+A somewhat more general approach to quantum evolution is to 
+consider dynamical evolution of a quantum mechanical system
+described as simply a map of density matrices to density
+matrices, the so--called \emph{dynamical map}.
+
+An even more general approach is to simply look at maps of
+density matrices, where the image itself doesn't necessarily have to
+be a physical density matrix.  It could be simply a subsystem
+of a physical system, and hence it's trace could be less than
+one.
+
+\mmm{Phase space stuff or configuration space stuff}
+
+\subsubsection{Simulation of Grover is a dynamical map}
+
+
+
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Noise}
+
+Don't worry about Hamiltonian or non-Hamiltonian noise, this will encompass
+them both.
 
 How to characterize noise?
 
@@ -53,132 +114,4 @@ noise in Grover(?). This will take pure to mixed states.
 and let the $\rho_i$ flow as pure states.  Add in noise to $\lambda$s
 {\sl and} to the $\rho_i$ evolutions.
 \end{enumerate}
-
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-2q-0.0001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-2q-0.001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-2q-0.01.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-3q-0.0001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-3q-0.001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-3q-0.01.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-4q-0.0001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-4q-0.001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-4q-0.01.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-5q-0.0001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-5q-0.001.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=figures/Bures-5q-0.01.pstex,height=3.5in,width=4in}
-\end{center}
-\caption{Bures distance as a function of time for 2 qubits with noise
-threshold of 0.0001.  Uncertainties are included and are characterized 
-by changing the resolution of the numerical integration.}
-\end{figure}
-
-
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Stability Analysis}
-
-%--------------------------------------------------------------------------------   
-\subsection{Perturbations}
-
-%--------------------------------------------------------------------------------   
-\subsection{Linear Stability Analysis}
-
-About the origin, the geodesic equations become those of a flat metric.
-Not useful, need a method that works even without a linearization.
-
-\mmm{put this in?}
-
-%--------------------------------------------------------------------------------   
-\subsection{Finite--Time Lyapunov Exponents}
 
