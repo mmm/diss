@@ -68,48 +68,49 @@ This curve is approximately fit by $y = 0.5812 x^{-2.886}$.}
 Appendix \ref{chap:data} contains:
 \begin{itemize}
 \item Bures-v-time for different noise levels and different numbers of qubits.
-%\item Probability of success -v- time for different noise levels and different numbers
-%of qubits.
-\item maximum probability of success -v- noise level for given number of qubits.
-\item maximum probability of success -v- number of qubits for given noise levels.
+\item Maximum probability of success -v- noise level for given number of qubits.
+\item Maximum probability of success -v- number of qubits for given noise levels.
 \end{itemize}
 
-%Want the max allowed noise so that maximum target coefficient is still above 
-%$\frac{1}{2}$.  Really want max allowed noise so that the algorithm is still
-%better (faster?) than the classical version.  How does this whole
-%$P_{\text{cutoff}}$ thing work?
-%\cite{Pablo-Norman/Ruiz-Altaba:99}
-
-
-%%--------------------------------------------------------------------------------   
-%\subsection{Physical Implications}
-%
-%\begin{itemize}
-%\item Give an example where the physical noise ends up as noise
-%in the state vector... should be easy.
-%\item How does noise in a gate propagate out?
-%\end{itemize}
-
-
-%%--------------------------------------------------------------------------------   
-%%--------------------------------------------------------------------------------   
-%\section{Quantum Error Correction}
-%
-%\begin{itemize}
-%\item ECCs
-%\item How does this compare with bit--flips?
-%\end{itemize}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Topics for Further Investigation}
 
 \begin{enumerate}
-\item How much does Quantum error correction help?
-\begin{itemize}
-\item ECCs
-\item How does this compare with bit--flips?
-\end{itemize}
-\item Decoherence--free subspaces?
-\item Shor dynamically?
+\item How does quantum error correction help?  
+Consider, for instance, digitized sound stored on an audio 
+compact disk.
+A huge majority of the information stored on such a CD consists of 
+coding and methods to prevent errors in
+digital data from destroying the audio content of
+the CD.
+Little of this information would be necessary without noise.
+Well, a similar kind of redundancy can be built around quantum information.
+Quantum errors can be corrected.
+
+My results determine how much noise the bare algorithm can tolerate.
+Experimentalists
+would like to know to what tolerances they need to control candidate
+technologies for qubits.
+A more interesting result for them, the so--called bottom line, would be
+how much noise, not the bare algorithm, but the algorithm \emph{with
+error correction} can tolerate.
+
+It also may be interesting to determine explicitly how device 
+noise corresponds to ``bit flips'' in the quantum error 
+correction literature.
+
+\item How can decoherence--free subspaces help?  Little is known about
+the geometry of the space of states of a quantum system.  Investigation
+into this geometry yields decoherence--free regions of 
+state\cite{Kempe/Bacon/Lidar/Whaley:00}.  Can this be harnessed by,
+not necessarily exact, but more robust versions of certain quantum
+algorithms?
+
+\item Can a Hamiltonian be produced for Grover's algorithm?  Can this
+be used for a more analytical stability analysis?  Can error correction
+be added to this?
+
+\item Can other algorithms such as Shor's be treated dynamically?
 \end{enumerate}
