@@ -6,56 +6,246 @@
 \label{chap:introduction}
 \index{Introduction@\emph{Introduction}}%
 
-
-Quantum computers are an exciting field for a number of reasons
-(Preskill)
+Quantum computation is an exciting new field of research for a number 
+of reasons\cite{Preskill:98}:  
 \begin{enumerate}
-\item{Quantum computers can solve hard problems.}
-\item{Quantum errors can be corrected.}
-\item{Quantum hardware can be constructed.}
+\item Quantum computers can solve some hard problems.
+\item Quantum errors can be corrected.
+\item Quantum hardware can be constructed.
 \end{enumerate}
-
 The field lies on the boundary between Physics, Mathematics, 
-and Computer Science.
+and Computer Science.  It is developing at a rapid pace because
+theoretical and experimental researchers are working closely together
+in quite a unified effort.
 
-Richard Feynman blahblah.
-In 19??, he wrote a pair of papers about the apparent 
-difficulty of simulating physical systems on a computer.  
-To simulate even simple physics requires quite a lot
-of computing power.
-This kind of simulation requires a program whose time
-or space required to run scales exponentially with the
-size of input.
+The age of single photon and single atom experiments is upon us. 
+The experimental techniques for controlling quantum computations 
+either already exist or are expected to exist in the near future.
+Researchers on the theoretical side are contributing
+things like quantum error correcting codes that can be used to 
+increase the quantum computer's tolerance for noise, as well as the
+algorithms used to solve various problems on a quantum computer.
 
-The current ideas of quantum computation involve reversing
-the argument. \ie, Evolutions of a quantum mechanical 
-system are equivalent to (somewhat larger) evolutions of a
-``classical'' computer.  Instead of using the monstrous 
-classical computation to simulate the physical evolution,
-use the simple physical evolution to efficiently obtain 
-answers to difficult classical computations.
+What is it all about?  Why all the hype?
+To see this, it is useful to look at some of the differences 
+between a classical and quantum computer\dots to examine
+some of the limitations of the classical computers in use
+today.
 
-In this work, Feynman also introduced the concept of reversible 
-computation \mmm{really?}.  
+Cosider the representation and evaluation of a function on a classical
+computer.  Take, for instance, some function $f\colon\Z\to\Z$ where
+\begin{equation}
+x\mapsto f(x).
+\label{e:funcs}
+\end{equation}
+Now, an integer is represented on a classical computer, in base-two, by a 
+finite set of binary digits or \emph{bits}.
+\index{bits}
+If the computer represents
+integers by say $n$ bits,
+\begin{equation}
+\begin{split}
+x =& \underset{n\text{ bits}}{\underbrace{0110010\ldots 0}}\\
+=& b_{n-1}b_{n-2}\ldots b_1b_0\\
+=&\quad\text{(in base 10)}\quad\sum_{i=0}^{n-1} b_i2^i,
+\end{split}
+\end{equation}
+then only $2^n$ different integers can be represented.
+The function $f\colon\Z\to\Z$ really becomes $f\colon\Z_{2^n}\to\Z_{2^n}$.
 
+Next, consider some very basic questions about the function $f$.
+Is it constant? %\ie, does $f(x)=c$ for all $x\in\Z_{2^n}$?
+Is it monotonic?  Is it periodic?  If so, find the period.
+How can these questions be answered on a classical computer?
+Well, the only thing to do is evaluate the function for \emph{all} 
+inputs.  If the function is constant for all inputs, it is constant.
+In general, this is expensive to compute\dots prohibitively so.  
+One might truthfully
+say that this sort of menial task is exactly what computers excel
+at and so, who cares?  What's the big deal?  Well, consider the 
+case of determining the periodicity of a function.  This is used,
+for instance, in certain factoring algorithms that allow a classical
+computer to factor a large integer into it's component prime 
+factors.\footnote{This is covered in detail in chapter 
+\ref{chap:quantumAlgorithms}.}
+Again, in order to tackle this problem, the function must be evaluated
+for \emph{all} inputs.  It is the difficulty of this very task
+that lies behind the security of most cryptosystems in use today.
+These methods rely upon the fact that it takes a \emph{long} time 
+to determine the periodicity of a function and hence,
+the factors of a large integer.  
 
-%\notde{ldfk}
+The question to now ask is\dots can we do better?  The answer is a
+resounding yes!  A \emph{quantum} computer can answer some of these
+questions with considerably less work.  This is what has caused all
+of the hype.  They are not better, or even good, at everything.  
+However, it has been shown that if they could be built,
+quantum computers can solve certain problems \emph{much} faster that
+their classical cousins.
+
+In order to see what quantum computers are all about, first consider 
+the representation of, say, integers on a quantum computer.
+The {\sl bits} of a classical computer have a quantum mechanical analogue,
+the quantum bit or \emph{qubit}.\index{qubit}
+A quantum bit is some two--state system.
+%\footnote{Exactly what kind
+Exactly what kind
+of two--state system is not specified here.  There are many
+different implementations of qubits currently being investigated
+in laboratories
+around the world, and it is not clear which physical implementation
+will work best.  
+It should be noted that a major issue in determining which physical system 
+to use as a quantum computer is the noise inherent to that system.  
+Research such as this dissertation is exactly the type of work necessary 
+to determine the tolerances that the physical implementations must be held 
+to, and ultimately, to determine which physical systems will be workable 
+in an actual quantum computer.
+Thinking of a qubit as a simple spin--$\frac{1}{2}$ system
+is probably best for now.
+A bit is represented by either spin up or down
+\begin{equation}
+\begin{split}
+0\qquad\mapsto\qquad&\ket{0}=\ket{\downarrow}\\
+1\qquad\mapsto\qquad&\ket{1}=\ket{\uparrow}\\
+\end{split}
+\end{equation}
+An integer represented on a classical computer by a set of $n$ bits
+\begin{equation}
+x = (01100011\ldots0)
+\end{equation}
+can be represented as a set of $n$ qubits
+\begin{equation}
+\begin{split}
+\ket{x} =& \ket{01100011\ldots0}\\
+  =& \bigotimes_{i=0}^{n-1} \ket{b_i}.
+\end{split}
+\end{equation}
+
+Now, consider the representation and evaluation of functions such as 
+(\ref{e:funcs}) on a \emph{quantum} computer.
+If $x$ becomes $\ket{x}$, and then the value of the function is just
+another integer represented on the computer by $\ket{f(x)}$.
+How can $f(x)$ be evaluated?  How can the state $\ket{f(x)}$ be
+obtained from the state $\ket{x}$?  Well, closed quantum systems 
+evolve by unitary transformations, so a unitary operator
+\begin{equation}
+{\bf U_f}\ket{x} = \ket{f(x)}
+\end{equation}
+just might be a good start!
+Actually, a better approach is to take
+\begin{equation}
+{\bf U_f}\ket{x}\ket{0} = \ket{x}\ket{f(x)}
+\end{equation}
+which is reversible.  Exactly how such unitary operators can be 
+constructed is covered in detail later in 
+chapter \ref{chap:quantumComputation}.
+
+Now, given such a unitary operator, the function $f$ can be 
+evaluated for some input $\ket{x}$ on a quantum computer.
+We can evaluate a function for some input.
+Big deal.  Is this all just a fancier way of writing the same
+classical problem?  
+The same constraints seemingly apply. \ie, determining if the
+function is constant still seems to require evaluations of the
+function for all inputs.  Well\dots no.
+
+The classical evaluation of a function relies upon gates that
+can act on a bit with a definite value, 0 or 1.  The quantum
+function evaluation is accomplished by unitary transformations
+that can act, not only on states such as $\ket{0}$ or
+$\ket{1}$, but on superpositions of states such as 
+$a\ket{0}+b\ket{1}$.  This is the crucial difference -- that 
+quantum computations can act on superpositions of states.  
+This fact allows the quantum computer to take advantage of a 
+sort of pseudo--parallelism to beat out the classical computer
+in solving certain types of problems.
+
+Consider the example of finding the period of a periodic function 
+$f$.\footnote{Periodic here refers to some periodicity besides the
+obvious one due to the computer's finite representation of integers
+as elements of the ring $\Z_{2^n}$.}
+Instead of taking 
+\begin{equation}
+{\bf U_f}\ket{x}\ket{0} = \ket{x}\ket{f(x)}
+\end{equation}
+for all inputs $\ket{x}$, consider acting on the state
+\begin{equation}
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{0}
+\end{equation}
+which is in an equally weighted superposition of all input
+states $\ket{x}$.  The function evaluation operator
+\begin{equation}
+{\bf U_f} \left\lbrack
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{0}
+\right\rbrack
+= 
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{f(x)}
+\end{equation}
+evaluates the function simultaneously for \emph{all} inputs!
+This is a powerful idea.  The resulting state contains all
+information about the function.  Of course, we don't necessarily
+have {\sl access} to all of this information, but the right 
+measurements can allow certain questions to be answered.
+The rest of the ``algorithm'' to find the period consists
+of a measurement of the second ket
+\begin{equation}
+\bigl(
+{\bf 1}\otimes\ketbra{c}{c}
+\bigr)
+\sum_{x=0}^{2^n-1}\ket{x}\ket{f(x)}
+= \sum_{\lbrace x|f(x)=c\rbrace} \ket{x}\ket{c}
+\end{equation}
+which
+collapses the superposition of all $\ket{x}$ into a 
+superposition of just those
+where $f(x)=c$.  The periodicity of the function $f$ is still
+contained within this superposition and can be extracted via
+a Fourier transform.
+This entire process takes {\sl considerably} less time than the classical
+version.
+
+\subsubsection{This Dissertation} 
+
+There are several quantum algorithms to solve various problems
+on a quantum computer that exhibit various degrees of 
+speedup over their classical counterparts.  
+The quantum search algorithm is one such algorithm that is
+interesting for several reasons: it can easily be adapted to
+solve a host of other problems, it exhibits a speedup over a
+classical search algorithm, it is particularly simple to 
+describe, and it can easily be described dynamically.
+This is often the first algorithm that experimentalists attempt
+to implement, and so it is a natural candidate for a 
+robustness analysis.
+
+My current research concentrates on a dynamical model of this
+quantum search algorithm.  The hope is that, in future work,
+a dynamical approach can be taken for quantum alorithms in 
+general.  The vast arsenal of tools from the discipline of 
+dynamical systems could then be brought to bear upon the 
+analysis of the stability of various quantum algorithms.
+
+For this dissertation, a faithful numerical model of the search
+algorithm is developed.  Noise is then added
+in a generic way that will encompass any source and type of 
+physical noise.
+The goal is to determine the robustness of the bare algorithm
+in the presence of various types of noise.
 
 This dissertation is organized as follows:  Chapters \ref{chap:quantumComputation}
 and \ref{chap:quantumAlgorithms} contain background information on quantum computation
 and quantum algorithms.
-%These chapters are essentially from\cite{Preskill:98,Steane:98,Braunstein:99,Shor:00}
-%and are included for completeness.  
 Chapter \ref{chap:quantumGeometry} describes the
 Fubini--Study metric and relates this to a statistical distance in Hilbert space.
-
-The meat of the current work lies in the remaining chapters.  
 Chapter \ref{chap:dynamics} applies the Fubini--Study  metric to a dynamical 
-model of a particular quantum algorithm, namely Grover's quantum search algorithm.  
-Chapter \ref{chap:dynamicalStability} introduces the
+model of the quantum search algorithm.
+It introduces the
 necessary techniques for numerical stability analysis that are then applied to
-this model of Grover's algorithm in the presence of noise. 
-Finally, chapter \ref{chap:code} discusses aspects of the numerical model and the 
+the model of the algorithm in the presence of noise. 
+Results are presented in chapter \ref{chap:conclusion}, with
+data included in appendix \ref{chap:data}.
+Appendix \ref{chap:code} discusses details of the numerical model and the 
 tools used in this analysis. 
 
 
