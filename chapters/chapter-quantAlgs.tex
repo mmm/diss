@@ -125,6 +125,8 @@ is only really available via specifically prepared measurements, but it is
 there.  The output of the quantum computation does encode this ``global''
 information about the function.
 
+\subsubsection{The Deutsch--Jozsa Algorithm}
+
 Of course, the simple function $\lbrace 0,1\rbrace\to\lbrace 0,1\rbrace$
 discussed above is not particularly useful for anything other than
 providing a simple example with which to exhibit a quantum algorithm.
@@ -167,7 +169,8 @@ chapter (\ref{chap:quantumComputation})), or like for Shor's
 algorithm, will the quantum algorithm change the actual 
 complexity class of the problem?
 
-Simon's algorithm is the simplest algorithm where the problem to
+Simon's algorithm\cite{Simon:97} 
+is the simplest algorithm where the problem to
 be solved is classically \emph{hard}, but can be computed in
 polynomial time on a quantum computer.
 
@@ -185,9 +188,84 @@ f(x) = f(x\oplus a).
 The problem is: given a quantum black box that evaluates such a function,
 find its period.
 
-This problem is classically hard\footnote{According to Preskill (?)},
+This problem is classically hard\footnote{According to Shor\cite{Shor:00}},
 because the function will need to be evaluated an exponentially large number
 of times to find $a$.
+\mmm{prove this}
+
+The quantum solution to the problem starts with two zero registers
+\begin{equation}
+\ket{0}\ket{0}.
+\end{equation}
+Now prepare an equally weighted superposition of all $n$-bit strings
+by using the Hadamaard transformation
+\begin{equation}
+\left(H\otimes\bf{1}\right)\ket{0}\ket{0} =
+\left(\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\right)\ket{0},
+\end{equation}
+and then query the oracle
+\begin{equation}
+U_f\colon\quad
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{0}\quad\mapsto\quad
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{f(x)}.
+\end{equation}
+Now, a measurement of the second register, let's say it is measured
+to be in the state $\ket{c}$,
+will collapse the first register into a superposition of all 
+states $\ket{x_0}$ such that $f(x_0)=c$.  
+For the function specified in this algorithm, 
+there are two such values, $x_0$ and $x_0\oplus a$.
+The first register then should look like 
+\begin{equation}
+\frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr).
+\end{equation}
+At this point, a measurement of this first register tells
+nothing about $a$, but taking another Hadamaard transformation on
+the first register gives
+\begin{equation}
+H \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr)=
+\,\frac{1}{\sqrt{2^{n+1}}}\sum_{y=0}^{2^n-1}
+\biggl[(-1)^{x_0\cdot y}+(-1)^{(x_0\oplus a)\cdot y}\biggr]\ket{y}.
+\end{equation}
+Notice that this is non--zero only for $a\cdot y=0$.  The first register
+can then be rewritten as
+\begin{equation}
+H \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr)
+=\frac{1}{\sqrt{2^{n-1}}}\sum_{a\cdot y=0}
+(-1)^{x_0\cdot y}\ket{y},
+\end{equation}
+which is just an equally weighted superposition of states
+$\ket{y}$ such that $a\cdot y = 0$.
+A measurement of the state in the first register will yield
+any one of these states with equal likelihood.  Now, simply
+repeat the entire algorithm $n$ times, each time obtaining
+a particular value of $y$, say $y_i$ for trial $i$.
+Then, solve the set of equations
+\begin{equation}
+\begin{split}
+a\cdot y_1 =&\, 0\\
+a\cdot y_2 =&\, 0\\
+\vdots\quad&\\
+a\cdot y_n =&\, 0\\
+\end{split}
+\end{equation}
+for $a$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Testing Figures}
 
 \mmm{testing}
 \begin{figure}

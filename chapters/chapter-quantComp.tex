@@ -10,8 +10,21 @@
 %--------------------------------------------------------------------------------   
 \subsection{Classical}
 
+\subsubsection{Entropy}
+\subsubsection{Information}
+\subsubsection{Coding}
+\subsubsection{Channel Capacity}
+
 %--------------------------------------------------------------------------------   
 \subsection{Quantum}
+
+\subsubsection{Entropy}
+\subsubsection{Information}
+\subsubsection{Entanglement}
+\subsubsection{Coding}
+\subsubsection{Dense Coding and Channel Capacity}
+\subsubsection{Teleportation}
+\subsubsection{Cloning}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
@@ -22,9 +35,16 @@
 %--------------------------------------------------------------------------------   
 \subsection{Classical}
 
+\subsubsection{Universal Computation}
+\subsubsection{Classical Circuits}
+\subsubsection{Complexity Classes}
+
 %--------------------------------------------------------------------------------   
 \subsection{Quantum}
 
+\subsubsection{Reversibility}
+\subsubsection{Quantum Circuits}
+\subsubsection{Complexity Classes}
 \subsubsection{The Hadamaard Transformation}
 \index{Hadamaard transformation}
 
@@ -33,22 +53,26 @@ superposition given by
 \begin{equation}
 \begin{split}
 \ket{0}\quad\mapsto&\quad\frac{1}{\sqrt{2}}\left(\ket{0} +\ket{1}\right)\\
-\ket{1}\quad\mapsto&\quad\frac{1}{\sqrt{2}}\left(\ket{0} -\ket{1}\right),
+\ket{1}\quad\mapsto&\quad\frac{1}{\sqrt{2}}\left(\ket{0} -\ket{1}\right).
 \end{split}
 \end{equation}
-which is sometimes thought of in terms of matrices as
+This transformation has a matrix realization given by
 \begin{equation}
-H_1 \left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right]
+H_1 
+%\left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right]
 = \frac{1}{\sqrt{2}}
-\left[\begin{matrix}1&1\\ 1&-1\end{matrix}\right]
-\left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right].
+\left[\begin{matrix}1&1\\ 1&-1\end{matrix}\right].
+%\left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right].
 \end{equation}
 
 The version of the Hadamaard transformation that sees the most use is
 the $N$--dimensional Hadamaard transformation defined as the $N$--fold
-tensor product of one--dimensional Hadamaard transformations.
+tensor product of one--dimensional Hadamaard transformations
+\begin{equation}
+H= H_N= \bigotimes^N H_1.
+\end{equation}
 This is often used as the first step in many quantum algorithms.
-Start with the \emph{zero register}
+First, start with the \emph{zero register}
 \index{zero register}
 \begin{equation}
 \ket{\bf 0}=\ket{0\ldots 0} = \bigotimes^N\ket{0},
@@ -74,7 +98,7 @@ H\ket{\bf 0} =& \frac{1}{\sqrt{2^N}}\biggl\lbrace
 =& \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1} \ket{x}.
 \end{split}
 \end{equation}
-This notation will be useful in function evaluation. 
+This will be useful in function evaluation. 
 \ie, Consider a function such as $f\colon\lbrace 0,1\rbrace^N\to\lbrace 
 0,1\rbrace$.
 Since the following are equivalent
@@ -92,10 +116,33 @@ Since the following are equivalent
 %\end{equation}
 one can simply think of this function as $x\mapsto f(x)$.
 
+As a first step, the Hadamaard transformation acts on a quantum 
+register, preparing it in a superposition of all possible values 
+of $x$.
 
-
-
-
+A Hadamaard transformation acting on a general state $\ket{x}=\ket{x_1\ldots x_N}$
+(not necessarily all 0's) can be written as
+\begin{equation}
+\begin{split}
+H\colon\ket{x}\quad\mapsto\quad&
+\bigotimes_{i=1}^N 
+H_1\ket{x_i}\\
+\quad\mapsto\quad&
+\bigotimes_{i=1}^N 
+\frac{1}{\sqrt{2}} \left( \ket{0} + (-1)^{x_i}\ket{1} \right)\\
+\quad\mapsto\quad&
+\bigotimes_{i=1}^N 
+\left(\frac{1}{\sqrt{2}} \sum_{y_i\in\lbrace 0,1\rbrace} 
+(-1)^{x_iy_i}\ket{y_i}\right)\\
+\quad\mapsto\quad&
+\frac{1}{\sqrt{2^N}} \sum_{y=0}^{2^N-1} (-1)^{x\cdot y}\ket{y},
+\end{split}
+\label{e:generalHadamaard}
+\end{equation}
+where $x\cdot y$ denotes a dot product over $\left(\Z_2\right)^N$, or
+simply a binary dot product.  Note that the final form of equation
+(\ref{e:generalHadamaard}) is actually the Fourier transform of $\ket{x}$
+over $\left(\Z_2\right)^N$.
 
 
 
