@@ -35,7 +35,6 @@
 %--------------------------------------------------------------------------------   
 \section{The Theory of Computation}
 
-\mmm{Show circuits for some explicit computable function}
 
 %--------------------------------------------------------------------------------   
 \subsection{Classical Theory of Computation}
@@ -314,51 +313,25 @@ to zero
 \texttt{XOR}\colon (x,0)\mapsto (x, x).
 \end{equation}
       
-
-
-
-\subsubsection{Universal Computation}
-\subsubsection{Quantum Circuits}
-
-\mmm{testing}
-\begin{figure}
-\begin{center}
-\begin{picture}(100,50)
-    \put(10,0){\framebox(20,20){\bf{$H$}}}
-    \put(10,30){\framebox(20,20){\bf{$H$}}}
-    \put(70,30){\framebox(20,20){\bf{$H$}}}
-    \put(40,0){\framebox(20,20){\bf{$U_f$}}}
-    \put(-20,7){$\ket{x}$}
-    \put(-20,37){$\ket{0}$}
-    \put(110,7){$\ket{f(x)}$}
-    \put(110,37){$\ket{0}$}
-    \put(50,40){\circle*{4}}
-    \path(0,10)(10,10)
-    \path(30,10)(40,10)
-    \path(60,10)(100,10)
-    \path(0,40)(10,40)
-    \path(30,40)(70,40)
-    \path(90,40)(100,40)
-    \path(50,20)(50,40)
-\end{picture}
-\caption{Deutsch's circuit}
-\end{center}
-\end{figure}
-
-
-
-\begin{figure}
+The most useful reversible gate is the
+controlled--controlled--\texttt{NOT} (\texttt{CCNOT}) gate
+\begin{equation}
+\texttt{CCNOT}\colon (x,y,z)\mapsto (x,y, z\oplus xy),
+\end{equation}
+which flips the third bit only if the first two are 1
+and does nothing otherwise.
+\begin{figure}[h]
 \begin{center}
 \begin{picture}(40,80)
     \put(20,70){\circle*{4}}
     \put(20,40){\circle*{4}}
     \put(20,10){\circle{6}}
-    \put(-20,7){$\ket{z}$}
-    \put(-20,37){$\ket{y}$}
-    \put(-20,67){$\ket{x}$}
-    \put(50,7){$\ket{z\oplus y\oplus x}$}
-    \put(50,37){$\ket{y}$}
-    \put(50,67){$\ket{x}$}
+    \put(-20,7){$z$}
+    \put(-20,37){$y$}
+    \put(-20,67){$x$}
+    \put(50,7){$z\oplus xy$}
+    \put(50,37){$y$}
+    \put(50,67){$x$}
     \path(0,10)(40,10)
     \path(0,40)(40,40)
     \path(0,70)(40,70)
@@ -368,11 +341,142 @@ to zero
 \end{center}
 \end{figure}
 
+The \texttt{CCNOT} gate is also known as the \emph{Toffoli gate},
+\index{Toffoli gate}
+and, unlike the reversible two--bit gates, is itself a universal gate
+for Boolean logic.  A Boolean circuit can be built to compute any
+reversible computation using Toffoli gates alone, provided input bits
+can be fixed and output bits can be ignored.  For more on this, 
+the reader is referred to the literature.  For instance, 
+Preskill\cite{Preskill:98} addresses this in more detail.
 
+Note that a reversible circuit can simulate a circuit composed of 
+irreversible gates.  This can be done efficiently without many
+additional memory resources (bits) and without appreciable
+slowdown.  Since this can so easily be done, the complexity
+of a reversible circuit will essentially be the same as the
+irreversible circuit.
 
+\subsubsection{Quantum Circuits}
 
+A classical computer has ``bits,'' while a quantum computer will have
+\emph{quantum bits}, or ``qubits.''
+\index{quantum bit}\index{qubit}
+A quantum bit will be the state of a two--state quantum system.
+Say, for instance
+\begin{equation}
+\begin{split}
+    \ket{1} =& \,\ket{\uparrow}\\
+    \ket{0} =& \,\ket{\downarrow},
+\end{split}
+\end{equation}
+for some spin system.  More will be discussed about the actual physical
+implementation of these qubits later.
+Sets of bits, will be tensor product states of qubits.  
+\begin{equation}
+\ket{0110\ldots} = \ket{0}\otimes
+             \ket{1}\otimes
+             \ket{1}\otimes
+             \ket{0}\otimes\ldots.
+\end{equation}
+It is assumed, at any time during a computation, that the Hilbert space
+for the entire quantum computer will factor
+into tensor products of smaller dimensional Hilbert spaces.  
+For the most part, it is assumed these will be two--dimensional Hilbert 
+spaces to more closely resemble classical {\sl binary} computations.  
+However, notice that nothing precludes
+working with {\sl qutrits} or, in general, {\sl qudits} (d--state
+systems) as the basic unit of computation.
 
-\subsubsection{Complexity Classes}
+A classical computer has circuits, or sets of gates, that act on 
+sets of bits, or registers.
+\index{register}
+Likewise, the quantum computer will have \emph{quantum circuits},
+\index{quantum circuit} which consist of sets of \emph{quantum gates}
+\index{quantum gate} which act on sets of qubits.  Each quantum
+gate will consist of a unitary transformation that acts on a fixed
+number of qubits.  
+
+Each of the reversible classical gates described above have quantum
+analogues.  In particular, the quantum version of the Toffoli gate,
+called the \emph{Deutsch gate}\index{Deutsch gate} (shown in figure
+(\ref{fig:deutschGate}))
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(40,80)
+    \put(20,70){\circle*{4}}
+    \put(20,40){\circle*{4}}
+    \put(-20,7){$\ket{z}$}
+    \put(-20,37){$\ket{y}$}
+    \put(-20,67){$\ket{x}$}
+    \put(50,7){$f({\bf R})\ket{z}$}
+%    \put(50,7){$\begin{cases}
+%                    {\bf R}\ket{z}& x\wedge y=1\\
+%                    \ket{z}& \text{otherwise}
+%                \end{cases}$}
+    \put(50,37){$\ket{y}$}
+    \put(50,67){$\ket{x}$}
+    \path(0,10)(10,10)
+    \path(30,10)(40,10)
+    \put(10,0){\framebox(20,20){\bf{$R$}}}
+    \path(0,40)(40,40)
+    \path(0,70)(40,70)
+    \path(20,20)(20,70)
+\end{picture}
+\caption{The Deutsch gate is the quantum analogue of the Toffoli gate.  Like it's 
+classical counterpart, it too is a universal gate.}
+\label{fig:deutschGate}
+\end{center}
+\end{figure}
+will conditionally apply a rotation ${\bf R}$ to the third qubit by
+\begin{equation}
+f(R) = \begin{cases}
+            R,&xy=1\\
+            1,&\text{otherwise}.
+       \end{cases}
+\end{equation}
+The rotation applied
+\begin{equation}
+\begin{split}
+R = -iR_x(\theta) =& (-i)\exp \left( i\frac{\theta}{2}\sigma_x \right)\\
+  =& (-i)\left( \cos\frac{\theta}{2} + i\sigma_x\sin\frac{\theta}{2} \right)
+\end{split}
+\end{equation}
+is a rotation about the $x$ axis by some angle $\theta$.
+This gate is a universal gate for quantum circuits.  
+
+A particularly useful two--qubit quantum gate is a 
+controlled--${\bf U}$ gate (figure (\ref{fig:controlledU})).  
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(40,80)
+    \put(20,40){\circle*{4}}
+    \put(-20,7){$\ket{y}$}
+    \put(-20,37){$\ket{x}$}
+    \put(50,7){$f({\bf U})\ket{y}$}
+    \put(50,37){$\ket{x}$}
+    \path(0,10)(10,10)
+    \path(30,10)(40,10)
+    \put(10,0){\framebox(20,20){\bf{$U$}}}
+    \path(0,40)(40,40)
+    \path(20,20)(20,40)
+\end{picture}
+\caption{The controlled--${\bf U}$ gate.}
+\label{fig:controlledU}
+\end{center}
+\end{figure}
+If the first qubit has value 1,
+this gate will apply the transformation ${\bf U}$ to the second qubit,
+otherwise, no action is taken.  This quantum gate will be used in almost
+all quantum algorithms in one form or another.
+
+A computation on a quantum computer will start with a register of quantum
+bits in some initial configuration.  The circuit of quantum gates will act 
+on these qubits to perform whatever computations are necessary.  Finally,
+a Von Neumann measurement is performed on the register of qubits, projecting
+each onto some measurement basis $\lbrace\ket{0},\ket{1}\rbrace$.
+The outcome of this measurement is the result of the computation.
+
 \subsubsection{The Hadamaard Transformation}
 \index{Hadamaard transformation}
 

@@ -125,6 +125,34 @@ is only really available via specifically prepared measurements, but it is
 there.  The output of the quantum computation does encode this ``global''
 information about the function.
 
+The quantum circuit to compute Deutsch's algorithm is shown in figure
+(\ref{fig:deutsch}).
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(100,50)
+    \put(10,0){\framebox(20,20){\bf{$H$}}}
+    \put(10,30){\framebox(20,20){\bf{$H$}}}
+    \put(70,30){\framebox(20,20){\bf{$H$}}}
+    \put(40,0){\framebox(20,20){\bf{$U_f$}}}
+    \put(-20,7){$\ket{x}$}
+    \put(-20,37){$\ket{0}$}
+    \put(110,7){\text{Trash}}
+    \put(110,37){\text{Measure}}
+    \put(50,40){\circle*{4}}
+    \path(0,10)(10,10)
+    \path(30,10)(40,10)
+    \path(60,10)(100,10)
+    \path(0,40)(10,40)
+    \path(30,40)(70,40)
+    \path(90,40)(100,40)
+    \path(50,20)(50,40)
+\end{picture}
+\caption{Deutsch's circuit}
+\label{fig:deutsch}
+\end{center}
+\end{figure}
+
+
 \subsubsection{The Deutsch--Jozsa Algorithm}
 \label{ss:deutschJosza}
 
@@ -151,6 +179,7 @@ A single function evaluation leaves
 which encodes ``global'' information about the function.
 The trick is to now extract this information via specialized
 measurements.
+
 
 Consider the classical version of the above computation.
 Depending on what sort of information we are trying to obtain
