@@ -205,23 +205,81 @@ and then equation (\ref{e:dPsi_perp}) gives
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Complex Projective Space}
+\index{complex!projective space}
+
+The complex projective space $\CP^n$ is the set of complex lines
+through the origin of $\C^{n+1}$.
+A point $z=(z^0,\ldots,z^n)\in\C^{n+1}$ defines a line through
+the origin provided $z\ne 0$.\index{complex!line}
+Another point $w\in\C^{n+1}$ lies on the same line as that
+defined by $z$ if there exists a complex number $\alpha\ne 0$
+such that $w=\alpha z$.  This defines an equivalence relation $\sim$.
+\ie, $w\sim z$ if there exists $\alpha\in\C^{n+1}\setminus\lbrace 0\rbrace$
+such that $w=\alpha z$.  Then, $\CP^n$ can be defined as 
+$\CP^n=\left( \C^{n+1}\setminus\lbrace 0\rbrace\right)/\sim$.
+
+The set of $n+1$ coordinates $z^0,\ldots,z^n$ are referred to as
+\emph{homogeneous coordinates}
+\index{complex!projective space!homogeneous coordinates}
+for $\CP^n$.  However, $\CP^n$ is an $n$-dimensional complex
+manifold with ($n$) coordinates defined as follows.
+Consider the coordinate patch $U_i$ defined as the set of all
+complex lines through the origin of $\C^{n+1}$ such that $z^i\ne 0$.
+Define coordinates on this patch by
+\begin{equation}
+\xi^j_{(i)} = \frac{z^j}{z^i}.
+\end{equation}
+These are \emph{inhomogeneous coordinates} for $\CP^n$.
+\index{complex!projective space!inhomogeneous coordinates}
+
+For a point $z=(z^0,\ldots,z^n)$ in the intersection of 
+two coordinate patches $U_i\cap U_j$,
+the two inhomogeneous coordinates for this point
+$\xi^k_{(i)}={z^k}/{z^i}$ and
+$\xi^k_{(j)}={z^k}/{z^j}$
+are related by the transition functions
+\begin{equation}
+\psi_{ij}\colon\quad \xi^k_{(j)}\quad\mapsto
+\quad\xi^k_{(i)} = \left( \frac{z^j}{z^i} \right)
+\xi^k_{(j)},
+\end{equation}
+which makes $\CP^n$ a nice smooth complex manifold.
+
+Inhomogeneous coordinates for $\CP^n$ will be used
+exclusively throughout the remainder of this dissertation.
+Consequently, I will adapt a slight abuse of notation to simplify
+many later expressions.
+\index{notation}
+The $n+1$ \emph{homogeneous} coordinates for a point in $\C^{n+1}$ will be expressed
+as $(z^0,z^1,\ldots,z^n)$, whereas the $n$ \emph{inhomogeneous} coordinates for the
+corresponding point in $\CP^n$ will be expressed, not as
+$(\xi^1_{(0)},\ldots,\xi^n_{(0)})$ in the $U_0$ coordinate patch, but
+simply as $(z^1,\ldots,z^n)$, with the coordinate patch implied.
+Nothing will be covered that is dependent upon which 
+particular coordinate patch
+is used.
+
+For more on complex manifolds and projective spaces
+see Nash\cite{Nash:?} and Nakahara\cite{Nakahara:90}.
 
 
 
 %--------------------------------------------------------------------------------   
 \subsection{The Fubini--Study Metric}
-\index{Complex Projective Space!Fubini--Study Metric}
+%\index{Complex Projective Space!Fubini--Study Metric}
+\index{complex!projective space!Fubini--Study metric}
 
-For any two vectors $X,Y\in T_p\C P^n$, we can define
-$g\colon T_p\C P^n \to T_p\C P^n$ by
-\begin{equation}
-g(X,Y) = \Omega(X,JY),
-\end{equation}
-where $\Omega$ is the K\"ahler form and $J$ is the complex structure.
-
-\mmm{fill this}
-For more on the following see Nash\cite{Nash:?} and Nakahara\cite{Nakahara:90}.
-The Fubini--Study metric can be given as
+%For any two vectors $X,Y\in T_p\C P^n$, we can define
+%$g\colon T_p\C P^n \to T_p\C P^n$ by
+%\begin{equation}
+%g(X,Y) = \Omega(X,JY),
+%\end{equation}
+%where $\Omega$ is the K\"ahler form and $J$ is the complex structure.
+%
+A natural Hermitian metric can be defined on complex projective
+space.\cite{Fubini:?,Study:?}
+\mmm{How is it natural?}
+The Fubini--Study metric can be given, in inhomogeneous coordinates, as
 \begin{equation}
 ds_{FS}^2 = g_{i\overline{j}}\, dz^i\otimes d\overline{z}^j,
 \end{equation}
@@ -242,6 +300,7 @@ g^{\overline{i}j} = \frac{1}{4}\left(
 \end{equation}
 The only non--vanishing Christoffel symbols are $\Gamma^a_{bc}$ and
 $\Gamma^{\overline{a}}_{\overline{b}\overline{c}}$ ( $=\overline{\Gamma^a_{bc}}$ ), 
+\index{complex!projective space!Christoffel symbols}
 so the geodesic equations become
 \begin{equation}
 \begin{split}
@@ -251,6 +310,7 @@ so the geodesic equations become
 \end{split}
 \label{e:geodesics}
 \end{equation}
+\index{complex!projective space!geodesics}
 Metric compatibility ($\nabla_kg_{i\overline{j}} = \nabla_{\overline{k}}
 g_{i\overline{j}} = 0$) insures
 \begin{equation}
