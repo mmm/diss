@@ -303,10 +303,11 @@ reduce the problem to a simpler one.
 
 Next, consider the function
 \begin{equation}
-f(a) = x^a\pmod{N}.
+f(a) = x^a\pmod{N},
 \label{e:shorfunc}
 \end{equation}
-The first few evaluations of this function will look like
+where $x$ is the integer chosen above.
+Evaluations of this function will look like
 \begin{equation}
 \begin{split}
 1,x,\ldots,x^{r-1},             &\,x^r,x^{r+1},\ldots\\
@@ -316,10 +317,14 @@ The first few evaluations of this function will look like
 \end{split}
 \end{equation}
 where the top row is just $f(a)$ and the bottom is reduced modulo $N$.
-The period of this function is just $r$.  This period is difficult to
-obtain classically -- requiring many function evaluations until a pattern
-is recognizable.  However, Shor's algorithm can efficiently compute this
-period.  What does this period have to do with factoring $N$?
+The number $r$, the smallest power where values start to 
+repeat, is then the period of the function $f$.
+This period is, in general, difficult to obtain classically -- 
+requiring many function evaluations until a pattern
+is recognizable.  However, Shor's algorithm can efficiently compute the
+period of a function such as $f$.  
+So, now the reader must wonder, what does this period have to do with 
+factoring $N$?
 
 In this algorithm, consider only even periods $r$.
 For randomly chosen $x$, the period $r$ of the function (\ref{e:shorfunc})
@@ -343,7 +348,8 @@ so that
 \label{e:product}
 \end{equation}
 This says one or the other of the factors in the product on the left 
-hand side of (\ref{e:product}) share a factor with $N$.  So, just
+hand side of (\ref{e:product}) share a factor with $N$.  
+An answer is now on the horizon.  To obtain this answer, just
 compute\footnote{ 
 \emph{Efficient} classical algorithms exist to compute the greatest
 common divisor of two numbers\cite{Hardy/Wright:79}.
@@ -357,7 +363,8 @@ and
 \gcd
 \left(x^\frac{r}{2} - 1, N \right).
 \end{equation}
-Any non--trivial divisor will be a factor of $N$.
+Any non--trivial divisor will be a factor of $N$,
+and hence a solution to the problem.
 
 %--------------------------------------------------------------------------------   
 \subsection{Shor's Algorithm}
@@ -371,7 +378,7 @@ with two $n$--bit zero--registers
 Next, as probably anticipated by now, comes a Hadamaard
 transformation on the first register 
 \begin{equation}
-\left( H\otimes 1 \right) \ket{0}\ket{0}
+\left( H\otimes 1 \right) \ket{0}\ket{0},
 \end{equation}
 leaving
 \begin{equation}
@@ -391,7 +398,7 @@ Act with this operator on (\ref{e:step2}) to get
 U_f \left( \sum_{x} \ket{x}\ket{0} \right)
 = \sum_{x} \ket{x}\ket{f(x)}.
 \end{equation}
-The quantum registers are now entangled\dots operations on
+The two quantum registers are now entangled\dots operations on
 one will affect the other.  For the next step, 
 perform a measurement 
 \begin{equation}
@@ -404,7 +411,17 @@ on the second register to get
 \end{equation}
 This has collapsed the first register into an equally weighted
 superposition of states $\ket{x}$ such that 
-$f(x) = c$.  All that's needed is the period of the function
+$f(x) = c$.  
+This is depicted in figure (\ref{fig:shor}).
+\begin{figure}[h]
+\begin{center}
+blah
+\caption{The period $r$ of the function $f$ can be obtained from
+the pre--image of a point $c$, $f^{-1}(c)$.}
+\label{fig:shor}
+\end{center}
+\end{figure}
+All that's needed is the period of the function
 $f$, so why not simply Fourier transform the first register
 to determine the period?
 
