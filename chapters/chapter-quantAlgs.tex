@@ -176,7 +176,7 @@ polynomial time on a quantum computer.
 
 Consider a function 
 \begin{equation}
-f\colon\lbrace 0,1\rbrace^n\to\lbrace 0,1\rbrace^n,
+f\colon\lbrace 0,1\rbrace^n\to\lbrace 0,1\rbrace^n
 \end{equation}
 that is 2--to--1 and periodic when viewed as a map 
 $\left(\Z_2\right)^n\to\left(\Z_2\right)^n$
@@ -198,7 +198,7 @@ The quantum solution to the problem starts with two zero registers
 \ket{0}\ket{0}.
 \end{equation}
 Now prepare an equally weighted superposition of all $n$-bit strings
-by using the Hadamaard transformation
+in the first register by using the Hadamaard transformation
 \begin{equation}
 \left(H\otimes\bf{1}\right)\ket{0}\ket{0} =
 \left(\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\right)\ket{0},
@@ -215,19 +215,21 @@ will collapse the first register into a superposition of all
 states $\ket{x_0}$ such that $f(x_0)=c$.  
 For the function specified in this algorithm, 
 there are two such values, $x_0$ and $x_0\oplus a$.
-The first register then should look like 
+After the measurement of the second register, 
+the first register then should look like 
 \begin{equation}
 \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr).
 \end{equation}
-At this point, a measurement of this first register tells
-nothing about $a$, but taking another Hadamaard transformation on
-the first register gives
+Note that, at this point, a measurement of this first register tells
+nothing about $a$.  However, taking another Hadamaard transformation 
+(see equation \ref{e:generalHadamaard})
+on the first register gives 
 \begin{equation}
 H \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr)=
 \,\frac{1}{\sqrt{2^{n+1}}}\sum_{y=0}^{2^n-1}
 \biggl[(-1)^{x_0\cdot y}+(-1)^{(x_0\oplus a)\cdot y}\biggr]\ket{y}.
 \end{equation}
-Notice that this is non--zero only for $a\cdot y=0$.  The first register
+This is non--zero only for $a\cdot y=0$, and so the first register
 can then be rewritten as
 \begin{equation}
 H \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr)
@@ -250,18 +252,6 @@ a\cdot y_n =&\, 0\\
 \end{split}
 \end{equation}
 for $a$.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -346,6 +336,10 @@ two qubits with intersecting lines}
 \caption{A controlled--controlled--\texttt{NOT} (\texttt{CCNOT}) gate}
 \end{center}
 \end{figure}
+
+
+
+
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Prime Factorization}
@@ -356,7 +350,18 @@ Shor\dots
 %--------------------------------------------------------------------------------   
 \section{Searching a Quantum Database}
 
-Grover\dots
+Grover\cite{Grover:96}\dots did some stuff!
+
+\subsubsection{classical search}
+\subsubsection{reflections -n- stuff}
+
+
+
+
+
+
+
+
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
