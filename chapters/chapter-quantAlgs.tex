@@ -227,6 +227,7 @@ of times to find $a$.
 %\mmm{prove this}
 
 The quantum solution to the problem starts with two zero registers
+(as defined in section (\ref{sssec:Hadamaard}))
 \begin{equation}
 \ket{0}\ket{0}.
 \end{equation}
@@ -529,7 +530,7 @@ the location of the item within the database is unknown.
 
 Items in the database can be enumerated by the states of a quantum system.
 In particular, a database containing $N$ items can be represented by an
-$N$--state system consisting of $n=\log(N)$ coupled 2--state systems
+$N$--state system consisting of $n\ge\log(N)$ coupled 2--state systems
 \begin{equation}
 \ket{\Psi} = \sum_{i=0}^{2^N-1} a_i\ket{i}.
 \end{equation}
@@ -639,7 +640,7 @@ considered an \textbf{oracle query}.
 
 In classical searches, an oracle query can either be a black box
 or given by an explicit decision function.  A simple and familiar 
-example of such a decision function might be a lexicographical compare
+example of such a decision function might be a lexicographical comparison
 of the name on a file folder to some desired name.
 
 For Grover's algorithm, the decision function is evaluated as a black box.
@@ -780,7 +781,9 @@ is the equally--weighted
 superposition (the ``average'') of all computational basis states.
 The diffusion transformation preserves $\ket{s}$, but flips 
 the sign of any vector orthogonal to $\ket{s}$\dots
-it \emph{rotates} a vector around $\ket{s}$.
+it \emph{rotates}\footnote{Of course, this is really a flip.. 
+it is a rotation only for certain dimensions.}
+a vector around $\ket{s}$.
 
 Now, rewrite (\ref{e:diffusion}) as
 \begin{equation}
@@ -1028,7 +1031,7 @@ Another extension of the simple quantum search is to start the search
 from an arbitrary distribution.
 Instead of starting with an 
 equally--weighted superposition of states, allow the search to run from any
-initial distribution.  This approach shows stability results for 
+initial distribution.  This approach shows the stability of 
 Grover's algorithm with respect to noise in the initial 
 setup\cite{Biham/Biham/Biron/Grassl/Lidar:98}.  
 

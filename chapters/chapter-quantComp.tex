@@ -41,20 +41,20 @@ to a completely different complexity class.  This problem can be solved
 in polynomial time on a quantum computer.  \ie, the time required to solve
 the problem scales as a polynomial in the size of the input (the number to
 be factored).  The fastest algorithm to solve the problem on a classical
-computer\footnote{The ``number field sieve'' requires 
-\begin{equation}
-\text{Running time} \approx \exp\left[ \left(\frac{64}{9}\right)^{\frac{1}{3}}
-\left(\ln n\right)^{\frac{1}{3}}
-\left(\ln \ln n\right)^{\frac{2}{3}}
-\right]
-\end{equation}
-to find the factors of $n$.} 
+computer%\footnote{The ``number field sieve'' requires 
+%\begin{equation}
+%\text{Running time} \approx \exp\left[ \left(\frac{64}{9}\right)^{\frac{1}{3}}
+%\left(\ln n\right)^{\frac{1}{3}}
+%\left(\ln \ln n\right)^{\frac{2}{3}}
+%\right]
+%\end{equation}
+%to find the factors of $n$.} 
 has a running time that is exponential in the size of the input.
 
 Consider finding the 65--digit factors of a 130--digit number.
 Today, this can be done in about a month using a network of hundreds 
 of computers.  From this result, we can estimate that it will take about 
-$10^10$ years to factor a 400--digit number using today's technology.
+$10^{10}$ years to factor a 400--digit number using today's technology.
 In fact, most popular cryptosystems today, for instance those used to 
 protect online credit card transactions, nuclear missle secrets, etc., 
 rely upon the fact that this particular problem is so intractably 
@@ -109,9 +109,9 @@ further as there are many interesting
 areas that, unfortunately, would be a bit far afield for the current work.
 In particular, I avoid such topics as: quantum information theory, 
 entanglement, optimal measurements, teleportation, quantum cloning,
-quantum cryptography (key distibution), and the issue of actually 
+quantum cryptography (key distribution), and the issue of actually 
 implementing a quantum computer.
-Additionally, I only briefly touch upon the extremely rich and interesting
+Additionally, I touch only briefly upon the extremely rich and interesting
 subject of quantum coding and error correction.  
 
 %I do need to discuss, however, the basics of
@@ -176,7 +176,7 @@ They encode the solution to a problem whose answer, based on
 the input, requires only a YES or NO.  There are many such
 decision problems that can be useful, but it is important to note
 that there are also many apparently non--decision--type problems 
-that can be transformed into decision problems.  
+that can be rephrased in terms of decision problems.  
 %Consider
 %\mmm{examples}
 
@@ -487,8 +487,8 @@ Preskill\cite{Preskill:98}, for example, addresses this in more detail.
 Note that a reversible circuit can simulate a circuit composed of 
 irreversible gates.  This can be done efficiently without many
 additional memory resources (bits) and without appreciable
-slowdown.  Since this can so easily be done, the complexity
-of a reversible circuit will essentially be the same as the
+slowdown.  Since this can be done so easily, the complexity
+of a reversible circuit will essentially be the same as for the
 irreversible circuit.
 
 \subsubsection{Quantum Circuits}
@@ -573,8 +573,8 @@ f(R) = \begin{cases}
 The rotation applied
 \begin{equation}
 \begin{split}
-R = -iR_x(\theta) =& (-i)\exp \left( i\frac{\theta}{2}\sigma_x \right)\\
-  =& (-i)\left( \cos\frac{\theta}{2} + i\sigma_x\sin\frac{\theta}{2} \right)
+R = R_x(\theta) =& \exp \left( i\frac{\theta}{2}\sigma_x \right)\\
+  =& \left( \cos\frac{\theta}{2} + i\sigma_x\sin\frac{\theta}{2} \right)
 \end{split}
 \end{equation}
 is a rotation about the $x$ axis by some angle $\theta$.
@@ -662,7 +662,7 @@ tensor product of one--dimensional Hadamaard transformations
 H= H_N= \bigotimes^N H_1.
 \end{equation}
 This is often used as the first step in many quantum algorithms.
-First, start with the \emph{zero register}
+First, start with the \emph{zero register} 
 \index{zero register}
 \begin{equation}
 \ket{\bf 0}=\ket{0\ldots 0} = \bigotimes^N\ket{0},

@@ -3,59 +3,99 @@
 \label{chap:conclusion}
 \index{Conclusion@\emph{Conclusion}}%
 
+
+In discussing results, the first thing to note is that
+a quantum computer sure would have been useful in actually
+performing this simulation.
+As Feynman noted\cite{Feynman:82}, simulating a quantum system
+by a classical computer requires an exponentially large amount
+of overhead.  This was clearly evident in this research.
+However, the work must be done.  Decoherence and the 
+experimental control and manipulation of different 
+physical devices introduce noise into a computation.  
+How much noise can the computation withstand before
+it fails?  Exactly how does a computation fail in the
+presence of various types of noise?
+Any means of getting a handle
+on the stability of these algorithms warrants attention.
+
+The current work uses a numerical simulation of
+a dynamical description of Grover's quantum search
+algorithm to determine the answers to some of these
+questions.
+
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{The Effects of Noise on Grover's Algorithm}
 
-\subsubsection{Noise does not slow the algorithm down}
+\begin{itemize}
+\item Noise does not slow the algorithm down.  It only reduces the
+probability that the algorithm will succeed.  This is shown in 
+figure \ref{fig:humps}.
+\item The maximum amount of noise that the algorithm can tolerate,
+the point at which the probability of success falls below $\frac{1}{2}$,
+scales as $\lbrace\text{number of qubits}\rbrace^{-3}$.  This is shown in
+figure \ref{fig:results}
+%, and falls at a somewhat faster rate than 
+%previous results (with a much simpler model)\cite{Pablo-Norman/Ruiz-Altaba:99}
+%imply.
+\end{itemize}
+
+\begin{figure}[h]
+\begin{center}
+\epsfig{file=figures/humps.pstex,height=3.5in,width=4.5in}
+\end{center}
+\caption{Probability of success -v- time for different noise levels and different numbers
+of qubits.  Black is a run without noise, red is the same run with noise.  Notice that
+where the peaks occur in ``time'' do not change due to noise.  The relative times of the
+peaks are artificial in this graph.}
+\label{fig:humps}
+\end{figure}
 
 \begin{figure}[h]
 \begin{center}
 \epsfig{file=figures/max-noise.pstex,height=3.5in,width=4.5in}
 \end{center}
-\caption{Maximum tolerable noise as a function of the number of qubits.}
+\caption{Maximum tolerable noise as a function of the number of qubits.
+This curve is approximately fit by $y = 0.5812 x^{-2.886}$.}
+\label{fig:results}
 \end{figure}
+%y = 0.58123479 N^{-2.886221}
 
-\begin{equation}
-y = 0.58123479 N^{-2.886221}
-\end{equation}
-
-
-(show pictures with humps)
-
-Will have:
+Appendix \ref{chap:data} contains:
 \begin{itemize}
 \item Bures-v-time for different noise levels and different numbers of qubits.
-\item target coefficients -v- time for different noise levels and different numbers
-of qubits.
-\item maximum target coefficient -v- noise level for given number of qubits.
-\item maximum target coefficient -v- number of qubits for given noise levels.
+%\item Probability of success -v- time for different noise levels and different numbers
+%of qubits.
+\item maximum probability of success -v- noise level for given number of qubits.
+\item maximum probability of success -v- number of qubits for given noise levels.
 \end{itemize}
-Want the max allowed noise so that maximum target coefficient is still above 
-$\frac{1}{2}$.  Really want max allowed noise so that the algorithm is still
-better (faster?) than the classical version.  How does this whole
-$P_{\text{cutoff}}$ thing work?\cite{Pablo-Norman/Ruiz-Altaba:99}
 
-Show how the time to finish remains the same\dots How?
-
+%Want the max allowed noise so that maximum target coefficient is still above 
+%$\frac{1}{2}$.  Really want max allowed noise so that the algorithm is still
+%better (faster?) than the classical version.  How does this whole
+%$P_{\text{cutoff}}$ thing work?
+%\cite{Pablo-Norman/Ruiz-Altaba:99}
 
 
 %--------------------------------------------------------------------------------   
 \subsection{Physical Implications}
 
 \begin{itemize}
-\item How does noise in gates propagate out?
-\item Can anything be said about chaos?
-\item How does this compare with bit--flips?
+\item Give an example where the physical noise ends up as noise
+in the state vector... should be easy.
+\item How does noise in a gate propagate out?
 \end{itemize}
-
 
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Quantum Error Correction}
 
-\subsubsection{ECCs}
+\begin{itemize}
+\item ECCs
+\item How does this compare with bit--flips?
+\end{itemize}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
@@ -63,6 +103,6 @@ Show how the time to finish remains the same\dots How?
 
 \begin{enumerate}
 \item How much do QECC's help?
-\item Decoherence free subspaces?
-\item Shor?
+\item Decoherence--free subspaces?
+\item Shor dynamically?
 \end{enumerate}
