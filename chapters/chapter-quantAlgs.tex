@@ -323,6 +323,7 @@ Grover's algorithm is briefly outlined in figure (\ref{fig:grover}).
                 by $\pi$ radians.
                 \item Flip the state about its ``average'' by applying
                 what Grover refers to as the diffusion transform, $D\ket{S}$.
+                \label{fig:grover:diffusion}
             \end{enumerate}
             \item Finally, measure the resulting state.  This should be the
             desired state with probability of at least $\frac{1}{2}$.
@@ -499,24 +500,49 @@ because you don't initially know where to put the phase shift.
 This is not a problem because it \emph{is} possible to write an
 algorithm, even classically, that examines each input and tests
 for successful (``yes'') function evaluation.  This issue
-has already been resolved by the operator 
+has already been resolved by simply writing the
+transformation as the operator 
 $\bigl( {\bf 1} - 2\ketbra{\omega}{\omega} \bigr)$.
 
 
 \subsubsection{Inversion About the Average}
 \label{ssec:diffusion}
 
+In step (\ref{fig:grover:diffusion}) of Grover's algorithm
+(figure \ref{fig:grover}) is an inversion of the state about
+the {\sl average} state.  This so called 
+\emph{diffusion transformation}
+looks like
+\begin{equation}
+\begin{pmatrix}
+    \frac{2-N}{N} & \frac{2}{N} & \cdots & \frac{2}{N} \\
+    \frac{2}{N}   & \frac{2-N}{N} & &  \\
+    \vdots &  & \ddots & \vdots \\
+    \frac{2}{N}   & \cdots && \frac{2-N}{N} 
+\end{pmatrix}.
+\end{equation}
+
+
 \subsubsection{Measurement}
+
+The final step in Grover's algorithm is simply to measure the
+resulting state after the appropriate number of iterations.
+The desired state should be measured with probability of at
+least $\frac{1}{2}$.
+A careful analysis of these two important aspects of the 
+algorithm is presented in the following section.
 
 %--------------------------------------------------------------------------------   
 \subsection{Complexity Analysis}
 
+\mmm{probability of measuring desired state as a function of
+number of iterations}
 
 \mmm{add in discrete sine and cosine stuff}
 
+\subsubsection{A Classical Search}
 
-\subsubsection{classical search}
-\subsubsection{reflections -n- stuff}
+\subsubsection{Grover is Optimal}
 
 \mmm{Zalka says Grover is least time... use this to show Grover geodesic}
 
@@ -525,10 +551,6 @@ $\bigl( {\bf 1} - 2\ketbra{\omega}{\omega} \bigr)$.
 
 \subsubsection{Multisearch}
 \subsubsection{Start from an Arbitrary Initial Distribution}
-
-
-
-
 
 
 %--------------------------------------------------------------------------------   

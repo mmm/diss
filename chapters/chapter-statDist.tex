@@ -20,7 +20,7 @@ Optimization of the statistical distinguishability of quantum
 states leads to a natural Hermitian metric on the space of density
 operators\cite{Braunstein/Caves:94}.  This metric is, for pure states,
 the usual Fubini--Study metric on projective Hilbert space\cite{Gibbons:92}.
-It can be extended to general density operators with little difficulty.
+It can be extended to general density operators\cite{Braunstein/Caves:94}.
 
 %--------------------------------------------------------------------------------   
 \subsection{Classical Statistical Distance}
@@ -744,4 +744,24 @@ along with Hermitian conjugates $\dot{\overline{z}}=\overline{w}$ and
 \section{Mixed States}
 \index{mixed states}
 
-\mmm{include distance here}
+Based on the work of Bures\cite{Bures:69},
+Uhlmann\cite{Uhlmann:76} obtained an explicit expression for the 
+distance between two mixed--state density matrices.
+Consider two density matrices $\rho_1$ and $\rho_2$.  The 
+distance between them is given by
+\begin{equation}
+d_{\text{Bures}}\left(\rho_1,\rho_2\right)
+= \sqrt{2} \left\lbrace
+    1 - \tr\left[ 
+            \left( \rho_1^\frac{1}{2} \rho_2 \rho_1^\frac{1}{2}
+            \right)^\frac{1}{2}
+           \right]
+\right\rbrace^\frac{1}{2}.
+\end{equation}
+Note that, for two neighboring density matrices, 
+$\rho$ and $\rho + d\rho$,
+this distance coincides with the Riemannian metric on the
+space of density matrices (not just pure) obtained by
+Braunstein and Caves\cite{Braunstein/Caves:94}.
+The finite distance described above is sufficient 
+for purposes of this dissertation.
