@@ -615,13 +615,13 @@ The outcome of this measurement is the result of the computation.
 Before more is discussed about quantum algorithms and the actual
 computations involved, there are still a few more basic tools
 to be developed.  Practically every computation involves the use of
-at least one Hadamaard transformation.
+at least one Hadamard transformation.
 
-\subsubsection{The Hadamaard Transformation}
-\label{sssec:Hadamaard}
-\index{Hadamaard transformation}
+\subsubsection{The Hadamard Transformation}
+\label{sssec:Hadamard}
+\index{Hadamard transformation}
 
-The one--dimensional Hadamaard transformation takes a quantum bit into the
+The one--dimensional Hadamard transformation takes a quantum bit into the
 superposition given by
 \begin{equation}
 \begin{split}
@@ -651,13 +651,13 @@ H_1
     \put(65,7){$\frac{1}{\sqrt{2}}\left(\ket{0}-\ket{1}\right)$}
     \put(65,37){$\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)$}
 \end{picture}
-\caption{A quantum circuit applying a Hadamaard transformation to two qubits.}
+\caption{A quantum circuit applying a Hadamard transformation to two qubits.}
 \end{center}
 \end{figure}
 
-The version of the Hadamaard transformation that sees the most use is
-the $N$--dimensional Hadamaard transformation defined as the $N$--fold
-tensor product of one--dimensional Hadamaard transformations
+The version of the Hadamard transformation that sees the most use is
+the $N$--dimensional Hadamard transformation defined as the $N$--fold
+tensor product of one--dimensional Hadamard transformations
 \begin{equation}
 H= H_N= \bigotimes^N H_1.
 \end{equation}
@@ -675,9 +675,9 @@ H\ket{\bf 0} =& H_N\ket{0\ldots 0}\\
 =& \frac{1}{\sqrt{2^N}}\biggl\lbrace \ket{0\ldots 0} + \ket{0\ldots 01} +
 \quad\cdots\quad + \ket{1\ldots 1}\biggr\rbrace.
 \end{split}
-\label{e:hadamaard}
+\label{e:hadamard}
 \end{equation}
-Now, each of the kets on the bottom--RHS of equation (\ref{e:hadamaard})
+Now, each of the kets on the bottom--RHS of equation (\ref{e:hadamard})
 can be thought of as just a number expressed in binary. \ie,
 \begin{equation}
 \begin{split}
@@ -705,14 +705,14 @@ Since the following are equivalent
 %(0,0,0,\ldots,1,0)\mapsto f(0,0,0,\ldots,1,0),
 %\end{equation}
 one can simply think of this function as $x\mapsto f(x)$.
-So, as a first step, the Hadamaard transformation acts on a quantum 
+So, as a first step, the Hadamard transformation acts on a quantum 
 zero register, preparing it in a superposition of all possible values 
 of $x$
 \begin{equation}
 H\ket{\bf 0} = \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1} \ket{x}.
 \end{equation}
 
-A Hadamaard transformation can also act on a {\sl general} state 
+A Hadamard transformation can also act on a {\sl general} state 
 $\ket{x}=\ket{x_1\ldots x_N}$
 (not necessarily all 0's), which can be written as
 \begin{equation}
@@ -730,11 +730,11 @@ H_1\ket{x_i}\\
 \quad\mapsto\quad&
 \frac{1}{\sqrt{2^N}} \sum_{y=0}^{2^N-1} (-1)^{x\cdot y}\ket{y},
 \end{split}
-\label{e:generalHadamaard}
+\label{e:generalHadamard}
 \end{equation}
 where $x\cdot y$ denotes a dot product over $\left(\Z_2\right)^N$, or
 simply a binary dot product.  Note that the final form of equation
-(\ref{e:generalHadamaard}) is actually the Fourier transform of $\ket{x}$
+(\ref{e:generalHadamard}) is actually the Fourier transform of $\ket{x}$
 over $\left(\Z_2\right)^N$.
 
 

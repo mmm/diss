@@ -36,8 +36,7 @@ this problem, a feat to which many in computer science aspire.
 The following sections outline several aspects of quantum
 algorithms.  A few existing algorithms are described, along
 with the basic framework needed to determine their computational
-complexity.  An approach to possible new algorithms is then 
-discussed.
+complexity.  
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
@@ -168,7 +167,7 @@ Again, construct the unitary operator
 U_f\colon\ket{x}\ket{0}\to\ket{x}\ket{f(x)}.
 \end{equation}
 Then, via a Hadamard tranformation ({\it c.f.}, section
-(\ref{sssec:Hadamaard})), 
+(\ref{sssec:Hadamard})), 
 choose the input register to 
 be in the state
 \begin{equation}
@@ -227,12 +226,12 @@ of times to find $a$.
 %\mmm{prove this}
 
 The quantum solution to the problem starts with two zero registers
-(as defined in section (\ref{sssec:Hadamaard}))
+(as defined in section (\ref{sssec:Hadamard}))
 \begin{equation}
 \ket{0}\ket{0}.
 \end{equation}
 Now prepare an equally weighted superposition of all $n$-bit strings
-in the first register by using the Hadamaard transformation
+in the first register by using the Hadamard transformation
 \begin{equation}
 \left(H\otimes\bf{1}\right)\ket{0}\ket{0} =
 \left(\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\right)\ket{0},
@@ -255,8 +254,8 @@ the first register then should look like
 \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr).
 \end{equation}
 Note that, at this point, a measurement of this first register tells
-nothing about $a$.  However, taking another Hadamaard transformation 
-(see equation \ref{e:generalHadamaard})
+nothing about $a$.  However, taking another Hadamard transformation 
+(see equation \ref{e:generalHadamard})
 on the first register gives 
 \begin{equation}
 H \frac{1}{\sqrt{2}}\bigl(\ket{x_0}+\ket{x_0\oplus a}\bigr)=
@@ -382,7 +381,7 @@ with two $n$--bit zero--registers
 \begin{equation}
 \ket{0}\ket{0}.
 \end{equation}
-Next, as probably anticipated by now, comes a Hadamaard
+Next, as probably anticipated by now, comes a Hadamard
 transformation on the first register 
 \begin{equation}
 \left( H\otimes 1 \right) \ket{0}\ket{0},
@@ -587,7 +586,7 @@ Grover's algorithm is briefly outlined in figure (\ref{fig:grover}).
 \end{figure}
 In the first step, an equally weighted superposition of all possible
 states is, of course, obtained by hitting the $n$-dimensional zero 
-register with the Hadamaard transformation
+register with the Hadamard transformation
 \begin{equation}
 H\ket{0} = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x} 
 = 

@@ -83,7 +83,7 @@ When there are countably infinite outcomes, the notion of statistical
 distance becomes
 \begin{equation}
 d(p_1,p_2) = \cos^{-1}\left\lbrack 
-    \sum_{i=1}^\infty
+    \sum_{i}
     \sqrt{p^{(i)}_1} \sqrt{p^{(i)}_2} 
 \right\rbrack.
 \end{equation}
@@ -438,7 +438,10 @@ Physically, freedom of normalization and overall phase allow
 \end{equation}
 to be written simply as
 \begin{equation}
-\ket\Psi  =\, \ket{0} + z_1\ket{1} + \cdots + z_n\ket{n},
+\ket\Psi  =\, \frac{1}{\sqrt{1+|z|^2}}
+\biggl(
+\ket{0} + z_1\ket{1} + \cdots + z_n\ket{n}
+\biggr),
 \end{equation}
 with
 \begin{equation}

@@ -10,7 +10,8 @@ performing this simulation.
 As Feynman noted\cite{Feynman:82}, simulating a quantum system
 by a classical computer requires an exponentially large amount
 of overhead.  This was clearly evident in this research.
-However, the work must be done.  Decoherence and the 
+
+Decoherence and the 
 experimental control and manipulation of different 
 physical devices introduce noise into a computation.  
 How much noise can the computation withstand before
@@ -24,23 +25,14 @@ a dynamical description of Grover's quantum search
 algorithm to determine the answers to some of these
 questions.
 
+\pagebreak
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{The Effects of Noise on Grover's Algorithm}
 
-\begin{itemize}
-\item Noise does not slow the algorithm down.  It only reduces the
+Noise does not slow the algorithm down.  It only reduces the
 probability that the algorithm will succeed.  This is shown in 
 figure \ref{fig:humps}.
-\item The maximum amount of noise that the algorithm can tolerate,
-the point at which the probability of success falls below $\frac{1}{2}$,
-scales as $\lbrace\text{number of qubits}\rbrace^{-3}$.  This is shown in
-figure \ref{fig:results}
-%, and falls at a somewhat faster rate than 
-%previous results (with a much simpler model)\cite{Pablo-Norman/Ruiz-Altaba:99}
-%imply.
-\end{itemize}
-
 \begin{figure}[h]
 \begin{center}
 \epsfig{file=figures/humps.pstex,height=3.5in,width=4.5in}
@@ -52,6 +44,14 @@ peaks are artificial in this graph.}
 \label{fig:humps}
 \end{figure}
 
+\pagebreak
+
+\noindent
+Define the maximum amount of noise that the algorithm can tolerate
+as the point at which the probability of success falls below $\frac{1}{2}$.
+For $n$ qubits,
+this maximum amount of tolerable noise falls off as $\frac{1}{n^3}$, 
+as shown in figure \ref{fig:results}.
 \begin{figure}[h]
 \begin{center}
 \epsfig{file=figures/max-noise.pstex,height=3.5in,width=4.5in}
@@ -62,6 +62,9 @@ This curve is approximately fit by $y = 0.5812 x^{-2.886}$.}
 \end{figure}
 %y = 0.58123479 N^{-2.886221}
 
+\pagebreak
+
+\noindent
 Appendix \ref{chap:data} contains:
 \begin{itemize}
 \item Bures-v-time for different noise levels and different numbers of qubits.
@@ -88,14 +91,14 @@ in the state vector... should be easy.
 \end{itemize}
 
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Quantum Error Correction}
-
-\begin{itemize}
-\item ECCs
-\item How does this compare with bit--flips?
-\end{itemize}
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Quantum Error Correction}
+%
+%\begin{itemize}
+%\item ECCs
+%\item How does this compare with bit--flips?
+%\end{itemize}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
@@ -103,6 +106,10 @@ in the state vector... should be easy.
 
 \begin{enumerate}
 \item How much do QECC's help?
+\begin{itemize}
+\item ECCs
+\item How does this compare with bit--flips?
+\end{itemize}
 \item Decoherence--free subspaces?
 \item Shor dynamically?
 \end{enumerate}

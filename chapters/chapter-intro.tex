@@ -128,16 +128,23 @@ If $x$ becomes $\ket{x}$, and then the value of the function is just
 another integer represented on the computer by $\ket{f(x)}$.
 How can $f(x)$ be evaluated?  How can the state $\ket{f(x)}$ be
 obtained from the state $\ket{x}$?  Well, closed quantum systems 
-evolve by unitary transformations, so a unitary operator
+evolve by unitary transformations, so an operator such as
 \begin{equation}
 {\bf U_f}\ket{x} = \ket{f(x)}
 \end{equation}
-just might be a good start!
-Actually, a better approach is to take
+just might be a good start.
+Actually, the unitarity of the above operator is dependent upon
+properties of the function $f$.
+A better approach is to take the operator
 \begin{equation}
-{\bf U_f}\ket{x}\ket{0} = \ket{x}\ket{f(x)}
+{\bf U_f}\ket{x}\ket{0} = \ket{x}\ket{f(x)},
 \end{equation}
-which is reversible.  Exactly how such unitary operators can be 
+or really
+\begin{equation}
+{\bf U_f}\ket{x}\ket{a} = \ket{x}\ket{f(x)\oplus a}\qquad\text{(any $a$)},
+\end{equation}
+which is unitary no matter the function used.
+Exactly how such unitary operators can be 
 constructed is covered in detail later in 
 chapter \ref{chap:quantumComputation}.
 

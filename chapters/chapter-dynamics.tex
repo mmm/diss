@@ -17,9 +17,9 @@ and show how it is used in an analysis of the complexity of the algorithm.
 
 Consider the discrete action of Grover's algorithm as described in the end of
 section (\ref{sec:grover}).  This will describe a search for \emph{one},
-$\ket\omega$,
+state $\ket\omega$,
 out of a list of $N$ states.  At any given step in the process, the
-quantum register is in the state
+quantum database is in the state
 \begin{equation}
 \ket{\Psi} = k\ket{\omega} + \sum_{j\in\omega_\perp}l\ket{j},
 \end{equation}
@@ -34,6 +34,7 @@ l_{i+1} =& -\frac{2}{N}k_i + \frac{N-2}{N}l_i.
 \end{equation}
 
 \begin{prop}
+\label{prop:sincos}
 The coefficients $k$ and $l$ in (\ref{e:discsincos}) obey
 \begin{equation}
 \begin{split}
@@ -122,16 +123,39 @@ l_{i+1} =& l_i\frac{N-2}{N} -k_i\frac{2}{N}.
 \end{equation}
 Since this is (\ref{e:discsincos}) as expected, $j\Rightarrow j+1$.
 \end{proof}
+Now, the cyclical nature of this evolution means that the
+algorithm must be stopped manually when the probability 
+for success will be high.
+Proposition \ref{prop:sincos} allows the ``stopping time''
+for the algorithm to be easily estimated.  The expressions 
+for $k$ and $l$ in (\ref{e:sincos}) take extreme values 
+when
+\begin{equation}
+(2i+1)\theta = \frac{\pi}{2},
+\end{equation}
+and so, along with the fact that $\theta\sim\frac{1}{\sqrt{N}}$ 
+for large $N$, 
+the algorithm must be stopped in about 
+$\lfloor\frac{\pi}{4}\sqrt{N}\rfloor$ iterations.
+For a more detailed analysis of stopping time for Grover's
+algorithm (and multisearch too) see \cite{Grover:96a,Boyer/Brassard/Hoyer/Tapp:96}.
+It should also be noted that
+Grover's algorithm has been 
+shown\cite{Bennet/Brassard/Bernstein/Vazirani:97,Zalka:97}
+to be optimal.  \ie, there are no other search algorithms
+more efficient than Grover.
 
-%--------------------------------------------------------------------------------   
-\subsection{Grover is Optimal}
 
-\mmm{add Zalka stuff and multisearch stopping time (from Boyer et al) here}
+
+%%--------------------------------------------------------------------------------   
+%\subsection{Grover is Optimal}
+%
+%\mmm{add Zalka stuff and multisearch stopping time (from Boyer et al) here}
 
 %--------------------------------------------------------------------------------   
 \subsection{Grover is a Geodesic}
 
-Section (\ref{ssec:sincos}) expressed Grover's algorithm in terms of
+Earlier in this chapter Grover's algorithm was expressed in terms of
 discrete recurrence relations.  In the algorithm, the coefficients of
 the state
 \begin{equation}
@@ -199,8 +223,7 @@ to imbed Grover's algorithm
     \qbezier(25,35)(70,70)(175,60)
 \end{picture}
 \caption{Grover's algorithm can be embedded in a continuous
-path in state space.  Note that this path coincides with the large
-database limit of the algorithm and is a geodesic of the Fubini--Study
+path in state space.  Note that this path is a geodesic of the Fubini--Study
 metric.}
 \label{fig:contGrover}
 \end{center}
@@ -308,7 +331,10 @@ and so the entire Grover iteration can be written
 \right\rbrace.
 \end{split}
 \end{equation}
-
+This should help in finding a Hamiltonian that generates 
+the Grover evolution.  
+This might prove useful in an analytical stability analysis
+of Grover's algorithm, but this has yet to be worked out.
 
 
 
@@ -321,25 +347,27 @@ and so the entire Grover iteration can be written
 
 The primary model used in this dissertation describes 
 Grover's algorithm as a geodesic of the Fubini--Study metric 
-as discussed in the previous section.% \ref{sec:sincos}.
+as discussed in the previous section.
+A numerical model of the algorithm is developed to determine
+how the algorithm behaves in the presence of noise.
 
-%--------------------------------------------------------------------------------   
-\subsection{Linear Stability Analysis}
-
-Inspection of the geodesic equations of motion 
-(\ref{e:detailedGeodesics}) yields a fixed point about the 
-origin.  No other fixed points are expected. 
-The Jacobian of the evolution vanishes near the origin, and
-so the equations of motion of the linearized problem become
-the trivial geodesic equations for a flat metric.
-This result is not particularly useful in characterizing how 
-the algorithm will behave, at finite step size, in a noisy 
-environment.  
-A method of stability analysis
-is therefore needed that does not rely upon a linearization
-of the problem.  This gets quite difficult to do in general,
-so a numerical approach is warranted.
-
+%%--------------------------------------------------------------------------------   
+%\subsection{Linear Stability Analysis}
+%
+%Inspection of the geodesic equations of motion 
+%(\ref{e:detailedGeodesics}) yields a fixed point about the 
+%origin.  No other fixed points are expected. 
+%The Jacobian of the evolution vanishes near the origin, and
+%so the equations of motion of the linearized problem become
+%the trivial geodesic equations for a flat metric.
+%This result is not particularly useful in characterizing how 
+%the algorithm will behave, at finite step size, in a noisy 
+%environment.  
+%A method of stability analysis
+%is therefore needed that does not rely upon a linearization
+%of the problem.  This gets quite difficult to do in general,
+%so a numerical approach is warranted.
+%
 %--------------------------------------------------------------------------------   
 \subsection{A Numerical Model of Grover's Algorithm}
 
@@ -400,7 +428,8 @@ that can be introduced, regardless of the source or if the noise
 is Hamiltonian or non-Hamiltonian.
 
 In order to faithfully bring noise into the numerical model of Grover's 
-algorithm, mixed states must be represented in that model.  
+algorithm, mixed states must be represented in that model
+(see section \ref{ssec:mixedstate}).  
 Mixed state density matrices can be written as
 \begin{equation}
 \rho = \sum\lambda_i\rho_i,
@@ -413,23 +442,22 @@ Without noise,
 the algorithm happily evolves along the shell of pure states.
 When noise is added in, the state will be taken off of the shell 
 of pure states and ``in'' via a slight mixture of other pure states.
+These states are chosen orthogonal to the direction of the target
+state in the search, which result in the state moving in a physically
+realistic (inward) direction throughout the simulation.
 
-Try two different models\dots
-\begin{enumerate}
-\item Run density matrices.  Take finite Grover iterations, then add
-infinitesimal random Hermitian matrices.  This will model some general
-noise in Grover(?). This will take pure to mixed states.
-\item Represent mixed state density matrices as
-\begin{equation}
-\rho = \sum\lambda_i\rho_i
-\end{equation}
-and let the $\rho_i$ flow as pure states.  Add in noise to $\lambda$s
-{\sl and} to the $\rho_i$ evolutions.
-\end{enumerate}
+The simulation simultaneously runs two states that start on the shell
+as pure states\dots one with noise, one without.
+At several times during the run, the Bures distance between the
+two states can be calculated (\ref{sec:BuresData}), and the
+probability of measuring the target state for each displayed
+(figure \ref{fig:humps}).  Data for several runs can be collected
+and compiled to give information about the stability of the algorithm.
 
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Other Quantum Algorithms}
-
-\mmm{can Shor's algorithm be treated dynamically?}
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Other Quantum Algorithms}
+%
+%\mmm{can Shor's algorithm be treated dynamically?}
+%
