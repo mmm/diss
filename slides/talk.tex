@@ -1,11 +1,357 @@
 \documentclass{slides}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{amsmath,amsthm,amsfonts,amscd} 
 
+\include{mmm_macros}
 
 \begin{document}
 
+\begin{center}
+\textbf{Noise in Grover's Quantum Search Algorithm}\\
+\bigskip
+\bigskip
+{An Overview}
+\end{center}
+
+\begin{itemize}
+\item Why Quantum Computers?
+\item Shor's Algorithm.
+\item Grover's Algorithm.
+\item Modelling Noise.
+\item Results.
+\end{itemize}
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{Why Quantum Computers?}
+\end{center}
+
+The function $f\colon\Z\to\Z$,
+when represented on a classical computer, where
+\begin{equation*}
+x=(\underbrace{0110\ldots0}_{n\text{ bits}}) \in\Z_{2^n},
+\end{equation*}
+becomes $f\colon\Z_{2^n}\to\Z_{2^n}$
+\begin{equation*}
+x\quad\mapsto\quad f(x).
+\end{equation*}
+\begin{itemize}
+\item Is this function constant?
+\item Is this function monotonic?
+\item Is this function periodic?  If so, find the period.
+\end{itemize}
+Questions such as these are \emph{very} difficult to answer.
+
+\begin{center}
+{\sl Can we do better?}
+\end{center}
+
+\pagebreak
+
+Represent an integer $x$ by the state of some quantum system
+\begin{equation*}
+\begin{split}
+\ket{x}=&\ket{\underbrace{0110\ldots0}_{n\text{ qubits}}}\\
+ =& \ket{0}\otimes
+             \ket{1}\otimes\ldots,
+%             \ket{1}\otimes
+%             \ket{0}\otimes\ldots,
+\end{split}
+\end{equation*}
+where
+\begin{equation*}
+\begin{split}
+    \ket{1} =& \,\ket{\uparrow}\\
+    \ket{0} =& \,\ket{\downarrow}.
+\end{split}
+\end{equation*}
+
+Now, evaluating a function $f$ should consist of some physical
+process taking the state $\ket{x}$ to some
+other state $\ket{f(x)}$.  This is given by some unitary
+operator
+\begin{equation*}
+{\bf U_f}\ket{x}\ket{0} = \ket{x}\ket{f(x)}.
+\end{equation*}
+
+\begin{center}
+Big Deal.  
+
+{\sl Does this really change anything?}
+\end{center}
+
+\pagebreak
+
+\begin{center}
+{\bf Yes!}
+\end{center}
+
+%A gate in a classical computer can only operate on a bit in a 
+%state of either 1 or 0.
+%
+%A gate in a quantum computer can also act on a qubit in a state 
+%of $\ket{1}$ or $\ket{0}$.  
+%However, a quantum gate can also act on a qubit
+%whose state is some superposition $a\ket{0}+b\ket{1}$ of $\ket{0}$
+%and $\ket{1}$.
+
+A \emph{quantum} gate can act on a state in a superposition
+%$a\ket{0}+b\ket{1}$ 
+\begin{equation*}
+\frac{1}{\sqrt{|a|^2+|b|^2}}\left(a\ket{0}+b\ket{1}\right)
+\end{equation*}
+of $\ket{0}$
+and $\ket{1}$.
+
+Consider the equally--weighted superposition of all possible 
+integers $x\in 2^n$
+\begin{equation*}
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1} \ket{x}.
+\end{equation*}
+
+Now, evaluate the function $f$
+\begin{equation*}
+{\bf U_f} \left\lbrack
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{0}
+\right\rbrack
+= 
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{f(x)}.
+\end{equation*}
+
+All information about the function is obtained after a single
+function evaluation!
+
+\pagebreak
+
+\begin{center}
+\textbf{Finding the period of a function}
+\end{center}
+
+%Given some periodic function $f$, evaluate the function 
+Given some periodic function $f$:
+\begin{enumerate}
+\item Evaluate the function 
+(as before) on an equally weighted superposition of all 
+inputs 
+\begin{equation*}
+{\bf U_f} \left\lbrack
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{0}
+\right\rbrack
+= 
+\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x}\ket{f(x)}.
+\end{equation*}
+\item Extract information about the period by performing
+a measurement
+\begin{equation*}
+\bigl(
+{\bf 1}\otimes\ketbra{c}{c}
+\bigr)
+\sum_{x=0}^{2^n-1}\ket{x}\ket{f(x)}
+= \sum_{\lbrace x|f(x)=c\rbrace} \ket{x}\ket{c},
+\end{equation*}
+\item Obtain the period by taking a Fourier
+transform of the first register.
+\end{enumerate}
+
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{Shor's Algorithm}\\
+\bigskip
+Factoring Large Integers
+\end{center}
+
+\pagebreak
+
+\begin{center}
+\textbf{Shor's Algorithm}\\
+\bigskip
+An Example
+\end{center}
+
+%Consider some integer $N=pq>>1$, where $p$ and $q$ are prime.
+Take the number $N=91$ and the function
+\begin{equation*}
+f(x) = 3^x\pmod{91}.
+\end{equation*}
+\begin{flushleft}
+\begin{tabular}{rrrrrrrrl}
+x:& 0,& 1,& 2,& 3,& 4,& 5,& 6,& \dots\\
+$3^x$:& 1,& 3,& 9,& 27,& 81,& 243,& 729,& \dots\\
+%$3^x\pmod{91}$:& 1,& 3,& 9,& 27,& 81,& 61,& 1,& \dots
+$f(x)$:& 1,& 3,& 9,& 27,& 81,& 61,& 1,& \dots
+\end{tabular}
+\end{flushleft}
+By inspection, the period of $f$ is 6, and so 
+\begin{equation*}
+\begin{split}
+3^6- 1\cong&\ 0 \pmod{91}\\
+\left(3^3+1\right)
+\left(3^3-1\right)
+\cong&\ 0 \pmod{91}\\
+(28)(26)\cong&\ 0\pmod{91}.
+\end{split}
+\end{equation*}
+This implies that either
+\begin{equation*}
+\gcd\left(91,26\right) = 13
+\end{equation*}
+or
+\begin{equation*}
+\gcd\left(91,28\right) = 7
+\end{equation*}
+will be a non--trivial factor of 91.
+
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{Grover's Algorithm}\\
+\bigskip
+Searching a Quantum Database
+\end{center}
+
+\pagebreak
+
+\begin{center}
+\textbf{Grover's Algorithm}\\
+\bigskip
+Searching a Quantum Database
+\end{center}
+
+Represent a database of $N=2^n$ items by an $N$--state system
+consisting of $n$ coupled qubits.  Then the items in the
+database can be enumerated by a state $\ket{x}$ of this system.
+
+Grover's search algorithm starts with the database in an
+equally weighted superposition of all states
+
+and then gradually amplifies the coefficient of the desired state
+while simultaneously suppressing the coefficients of all other
+states.
 
 
 
+
+
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{Modelling Noise}
+\end{center}
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{Results}
+\end{center}
+
+\begin{center}
+\epsfig{file=../figures/humps.pstex,height=3.5in,width=4.5in}
+\end{center}
+%{Probability of success -v- time for different noise levels and different numbers
+%of qubits.  Black is a run without noise, red is the same run with noise.  Notice that
+%where the peaks occur in ``time'' do not change due to noise.  The relative times of the
+%peaks are artificial in this graph.}
+
+\begin{center}
+\epsfig{file=../figures/max-noise.pstex,height=3.5in,width=4.5in}
+\end{center}
+
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{Topics for Further Study}
+\end{center}
+
+\begin{itemize}
+\item What about quantum error correction?
+\item What about decoherence--free subspaces?
+\item Can Shor be described dynamically?
+\end{itemize}
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+%extra slides
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{How does the QFT find the period?}
+\end{center}
+
+\pagebreak
+
+%-----------------------------------------------------------------
+
+\begin{center}
+\textbf{What do the geodesic equations look like?}
+\end{center}
+
+The geodesic equations of motion come from
+\begin{equation*}
+\begin{split}
+    \ddot{z}^l + \Gamma^l_{ik}\dot{z}^i\dot{z}^k =&\, 0\\
+    \ddot{\overline{z}}^l + \Gamma^{\overline{l}}_{\overline{i}\overline{k}}
+            \dot{\overline{z}}^i\dot{\overline{z}}^k =&\, 0,
+\end{split}
+\label{e:geodesics}
+\end{equation*}
+where the only non-vanishing Christoffel symbols are
+\begin{equation*}
+\begin{split}
+    \Gamma^a_{bc} =& g^{\overline{s}a} g_{c\overline{s},b}\\
+    \Gamma^{\overline{a}}_{\overline{b}\overline{c}} =& g^{\overline{a}s} 
+                            g_{s\overline{c},b}.
+\end{split}
+\label{e:xsymb}
+\end{equation*}
+The geodesic equations are then given in inhomogeneous coordinates by
+$\dot{z}=w$ and
+\begin{multline*}
+    \dot{w}^l = \frac{1}{ \left( 1 + \left| z\right|^2 \right)^2 }
+        \biggl\lbrace
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \left( \overline{z}\cdot w \right)
+            \biggr] w^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right)\left( w\cdot w \right)
+                    - 2\left( z\cdot w \right)\left( \overline{z}\cdot w \right)
+            \biggr] \overline{z}^l\\
+            +
+            \biggl[ \left( 1 + \left| z\right|^2 \right) 
+                    \bigl[ 
+                      \left(\overline{z}\cdot w\right)\left(\overline{z}\cdot w\right)
+                      +\left(\overline{z}\cdot\overline{z}\right)\left(w\cdot w\right)
+                    \bigr]\\
+                    - 2\left(\overline{z}\cdot\overline{z}\right) 
+                        \left( z\cdot w \right)\left( \overline{z}\cdot w \right)
+            \biggr] z^l
+        \biggr\rbrace,
+\label{e:detailedGeodesics}
+\end{multline*}
+along with Hermitian conjugates.
+
+
+\pagebreak
 
 
 
