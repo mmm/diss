@@ -261,22 +261,22 @@ for $a$.
 \begin{figure}
 \begin{center}
 \begin{picture}(100,50)
-\put(10,0){\framebox(20,20){\bf{$H$}}}
-\put(10,30){\framebox(20,20){\bf{$H$}}}
-\put(70,30){\framebox(20,20){\bf{$H$}}}
-\put(40,0){\framebox(20,20){\bf{$U_f$}}}
-\put(-20,7){$\ket{x}$}
-\put(-20,37){$\ket{0}$}
-\put(110,7){$\ket{f(x)}$}
-\put(110,37){$\ket{0}$}
-\put(50,40){\circle*{4}}
-\path(0,10)(10,10)
-\path(30,10)(40,10)
-\path(60,10)(100,10)
-\path(0,40)(10,40)
-\path(30,40)(70,40)
-\path(90,40)(100,40)
-\path(50,20)(50,40)
+    \put(10,0){\framebox(20,20){\bf{$H$}}}
+    \put(10,30){\framebox(20,20){\bf{$H$}}}
+    \put(70,30){\framebox(20,20){\bf{$H$}}}
+    \put(40,0){\framebox(20,20){\bf{$U_f$}}}
+    \put(-20,7){$\ket{x}$}
+    \put(-20,37){$\ket{0}$}
+    \put(110,7){$\ket{f(x)}$}
+    \put(110,37){$\ket{0}$}
+    \put(50,40){\circle*{4}}
+    \path(0,10)(10,10)
+    \path(30,10)(40,10)
+    \path(60,10)(100,10)
+    \path(0,40)(10,40)
+    \path(30,40)(70,40)
+    \path(90,40)(100,40)
+    \path(50,20)(50,40)
 \end{picture}
 \caption{Deutsch's circuit}
 \end{center}
@@ -285,14 +285,14 @@ for $a$.
 \begin{figure}
 \begin{center}
 \begin{picture}(50,60)
-\put(20,0){\framebox(20,20){\bf{$H$}}}
-\put(-20,7){$\ket{1}$}
-\put(-20,37){$\ket{0}$}
-\put(30,40){\circle*{4}}
-\path(0,10)(20,10)
-\path(40,10)(60,10)
-\path(0,40)(60,40)
-\path(30,20)(30,40)
+    \put(20,0){\framebox(20,20){\bf{$H$}}}
+    \put(-20,7){$\ket{1}$}
+    \put(-20,37){$\ket{0}$}
+    \put(30,40){\circle*{4}}
+    \path(0,10)(20,10)
+    \path(40,10)(60,10)
+    \path(0,40)(60,40)
+    \path(30,20)(30,40)
 \end{picture}
 \caption{A quantum circuit applying a Hadamaard transformation to one of
 two qubits with intersecting lines}
@@ -302,15 +302,15 @@ two qubits with intersecting lines}
 \begin{figure}
 \begin{center}
 \begin{picture}(40,50)
-\put(20,40){\circle*{4}}
-\put(20,10){\circle{6}}
-\put(-20,7){$\ket{y}$}
-\put(-20,37){$\ket{x}$}
-\put(50,7){$\ket{y\oplus x}$}
-\put(50,37){$\ket{x}$}
-\path(0,10)(40,10)
-\path(0,40)(40,40)
-\path(20,7)(20,40)
+    \put(20,40){\circle*{4}}
+    \put(20,10){\circle{6}}
+    \put(-20,7){$\ket{y}$}
+    \put(-20,37){$\ket{x}$}
+    \put(50,7){$\ket{y\oplus x}$}
+    \put(50,37){$\ket{x}$}
+    \path(0,10)(40,10)
+    \path(0,40)(40,40)
+    \path(20,7)(20,40)
 \end{picture}
 \caption{A controlled--\texttt{NOT} (\texttt{CNOT}) gate}
 \end{center}
@@ -319,19 +319,19 @@ two qubits with intersecting lines}
 \begin{figure}
 \begin{center}
 \begin{picture}(40,80)
-\put(20,70){\circle*{4}}
-\put(20,40){\circle*{4}}
-\put(20,10){\circle{6}}
-\put(-20,7){$\ket{z}$}
-\put(-20,37){$\ket{y}$}
-\put(-20,67){$\ket{x}$}
-\put(50,7){$\ket{z\oplus y\oplus x}$}
-\put(50,37){$\ket{y}$}
-\put(50,67){$\ket{x}$}
-\path(0,10)(40,10)
-\path(0,40)(40,40)
-\path(0,70)(40,70)
-\path(20,7)(20,70)
+    \put(20,70){\circle*{4}}
+    \put(20,40){\circle*{4}}
+    \put(20,10){\circle{6}}
+    \put(-20,7){$\ket{z}$}
+    \put(-20,37){$\ket{y}$}
+    \put(-20,67){$\ket{x}$}
+    \put(50,7){$\ket{z\oplus y\oplus x}$}
+    \put(50,37){$\ket{y}$}
+    \put(50,67){$\ket{x}$}
+    \path(0,10)(40,10)
+    \path(0,40)(40,40)
+    \path(0,70)(40,70)
+    \path(20,7)(20,70)
 \end{picture}
 \caption{A controlled--controlled--\texttt{NOT} (\texttt{CCNOT}) gate}
 \end{center}
@@ -356,6 +356,68 @@ Grover\cite{Grover:96}\dots did some stuff!
 \subsubsection{reflections -n- stuff}
 
 \mmm{Zalka says Grover is least time... use this to show Grover geodesic}
+\mmm{introduce $n$ and $N$ up here}
+
+\subsubsection{The Algorithm: Overview}
+
+Grover's algorithm is briefly outlined in figure (\ref{fig:grover}).
+\begin{figure}[h]
+\shabox{
+    \begin{minipage}{13cm}
+        \begin{center}
+        \textbf{Grover's Quantum Search Algorithm}
+        \end{center}
+        \begin{enumerate}
+            \item First, start with an equally weighted superposition $\ket{S}$
+            of all possible states.
+            \item Next, repeat the following sequence $O(\sqrt{N})$ 
+            times\footnote{exactly when to stop is important here.}:
+            \begin{enumerate}
+                \item Query the oracle.  Given any state, say $\ket{S}$, rotate 
+                the phase of the desired state $\pi$ radians.
+                \item Flip the state about the ``average'' by applying
+                what Grover refers to as the diffusion transform, $D\ket{S}$.
+            \end{enumerate}
+            \item Finally, measure the resulting state.  This should be the
+            desired state with probability of at least $\frac{1}{2}$.
+        \end{enumerate}
+    \end{minipage}
+}
+\caption{An overview of Grover's algorithm.}
+\label{fig:grover}
+\end{figure}
+In the first step, an equally weighted superposition of all possible
+states is, of course, obtained by hitting the $n$-dimensional zero 
+register with the Hadamaard transformation
+\begin{equation}
+H\ket{0} = \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}\ket{x} 
+= \left[ \begin{matrix}
+            \frac{1}{\sqrt{2^n}}\\
+            \frac{1}{\sqrt{2^n}}\\
+            \vdots\\
+            \frac{1}{\sqrt{2^n}}
+         \end{matrix} 
+  \right].
+\end{equation}
+For simplicity, write $N=2^n$ so that
+\begin{equation}
+H\ket{0} = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}\ket{x} 
+= \left[ \begin{matrix}
+            \frac{1}{\sqrt{N}}\\
+            \frac{1}{\sqrt{N}}\\
+            \vdots\\
+            \frac{1}{\sqrt{N}}
+         \end{matrix} 
+  \right].
+\end{equation}
+The concept of an \emph{oracle} in step (2a) of figure (\ref{fig:grover}) 
+can be confusing at first glance.  The idea is that there is some criteria
+by which the search algorithm decides that the desired item has been found.
+This is often thought of in terms of a function
+\begin{equation}
+f\colon\quad\lbrace\mbox{Search Domain}\rbrace\quad\mapsto\quad\lbrace Y,N\rbrace,
+\end{equation}
+that obtains a ``yes'' result for only a single particular input.
 
 
 
