@@ -68,10 +68,11 @@ I'd like to characterize ``Statistical Distance'' as defined by Wooters\cite{Woo
 geometrically.  I'll follow Braunstein and Caves\cite{Braunstein/Caves:94}
 to get the Fubini--Study metric for projective Hilbert space\dots
 \begin{equation}
-                ds_{\text{SP}}^2 = \sum_i \frac{(dp_i)^2}{p_i} + 
+                ds_{\text{SP}}^2 = \sum_i \frac{1}{4}\frac{(dp_i)^2}{p_i} + 
                 \left( 
                     \sum_i p_i(d\phi_i)^2 - \left( \sum_i p_i d\phi_i \right)^2
                 \right).
+\label{e:fsStatistical}
 \end{equation}
 
 Consider two pure states:
@@ -334,28 +335,216 @@ d\overline{z}_j =& \left( dr_j - ir_jd\phi_j \right) e^{-i\phi_j},
 this metric looks like
 \begin{multline}
 ds^2 = \frac{1}{\left( 1+r^2 \right)}
-    \biggl[\left(dr_i\right)^2 + r_i^2\left(d\phi_i\right)^2\biggr]\\
+    \biggl[\sum_i\left(dr_i\right)^2 + \sum_i r_i^2\left(d\phi_i\right)^2\biggr]\\
 - \frac{1}{\left( 1+r^2 \right)^2}
     \biggl[\biggl(\sum_i r_idr_i\biggr)^2
            + \biggl(\sum_i r_i^2d\phi_i\biggr)^2
     \biggr].
+\label{e:fsPolar}
 \end{multline}
 
-Now, to see the connection with section (\ref{ssec:qmapproach}),
-consider homogeneous coordinates
+Now, to see the connection with the statistical distance described
+in section (\ref{ssec:qmapproach}),
+consider coordinates for an $(n+1)$--state system
+\begin{equation}
+\ket{\Psi} = a_0\ket{0} + \cdots + a_n\ket{n}
+\end{equation} 
+with
+\begin{equation}
+a_i = \sqrt{p_i}e^{i\phi_i}\qquad i=0\ldots n+1.
+\end{equation}
+We note here that the $p_i$ are probabilities and hence obey
+\begin{equation}
+\begin{split}
+\sum_{i=0}^{n} p_i =& 1\\
+\sum_{i=0}^{n} dp_i =& 0.
+\end{split}
+\end{equation}
+If these coordinates are viewed as $n+1$ \emph{homogeneous}
+coordinates to $\CP^{n}$, then the $n$ corresponding 
+\emph{inhomogeneous} coordinates can then be obtained
+(in coordinate patch $U_0$, where $a_0\ne 0$) as
+\begin{equation}
+z_i = \frac{a_i}{a_0} = \frac{ \sqrt{p_i}e^{i\phi_i} }
+                             { \sqrt{p_0}e^{i\phi_0} }
+= \sqrt{\frac{p_i}{p_0}} e^{i(\phi_i - \phi_0)}.
+\label{e:inhomoA}
+\end{equation}
+Physically, freedom of normalization and overall phase allow
+\begin{equation} 
+\ket{\Psi} =\, a_0\left( \ket{0} + \frac{a_1}{a_0}\ket{1} + \cdots 
+                        + \frac{a_n}{a_0}\ket{n}
+                \right)
+\end{equation}
+to be written simply as
+\begin{equation}
+\ket\Psi  =\, \ket{0} + z_1\ket{1} + \cdots + z_n\ket{n},
+\end{equation}
+with
+\begin{equation}
+z_i = \sqrt{\frac{p_i}{p_0}} e^{i\phi_i}.
+\label{e:inhomoB}
+\end{equation}
+A normalized version of $\ket{\Psi}$ would, of course, look like
+\begin{equation}
+\ket\Psi =\, \frac{1}{1+|z|^2}\biggl( \ket{0} + z_1\ket{1} + \cdots + z_n\ket{n}
+                        \biggr). 
+\end{equation}
 
+The polar form of the Fubini--Study metric (\ref{e:fsPolar}),
+can now be written in terms of probabilities $p_i$ to obtain the
+expected expression for statistical distance (\ref{e:fsStatistical}).
+If 
+\begin{equation}
+r_i = \sqrt{\frac{p_i}{p_0}}\qquad(i= 1\ldots n),
+\end{equation}
+then 
+\begin{equation}
+r^2 = \sum_{i=1}^{n} r_i^2 = \sum_{i=1}^{n} \frac{p_i}{p_0}
+= \frac{1}{p_0}\sum_{i=1}^n p_i.
+\end{equation}
+Now, since $\sum_{i=0}^n p_i = 1$,
+\begin{equation}
+\begin{split}
+\sum_{i=1}^n p_i =& 1-p_0\\
+\sum_{i=1}^n dp_i =& -dp_0.
+\end{split}
+\end{equation}
+Then,
+\begin{equation}
+r^2 = \frac{1}{p_0} - 1,
+\end{equation}
+and the factor of $1+r^2$ in (\ref{e:fsPolar}) 
+becomes simply $\frac{1}{p_0}$.
+The Fubini--Study metric then becomes
+\begin{equation}
+ds^2 = p_0 \biggl[\sum_i \left(dr_i\right)^2 + \sum_i r_i^2\left(d\phi_i\right)^2\biggr]
+- p_0^2 \biggl[\biggl(\sum_i r_idr_i\biggr)^2
+           + \biggl(\sum_i r_i^2d\phi_i\biggr)^2
+    \biggr].
+\label{e:fsPolarHalfA}
+\end{equation}
+Now, since
+\begin{equation}
+dr_i = \frac{1}{2}\left( p_i^{-\frac{1}{2}}p_0^{-\frac{1}{2}} dp_i
+                        -p_i^{\frac{1}{2}}p_0^{-\frac{3}{2}} dp_0
+                  \right)
+\end{equation}
+leads to  
+\begin{equation}
+(dr_i)^2 = \frac{(dp_i)^2}{4p_ip_0}
+            + \frac{p_i(dp_0)^2}{4p_0^3}
+            - \frac{dp_idp_0}{2p_0^2}
+\end{equation}
+and
+\begin{equation}
+r_idr_i = \frac{dp_i}{2p_0} - \frac{p_idp_0}{2p_0^2},
+\end{equation}
+then (\ref{e:fsPolarHalfA}) becomes
+\begin{multline}
+ds^2 = p_0 \biggl[
+    \sum_i\left( \frac{(dp_i)^2}{4p_ip_0}
+                 + \frac{p_i(dp_0)^2}{4p_0^3}
+                 - \frac{dp_idp_0}{2p_0^2}
+          \right) 
+    + \frac{1}{p_0} \sum_i p_i\left(d\phi_i\right)^2\biggr]\\
+- p_0^2 \biggl[\biggl(\sum_i\frac{dp_i}{2p_0} 
+                      - \sum_i\frac{p_idp_0}{2p_0^2}
+               \biggr)^2
+           + \frac{1}{p_0^2}\biggl(\sum_i p_id\phi_i\biggr)^2
+    \biggr].
+\end{multline}
+Now, the expression for $r_idr_i$ simplifies somewhat
+\begin{equation}
+\begin{split}
+\sum_i r_idr_i =& \sum_i\frac{dp_i}{2p_0} - \sum_i\frac{p_idp_0}{2p_0^2}\\
+               =& \frac{1}{2p_0}\left(\sum_i dp_i\right)
+                  - \frac{dp_0}{2p_0^2}\left(\sum_i p_i\right)\\
+               =& \frac{1}{2p_0}\left( -dp_0 \right)
+                  - \frac{dp_0}{2p_0^2}\left( 1 - p_0 \right)\\
+               =& - \frac{dp_0}{2p_0} - \frac{dp_0}{2p_0^2} + \frac{dp_0}{2p_0}\\
+               =&  - \frac{dp_0}{2p_0^2}.
+\end{split}
+\end{equation}
+The line element then becomes
+\begin{multline}
+ds^2 = p_0 \biggl[
+    \sum_i\left( \frac{(dp_i)^2}{4p_ip_0}
+                 + \frac{p_i(dp_0)^2}{4p_0^3}
+                 - \frac{dp_idp_0}{2p_0^2}
+          \right) 
+    + \frac{1}{p_0} \sum_i p_i\left(d\phi_i\right)^2\biggr]\\
+- p_0^2 \biggl[\biggl(
+                      - \frac{dp_0}{2p_0^2}
+               \biggr)^2
+           + \frac{1}{p_0^2}\biggl(\sum_i p_id\phi_i\biggr)^2
+    \biggr],
+\end{multline}
+or
+\begin{equation}
+ds^2 = \sum_i\left( \frac{(dp_i)^2}{4p_i}
+                 + \frac{p_i(dp_0)^2}{4p_0^2}
+                 - \frac{dp_idp_0}{2p_0}
+             \right) 
+    + \sum_i p_i\left(d\phi_i\right)^2
+    - \frac{dp_0^2}{4p_0^2}
+    - \biggl(\sum_i p_id\phi_i\biggr)^2.
+\label{e:fsPolarHalfC}
+\end{equation}
+The first sum can be reduced
+\begin{equation}
+\begin{split}
+&\sum_i\left( \frac{(dp_i)^2}{4p_i}
+             + \frac{p_i(dp_0)^2}{4p_0^2}
+             - \frac{dp_idp_0}{2p_0}
+      \right) \\
+&= \sum_i\frac{1}{4}\frac{(dp_i)^2}{p_i}
+   + \frac{dp_0^2}{4p_0^2}\left(\sum_i p_i\right)
+   - \frac{dp_0}{2p_0}\left( \sum_i dp_i \right)\\
+&= \sum_i\frac{1}{4}\frac{(dp_i)^2}{p_i}
+   + \frac{dp_0^2}{4p_0^2}\left( 1 - p_0 \right)
+   - \frac{dp_0}{2p_0}\left( -dp_0 \right)\\
+&= \sum_i\frac{1}{4}\frac{(dp_i)^2}{p_i}
+   + \frac{dp_0^2}{4p_0^2}
+   + \frac{dp_0^2}{4p_0},
+\end{split}
+\end{equation}
+and then (\ref{e:fsPolarHalfC}) becomes
+\begin{equation}
+\begin{split}
+ds^2 =& 
+    \left(
+        \sum_i\frac{1}{4}\frac{(dp_i)^2}{p_i}
+        + \frac{dp_0^2}{4p_0^2}
+        + \frac{dp_0^2}{4p_0}
+    \right)
+    + \sum_i p_i\left(d\phi_i\right)^2
+    - \frac{dp_0^2}{4p_0^2}
+    - \biggl(\sum_i p_id\phi_i\biggr)^2\\
+  =& 
+    \sum_{i=1}^n\frac{1}{4}\frac{(dp_i)^2}{p_i}
+    + \frac{1}{4}\frac{dp_0^2}{p_0}
+    + \sum_{i=1}^n p_i\left(d\phi_i\right)^2
+    - \biggl(\sum_{i=1}^n p_id\phi_i\biggr)^2\\
+  =& 
+    \sum_{i=0}^n\frac{1}{4}\frac{(dp_i)^2}{p_i}
+    + \sum_{i=1}^n p_i\left(d\phi_i\right)^2
+    - \biggl(\sum_{i=1}^n p_id\phi_i\biggr)^2.
+\end{split}
+\label{e:fsPolarFinal}
+\end{equation}
+Now, since the overall phase $\phi_0$ was chosen to remain 
+zero when specifying inhomogeneous coordinates ((\ref{e:inhomoA})
+to (\ref{e:inhomoB})), then $d\phi_0 = 0$, and all sums in 
+(\ref{e:fsPolarFinal}) can be extended to include the zero case.
 
-
-
-
-
-
-
-
-
-
-
-
+So then,
+\begin{equation}
+ds^2 = \sum_{i=0}^n\frac{1}{4}\frac{(dp_i)^2}{p_i}
+    + \sum_{i=0}^n p_i\left(d\phi_i\right)^2
+    - \biggl(\sum_{i=0}^n p_id\phi_i\biggr)^2
+\end{equation}
+matches with the statistical distance (\ref{e:fsStatistical}).
 
 %--------------------------------------------------------------------------------   
 \subsection{Geodesics}
