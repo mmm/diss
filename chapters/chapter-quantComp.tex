@@ -23,6 +23,57 @@
 %--------------------------------------------------------------------------------   
 \subsection{Quantum}
 
+\subsubsection{The Hadamaard Transformation}
+\index{Hadamaard transformation}
+
+The one--dimensional Hadamaard transformation takes a quantum bit into the
+superposition given by
+\begin{equation}
+\begin{split}
+\ket{0}\quad\mapsto&\quad\frac{1}{\sqrt{2}}\left(\ket{0} +\ket{1}\right)\\
+\ket{1}\quad\mapsto&\quad\frac{1}{\sqrt{2}}\left(\ket{0} -\ket{1}\right),
+\end{split}
+\end{equation}
+which is sometimes thought of in terms of matrices as
+\begin{equation}
+H_1 \left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right]
+= \frac{1}{\sqrt{2}}
+\left[\begin{matrix}1&1\\ 1&-1\end{matrix}\right]
+\left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right].
+\end{equation}
+
+The version of the Hadamaard transformation that sees the most use is
+the $N$--dimensional Hadamaard transformation defined as the $N$--fold
+tensor product of one--dimensional Hadamaard transformations.
+This is often used as the first step in many quantum algorithms.
+Start with the \emph{zero register}
+\index{zero register}
+\begin{equation}
+\ket{\bf 0}=\ket{0\ldots 0} = \bigotimes^N\ket{0},
+\end{equation}
+and then act
+\begin{equation}
+\begin{split}
+H\ket{\bf 0} =& H_N\ket{0\ldots 0}\\
+=& \bigotimes^N H_1\ket{0}\\
+=& \bigotimes^N \frac{1}{\sqrt{2}}\left(\ket{0} +\ket{1}\right)\\
+=& \frac{1}{\sqrt{2^N}}\biggl\lbrace \ket{0\ldots 0} + \ket{0\ldots 01} +
+\quad\cdots\quad + \ket{1\ldots 1}\biggr\rbrace.
+\end{split}
+\label{e:hadamaard}
+\end{equation}
+Now, each of the kets on the bottom--RHS of equation (\ref{e:hadamaard})
+can be thought of as number expressed in binary. \ie,
+\begin{equation}
+H\ket{\bf 0} = \frac{1}{\sqrt{2^N}}\biggl\lbrace \ket{0\ldots 0} + \ket{0\ldots 01} + \cdots 
++ \ket{1\ldots 1}\biggr\rbrace.
+\end{equation}
+
+
+
+
+
+
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   

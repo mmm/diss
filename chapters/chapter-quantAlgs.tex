@@ -2,8 +2,7 @@
 
 \chapter{Quantum Algorithms}
 \label{chap:quantumAlgorithms}
-\index{Quantum Algorithms}%
-%\index{Quantum Algorithms@\emph{Quantum Algorithms}}%
+\index{Quantum Algorithms@\emph{Quantum Algorithms}}%
 
 A quantum algorithm is a set of states and operations performed
 with a quantum computer in order to arrive at an answer to a particular
@@ -26,7 +25,7 @@ algorithms to be run on a quantum computer.
 Despite the difficulty involved, there have been a few, seemingly
 inspired, algorithms developed for a quantum computer.
 In fact, the entire field essentially owes its existence to 
-an algorithm developed by Peter Shor\cite{Shor:94}
+an algorithm developed by Peter Shor\cite{Shor:94,Shor:00}
 to solve FACTORIZATION\footnote{The convention, originating in computer 
 science, of YELLING the proper names of particular problems to be solved 
 will be followed throughout this text.}, where the quantum version 
@@ -153,7 +152,7 @@ measurements.
 Consider the classical version of the above computation.
 Depending on what sort of information we are trying to obtain
 about the function, there are \emph{many}(!) function evaluations
-required.  For $N>>1$, this quickly becomes intractable. 
+required.  For $N\gg 1$, this quickly becomes intractable. 
 The quantum case required only one.  For obvious reasons, this is 
 considered ``massive quantum parallelism'' in the literature.
 
@@ -187,7 +186,7 @@ The problem is: given a quantum black box that evaluates such a function,
 find its period.
 
 This problem is classically hard\footnote{According to Preskill (?)},
-The function will need to be evaluated an exponentially large number
+because the function will need to be evaluated an exponentially large number
 of times to find $a$.
 
 
