@@ -1,0 +1,26 @@
+Rename the current version of utdiss1-#.sty as utdiss1.sty
+
+In the command line run in this order:
+
+> latex howdiss3            (latex generates howdiss3.aux)
+
+> bibtex howdiss3           (bibtex generates howdiss3.bbl)
+
+> latex howdiss3            (latex generates new howdiss3.aux)
+
+> latex howdiss3            (latex resolves cross references) 
+
+> makeindex howdiss3        (makeindex reads howdiss3.idx and 
+                             generates howdiss3.ind with the index 
+                             entries sorted) 
+
+> latex howdiss3            (latex includes the Index)
+
+> latex howdiss3            (latex generates the final version of 
+                             howdiss3.dvi)
+
+
+Print howdiss3.dvi with:
+
+> dvips howdiss3
+
