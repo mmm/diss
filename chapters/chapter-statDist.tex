@@ -76,6 +76,23 @@ Consider two pure states:
               \sum_j \sqrt{p_j + dp_j}e^{i(\phi_j + d\phi_j)}\ket{j}.
 \end{split}
 \end{equation}
+
+For $\ket{\psi}$ and $\ket{\tilde\psi}$ normalized, we expect
+\begin{equation}
+\braket{\psi}{\tilde\psi} = cos(\theta),
+\end{equation}
+where $\theta$ is the ``angle'' between these two states in 
+(projective) Hilbert space.  This angle presents a measure of the
+notion of state distinguishability.  \ie,
+\begin{equation}
+\frac{1}{4}ds_{\text{\tiny Pure States}}^2 = 
+    \left[ \cos^{-1}\left(\left|
+                        \braket{\psi}{\tilde\psi}
+                    \right|\right)
+    \right]^2
+\end{equation}
+
+
 If we define $\ket{d\psi_\perp} = \ket{d\psi} - \ket{\psi}\braket{\psi}{d\psi}$, 
 then
 \begin{equation}
@@ -158,14 +175,14 @@ Expanding to first order in $dp$ and $d\phi$, we get
             - 1\\ 
         \approx& \sum_j \left( p_j + \frac{1}{2}dp_j + ip_jd\phi_j
                   \right) -1\\
-        =& i \sum_j p_jd\phi_j.
+        =&\, i \sum_j p_jd\phi_j.
 \end{split}
 \end{equation}
 and then equation (\ref{e:dPsi_perp}) gives
 \begin{equation}
 \begin{split}
     \braket{d\psi_\perp}{d\psi_\perp} 
-        =& \braket{d\psi}{d\psi} - \left| \braket{\psi}{d\psi} \right|^2.\\
+        =&\, \braket{d\psi}{d\psi} - \left| \braket{\psi}{d\psi} \right|^2.\\
         \approx& \sum_j 
                     \left( 
                            \frac{1}{4}\frac{(dp_j)^2}{p_j}
