@@ -1,0 +1,415 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%BoundingBox: 18 57 455 565
+%%Title: max-noise.pstex
+%%Creator: xmgr
+%%CreationDate: Mon Aug 21 01:29:29 2000
+%%EndComments
+80 dict begin
+/Pat0 { 0.000000 setgray } def
+/Pat1 { 0.062500 setgray } def
+/Pat2 { 0.125000 setgray } def
+/Pat3 { 0.187500 setgray } def
+/Pat4 { 0.250000 setgray } def
+/Pat5 { 0.312500 setgray } def
+/Pat6 { 0.375000 setgray } def
+/Pat7 { 0.437500 setgray } def
+/Pat8 { 0.500000 setgray } def
+/Pat9 { 0.562500 setgray } def
+/Pat10 { 0.625000 setgray } def
+/Pat11 { 0.687500 setgray } def
+/Pat12 { 0.750000 setgray } def
+/Pat13 { 0.812500 setgray } def
+/Pat14 { 0.875000 setgray } def
+/Pat15 { 0.937500 setgray } def
+/setpattern { } def
+/m {moveto} bind def
+/l {lineto} bind def
+/s {stroke} bind def
+% Symbol fill
+/f { gsave fill grestore stroke } bind def
+% Opaque symbol
+/o { gsave 1.000000 1.000000 1.000000 setrgbcolor
+     fill grestore stroke } bind def
+% Circle symbol
+/a { 3 -1 roll 0 360 arc } bind def
+/da { a s } bind def
+/fa { a f } bind def
+/oa { a o } bind def
+% Square symbol
+/sq { moveto dup dup rmoveto 2 mul
+      dup neg 0 rlineto dup neg 0 exch rlineto
+      0 rlineto closepath } bind def
+/dsq { sq s } bind def
+/fsq { sq f } bind def
+/osq { sq o } bind def
+% Triangle symbols
+/t1 { moveto dup 0 exch rmoveto
+      dup neg dup 2 mul rlineto 2 mul 0 rlineto
+      closepath } bind def
+/dt1 { t1 s } bind def
+/ft1 { t1 f } bind def
+/ot1 { t1 o } bind def
+/t2 { moveto dup neg 0 rmoveto
+      dup dup 2 mul exch neg rlineto
+      2 mul 0 exch rlineto closepath } bind def
+/dt2 { t2 s } bind def
+/ft2 { t2 f } bind def
+/ot2 { t2 o } bind def
+/t3 { moveto dup neg 0 exch rmoveto
+      dup dup 2 mul rlineto neg 2 mul 0 rlineto
+      closepath } bind def
+/dt3 { t3 s } bind def
+/ft3 { t3 f } bind def
+/ot3 { t3 o } bind def
+/t4 { moveto dup 0 rmoveto
+      dup dup -2 mul exch rlineto
+      -2 mul 0 exch rlineto closepath } bind def
+/dt4 { t4 s } bind def
+/ft4 { t4 f } bind def
+/ot4 { t4 o } bind def
+% Diamond symbol
+/di { moveto dup 0 exch rmoveto
+      dup neg dup rlineto dup dup neg rlineto
+      dup dup rlineto closepath } bind def
+/ddi { di s } bind def
+/fdi { di f } bind def
+/odi { di o } bind def
+% Plus symbol
+/pl { dup 0 rmoveto dup -2 mul 0 rlineto
+      dup dup rmoveto -2 mul 0 exch rlineto
+    } bind def
+/dpl { m pl s } bind def
+% x symbol
+/x { dup dup rmoveto dup -2 mul dup rlineto
+     2 mul dup 0 rmoveto dup neg exch rlineto
+   } bind def
+/dx { m x s } bind def
+% Splat symbol
+/dsp { m dup pl dup 0 exch rmoveto 0.707 mul x s
+     } bind def
+/RJ {
+ stringwidth neg exch neg exch
+ rmoveto
+} bind def
+/CS {
+ stringwidth
+ 2 div neg exch 2 div neg exch
+ rmoveto
+} bind def
+0.24 0.24 scale
+1 setlinecap
+
+	mark             
+	/ISOLatin1Encoding 
+	  8#000 1 8#054 {StandardEncoding exch get} for 
+	  /minus 
+	  8#056 1 8#217 {StandardEncoding exch get} for 
+	  /dotlessi 
+	  8#301 1 8#317 {StandardEncoding exch get} for 
+	  /space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+	  /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen 
+	  /registered /macron /degree /plusminus /twosuperior /threesuperior /acute 
+	  /mu /paragraph /periodcentered /cedilla /onesuperior /ordmasculine 
+	  /guillemotright /onequarter /onehalf /threequarters /questiondown /Agrave 
+	  /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla /Egrave /Eacute
+	  /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis /Eth /Ntilde
+	  /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply /Oslash /Ugrave 
+	  /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls /agrave /aacute 
+	  /acircumflex /atilde /adieresis /aring /ae /ccedilla /egrave /eacute 
+	  /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis /eth /ntilde
+	  /ograve /oacute /ocircumflex /otilde /odieresis /divide /oslash /ugrave 
+	  /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+	  /ISOLatin1Encoding where not {256 array astore def} if 
+	 cleartomark 
+
+	/makeISOEncoded 
+	{ findfont /curfont exch def 
+	  /newfont curfont maxlength dict def  
+	  /ISOLatin1 (-ISOLatin1) def
+	  /curfontname curfont /FontName get dup length string cvs def 
+	  /newfontname curfontname length ISOLatin1 length add string 
+    	 dup 0                  curfontname putinterval 
+    	 dup curfontname length ISOLatin1   putinterval 
+	  def 
+	  curfont   
+	  { exch dup /FID ne  
+    	{ dup /Encoding eq  
+    	  { exch pop ISOLatin1Encoding exch }  
+    	  if  
+    	  dup /FontName eq  
+    	  { exch pop newfontname exch }  
+    	  if  
+    	  exch newfont 3 1 roll put  
+    	}  
+    	{ pop pop }  
+    	ifelse  
+	  }  
+	  forall 
+	  newfontname newfont definefont 
+	} def 
+
+	/Times-Roman makeISOEncoded pop 
+	/Times-Bold makeISOEncoded pop 
+	/Times-Italic makeISOEncoded pop 
+	/Times-BoldItalic makeISOEncoded pop 
+	/Helvetica makeISOEncoded pop 
+	/Helvetica-Bold makeISOEncoded pop 
+	/Helvetica-Oblique makeISOEncoded pop 
+	/Helvetica-BoldOblique makeISOEncoded pop 
+s
+0.000000 0.000000 0.000000 setrgbcolor
+1 setlinewidth
+/Times-Italic-ISOLatin1 findfont 90 scalefont setfont
+[] 0 setdash
+349 434 m
+349 444 l
+509 434 m
+509 444 l
+669 434 m
+669 444 l
+829 434 m
+829 444 l
+988 434 m
+988 444 l
+1148 434 m
+1148 444 l
+1308 434 m
+1308 444 l
+1468 434 m
+1468 444 l
+1628 434 m
+1628 444 l
+349 2114 m
+349 2104 l
+509 2114 m
+509 2104 l
+669 2114 m
+669 2104 l
+829 2114 m
+829 2104 l
+988 2114 m
+988 2104 l
+1148 2114 m
+1148 2104 l
+1308 2114 m
+1308 2104 l
+1468 2114 m
+1468 2104 l
+1628 2114 m
+1628 2104 l
+s
+349 434 m
+349 454 l
+669 434 m
+669 454 l
+988 434 m
+988 454 l
+1308 434 m
+1308 454 l
+1628 434 m
+1628 454 l
+349 2114 m
+349 2094 l
+669 2114 m
+669 2094 l
+988 2114 m
+988 2094 l
+1308 2114 m
+1308 2094 l
+1628 2114 m
+1628 2094 l
+/Times-Italic-ISOLatin1 findfont 60 scalefont setfont
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+s
+349 384 m
+gsave
+349 384 translate
+0 rotate
+0 -20  m
+(3) CS
+(3) show
+grestore
+newpath
+669 384 m
+gsave
+669 384 translate
+0 rotate
+0 -20  m
+(4) CS
+(4) show
+grestore
+newpath
+988 384 m
+gsave
+988 384 translate
+0 rotate
+0 -20  m
+(5) CS
+(5) show
+grestore
+newpath
+1308 384 m
+gsave
+1308 384 translate
+0 rotate
+0 -20  m
+(6) CS
+(6) show
+grestore
+newpath
+1628 384 m
+gsave
+1628 384 translate
+0 rotate
+0 -20  m
+(7) CS
+(7) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+988 284 m
+gsave
+988 284 translate
+0 rotate
+0 0  m
+(Number of Qubits) CS
+(Number of Qubits) show
+grestore
+newpath
+349 434 m
+359 434 l
+349 693 m
+359 693 l
+349 951 m
+359 951 l
+349 1210 m
+359 1210 l
+349 1468 m
+359 1468 l
+349 1727 m
+359 1727 l
+349 1985 m
+359 1985 l
+1628 434 m
+1618 434 l
+1628 693 m
+1618 693 l
+1628 951 m
+1618 951 l
+1628 1210 m
+1618 1210 l
+1628 1468 m
+1618 1468 l
+1628 1727 m
+1618 1727 l
+1628 1985 m
+1618 1985 l
+s
+349 434 m
+369 434 l
+349 951 m
+369 951 l
+349 1468 m
+369 1468 l
+349 1985 m
+369 1985 l
+1628 434 m
+1608 434 l
+1628 951 m
+1608 951 l
+1628 1468 m
+1608 1468 l
+1628 1985 m
+1608 1985 l
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+s
+311 434 m
+gsave
+311 434 translate
+0 rotate
+0 -20  m
+(0) RJ
+(0) show
+grestore
+newpath
+311 951 m
+gsave
+311 951 translate
+0 rotate
+0 -20  m
+(0.01) RJ
+(0.01) show
+grestore
+newpath
+311 1468 m
+gsave
+311 1468 translate
+0 rotate
+0 -20  m
+(0.02) RJ
+(0.02) show
+grestore
+newpath
+311 1985 m
+gsave
+311 1985 translate
+0 rotate
+0 -20  m
+(0.03) RJ
+(0.03) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+138 1274 m
+gsave
+138 1274 translate
+90 rotate
+0 0  m
+(Max Noise) CS
+(Max Noise) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 90 scalefont setfont
+988 2282 m
+gsave
+988 2282 translate
+0 rotate
+0 0  m
+(Max tolerable noise -v- number of qubits) CS
+(Max tolerable noise -v- number of qubits) show
+grestore
+newpath
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+16 349 1602 dsq
+16 669 1013 dsq
+16 988 752 dsq
+16 1308 610 dsq
+16 1628 534 dsq
+/Helvetica-ISOLatin1 findfont 90 scalefont setfont
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+1.000000 0.000000 0.000000 setrgbcolor
+20 349 1149 dt1
+20 669 848 dt1
+20 988 650 dt1
+20 1308 552 dt1
+20 1628 509 dt1
+/Helvetica-ISOLatin1 findfont 90 scalefont setfont
+0.000000 0.000000 0.000000 setrgbcolor
+/Helvetica-ISOLatin1 findfont 60 scalefont setfont
+1.000000 0.000000 0.000000 setrgbcolor
+20 349 2016 dt3
+20 669 1106 dt3
+20 988 915 dt3
+20 1308 681 dt3
+20 1628 578 dt3
+/Helvetica-ISOLatin1 findfont 90 scalefont setfont
+0.000000 0.000000 0.000000 setrgbcolor
+349 434 m
+349 2114 l
+1628 2114 l
+1628 434 l
+349 434 l
+s
+end
+showpage
+%%Trailer
