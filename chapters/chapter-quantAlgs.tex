@@ -218,10 +218,10 @@ f(x) = f(x\oplus a).
 The problem is: given a quantum black box that evaluates such a function,
 find its period.
 
-This problem is classically hard\footnote{According to Shor\cite{Shor:00}},
+According to Shor\cite{Shor:00}, this problem is classically hard
 because the function will need to be evaluated an exponentially large number
 of times to find $a$.
-\mmm{prove this}
+%\mmm{prove this}
 
 The quantum solution to the problem starts with two zero registers
 \begin{equation}
@@ -407,23 +407,43 @@ perform a measurement
 on the second register to get
 \begin{equation}
 %\frac{1}{\sqrt{2^n}} \sum_x \ket{x}\ket{c}.
-\sum_x \ket{x}\ket{c}.
+\sum_{x\in f^{-1}(c)} \ket{x}\ket{c}.
 \end{equation}
 This has collapsed the first register into an equally weighted
 superposition of states $\ket{x}$ such that 
 $f(x) = c$.  
-This is depicted in figure (\ref{fig:shor}).
-\begin{figure}[h]
-\begin{center}
-blah
-\caption{The period $r$ of the function $f$ can be obtained from
-the pre--image of a point $c$, $f^{-1}(c)$.}
-\label{fig:shor}
-\end{center}
-\end{figure}
-All that's needed is the period of the function
-$f$, so why not simply Fourier transform the first register
-to determine the period?
+%\mmm{}
+%This is depicted in figure (\ref{fig:shor}).
+%\begin{figure}[h]
+%\begin{center}
+%\begin{picture}(100,100)
+%    \put(50,50){\closecurve(10,10,90,10,50,100)}
+%\end{picture}
+%\caption{The period $r$ of the function $f$ can be obtained from
+%the pre--image of a point $c$, $f^{-1}(c)$.}
+%\label{fig:shor}
+%\end{center}
+%\end{figure}
+
+All that's really needed from this is the period of the function
+$f$, so the next step is simply a Fourier transform of the first 
+register to find $r$.  
+
+\subsubsection{The Quantum Discrete Fourier Transform}
+
+An $N$--dimensional quantum register $\ket{x}$ under a Fourier 
+transform will look like 
+\begin{equation}
+\ket{x} \mapsto 
+\frac{1}{\sqrt{N}}
+\sum_{y=0}^{N-1} e^{\frac{2\pi ixy}{N}}\ket{y}.
+\end{equation}
+This operation is, of course, unitary and hence reversible.
+There have also been very efficient techniques developed to
+calculate this with a quantum circuit\cite{Coppersmith:94}
+
+
+
 
 
 
@@ -811,8 +831,6 @@ l_{i+1} =& -\frac{2}{N}k_i + \frac{N-2}{N}l_i.
 \end{split}
 \end{equation}
 
-
-
                 
 \subsubsection{Measurement}
 
@@ -824,8 +842,6 @@ A careful analysis of this is presented in the following section.
 
 %--------------------------------------------------------------------------------   
 \subsection{Complexity Analysis}
-
-\subsubsection{A Classical Search}
 
 In order to understand the complexity of Grover's algorithm,
 it is useful to discuss the complexity associated with a 
@@ -878,9 +894,8 @@ would be required in this instance.  It requires $\frac{N}{2}$
 lookups or evaluations before the probability of success is 
 greater than $\frac{1}{2}$.
 
-
-\subsubsection{Grover}
-
+Grover's algorithm manages to get to this probability of success
+in about the order of $\sqrt{N}$ evaluations.
 \mmm{probability of measuring desired state as a function of
 number of iterations}
 
