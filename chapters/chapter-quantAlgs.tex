@@ -637,11 +637,10 @@ except perhaps bounds on the complexity of evaluation, then this is
 considered an \textbf{oracle query}.
 \index{oracle query}
 
-In classical searches, the decision function might be something like
-a lexicographical 
-compare of each name on file folders to some desired name.  
-This function might also be treated classically as a black 
-box \mmm{example}.
+In classical searches, an oracle query can either be a black box
+or given by an explicit decision function.  A simple and familiar 
+example of such a decision function might be a lexicographical compare
+of the name on a file folder to some desired name.
 
 For Grover's algorithm, the decision function is evaluated as a black box.
 Nothing is known about the function evaluation except that it will be
@@ -815,6 +814,7 @@ the input state can be calculated.
 Consider the state
 \begin{equation}
 \ket{\Psi} = k\ket{\omega} + l\ket{\omega_\perp}.
+\label{e:startGrover}
 \end{equation}
 A single Grover iteration applied to this state
 gives
@@ -905,7 +905,6 @@ The final step in Grover's algorithm is simply to measure the
 resulting state after the appropriate number of iterations.
 The desired state should then be measured with probability of at
 least $\frac{1}{2}$.
-A careful analysis of this is presented in the following section.
 
 %--------------------------------------------------------------------------------   
 \subsection{Complexity Analysis}
@@ -918,7 +917,7 @@ The relevant classical search problem is as follows:
 start with a large unsorted database containing $N>>1$ items.
 Find one particular item in this database\dots
 search for a ``needle in a haystack'' as Grover puts
-it\cite{Grover:96}.  As discussed earlier, this database can 
+it\cite{Grover:96a}.  As discussed earlier, this database can 
 be represented by a table or a function $f(x)$ where
 $x\in\lbrace 0,1,\ldots,N-1\rbrace$.
 The item searched for is guaranteed to be in the database
@@ -965,19 +964,73 @@ greater than $\frac{1}{2}$.
 On a {\sl quantum computer}, Grover's algorithm manages to get 
 to a probability of success of at least $\frac{1}{2}$ 
 in only about $\sqrt{N}$ evaluations.  
-\mmm{probability of measuring desired state as a function of
-number of iterations}
+A careful analysis of why this should be true is in
+chapter \ref{chap:dynamics}.
 
-\subsubsection{Grover is Optimal}
-
-\mmm{Zalka says Grover is least time...}
 
 %--------------------------------------------------------------------------------   
-\subsection{Advanced Searches}
+\subsection{Multisearch and Other Advanced Searches}
 
-\subsubsection{Multisearch}
+Several variations of the standard search algorithm can 
+be performed on a quantum computer.
+Instead of searching for
+a single item in a list, you may be looking for one of a set of
+items that fit the search criteria, a multisearch.
+\index{multisearch}
+Grover's algorithm handles this type of search the same way it
+handles searching for a single object.
+Start from an equally--weighted superposition
+\begin{equation}
+\ket\Psi = \frac{1}{\sqrt{N}}\sum_i\ket{i}.
+\end{equation}
+Instead of simply amplifying a single coefficient while simultaneously
+suppressing all others, amplify the set of all items meeting the 
+search criteria.  
+The resulting state 
+\begin{equation}
+\ket{\Psi_{\text{result}}} = 
+\sum_{i\in\lbrace\text{desired}\rbrace}a\ket{i}
++ \sum_{j\notin\lbrace\text{desired}\rbrace}b\ket{j}
+\end{equation}
+is an equally weighted superposition of all
+states meeting the search criteria, which, when measured, is equally 
+likely to be in any one of these states (here, $b$ is small).
+The primary difference between the single search and multisearch versions of
+Grover's algorithm is the stopping time.  A multisearch must be stopped
+before it's simpler cousin.
 
-\subsubsection{Start from an Arbitrary Initial Distribution}
+Consider the case when there are $t$ solutions to the problem.  \ie,
+$t$ values $x$ in the database that meet the search criteria 
+($f(x) = \text{``yes''}$).  Let $A=\lbrace x|f(x)=\text{``yes''}\rbrace$, and
+$B=\lbrace x|f(x)=\text{``no''}\rbrace$.  Then,
+as in equation (\ref{e:startGrover}), consider
+\begin{equation}
+\ket\Psi = \sum_{x\in A}k\ket{x} + \sum_{y\in B}l\ket{y}.
+\end{equation}
+The state at any iteration $i$ of Grover's algorithm will be
+\begin{equation}
+\ket{\Psi_i} = \sum_{x\in A}k_i\ket{x} + \sum_{y\in B}l_i\ket{y},
+\end{equation}
+where the coefficients can be calculated iteratively 
+\begin{equation}
+\begin{split}
+k_{i+1} =& \frac{N-2t}{N}k_i + \frac{2(N-t)}{N}l_i\\
+l_{i+1} =& -\frac{2t}{N}k_i + \frac{N-2t}{N}l_i.
+\end{split}
+\end{equation}
+This version of the algorithm will find an answer in about 
+$\sqrt{\frac{N}{t}}$ iterations, and must be stopped {\sl before}
+the $\sqrt{N}$ iterations for the single item search.
+
+\subsubsection{Arbitrary Initial Distributions}
+
+Another extension of the simple quantum search is to start the search
+from an arbitrary distribution.
+Instead of starting with an 
+equally--weighted superposition of states, allow the search to run from any
+initial distribution.  This approach shows stability results for 
+Grover's algorithm with respect to noise in the initial 
+setup\cite{Biham/Biham/Biron/Grassl/Lidar:98}.  
 
 
 %%--------------------------------------------------------------------------------   

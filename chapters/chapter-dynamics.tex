@@ -8,13 +8,15 @@
 \section{Grover}
 
 %--------------------------------------------------------------------------------   
-\subsection{Sines and Cosines}
+%\subsection{Sines and Cosines}
+\subsection{Grover is Optimal}
 \label{ssec:sincos}
 
 Grover's algorithm was introduced and discussed at great length in
 chapter (\ref{chap:quantumAlgorithms}).  There, it was mentioned that
 Grover's algorithm can be seen as a rotation of states in Hilbert
-space.  This section will establish this result a little more rigorously.
+space.  This section will establish this result a little more rigorously 
+and show how it is used in an analysis of the complexity of the algorithm.
 
 Consider the discrete action of Grover's algorithm as described in the end of
 section (\ref{sec:grover}).  This will describe a search for \emph{one},
@@ -124,6 +126,8 @@ l_{i+1} =& l_i\frac{N-2}{N} -k_i\frac{2}{N}.
 Since this is (\ref{e:discsincos}) as expected, $j\Rightarrow j+1$.
 \end{proof}
 
+\mmm{add Zalka stuff here}
+\mmm{add in multisearch stopping time here too (from Boyer et al)}
 
 %--------------------------------------------------------------------------------   
 \subsection{Grover is a Geodesic}
