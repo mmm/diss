@@ -2,6 +2,8 @@
 \usepackage{times}
 \usepackage{epsfig}
 \usepackage{amsmath,amsthm,amsfonts,amscd} 
+\usepackage{epic}       % This is to draw pictures
+\usepackage{eepic}       % This is to draw pictures
 
 \include{mmm_macros}
 
@@ -32,8 +34,9 @@
 
 The function $f\colon\Z\to\Z$,
 when represented on a classical computer, where
+integers are represented by
 \begin{equation*}
-x=(\underbrace{0110\ldots0}_{n\text{ bits}}) \in\Z_{2^n},
+x=(\underbrace{0110\ldots0}_{n\text{ bits}}),% \in\Z_{2^n},
 \end{equation*}
 becomes $f\colon\Z_{2^n}\to\Z_{2^n}$
 \begin{equation*}
@@ -72,7 +75,7 @@ where
 
 Now, evaluating a function $f$ should consist of some physical
 process taking the state $\ket{x}$ to some
-other state $\ket{f(x)}$.  This is given by some unitary
+other state $\ket{f(x)}$.  This can be given by a unitary
 operator
 \begin{equation*}
 {\bf U_f}\ket{x}\ket{0} = \ket{x}\ket{f(x)}.
@@ -108,7 +111,7 @@ of $\ket{0}$
 and $\ket{1}$.
 
 Consider the equally--weighted superposition of all possible 
-integers $x\in 2^n$
+integers $x\in \Z_{2^n}$
 \begin{equation*}
 \frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1} \ket{x}.
 \end{equation*}
@@ -225,19 +228,99 @@ Searching a Quantum Database
 \begin{center}
 \textbf{Grover's Algorithm}\\
 \bigskip
-Searching a Quantum Database
+A \emph{Quantum} Database
 \end{center}
 
-Represent a database of $N=2^n$ items by an $N$--state system
-consisting of $n$ coupled qubits.  Then the items in the
-database can be enumerated by a state $\ket{x}$ of this system.
+\begin{equation*}
+\left\lbrace
+    \begin{matrix}
+    \text{$2^n$ items in}\\
+    \text{database}
+    \end{matrix}
+\right\rbrace
+\qquad\mapsto\qquad
+\left\lbrace
+    \begin{matrix}
+    \text{$2^n$ quantum}\\
+    \text{states}\\
+    \text{($n$ qubits)}
+    \end{matrix}
+\right\rbrace
+\end{equation*}
 
 Grover's search algorithm starts with the database in an
 equally weighted superposition of all states
-
+\begin{equation*}
+\ket{\Psi} = \sum_{i} a_i\ket{i}
+\qquad \left(a_i = \frac{1}{\sqrt{N}}\text{ for all }i\right)
+\end{equation*}
 and then gradually amplifies the coefficient of the desired state
-while simultaneously suppressing the coefficients of all other
-states.
+$\ket\omega$
+while simultaneously suppressing the coefficients of all others
+$\ket{\omega_\perp}$
+\begin{equation*}
+\begin{split}
+%a_{\text{desired}}&\mapsto 1\\
+%a_{\left\lbrace\text{all others}\right\rbrace}&\mapsto 0.
+a_{\omega}&\mapsto 1\\
+a_{\left\lbrace\omega_\perp\right\rbrace}&\mapsto 0.
+\end{split}
+\end{equation*}
+
+Successful completion of the algorithm leaves $\ket\Psi$ in the
+desired state $\ket\omega$ with high probability.
+
+\pagebreak
+%
+%To see how Grover's algorithm works, let
+%\begin{equation*}
+%\begin{split}
+%\ket{\text{Desired State}} &= \ket\omega\\
+%\ket{\text{all others}} &= \ket{\omega_\perp}.
+%\end{split}
+%\end{equation*}
+%
+%The state of the database at any time can be written
+%\begin{equation*}
+%\ket\Psi = a_\omega \ket\omega + 
+%\sum_{\omega_\perp} a_{\omega_\perp}\ket{\omega_\perp}.
+%\end{equation*}
+%
+%\pagebreak
+
+Grover's algorithm consists of successive iterations of the following
+process:
+\begin{enumerate}
+\item Query the Oracle. \ie, flip the phase of the desired state
+\begin{equation*}
+{\bf U_\omega}\ket\Psi = \biggl( {\bf 1} - 2\ketbra{\omega}{\omega} \biggr) \ket{\Psi}
+\end{equation*}
+\begin{center}
+\begin{picture}(150,150)
+    \thicklines
+    \path(0,0)(20,50)
+    \path(20,50)(150,70)
+    \path(150,70)(130,20)
+    \path(130,20)(0,0)
+    \put(75,35){\vector(-1,4){20}}
+    \put(20,20){$\ket{\omega_\perp}$}
+    \put(65,100){$\ket{\omega}$}
+    \put(140,90){$\ket{\Psi}$}
+    \put(145,-5){${\bf U_\omega}\ket{\Psi}$}
+    \put(75,35){\vector(1,1){60}}
+    \dashline[+30]{3}[80](75,35)(102,16)
+    \put(102,16){\vector(3,-2){40}}
+\end{picture}
+\end{center}
+\item and then invert the resulting state about the ``average'' state
+$\ket{s} = \frac{1}{\sqrt{N}}\sum_{i=0}^{N-1} \ket{i}$
+\begin{equation*}
+%{\bf U_s} = 2\ketbra{s}{s} - {\bf 1}.
+{\bf U_s}\ket\Psi = \biggl( 
+2\ketbra{s}{s} - {\bf 1}
+\biggr) \ket{\Psi}
+\end{equation*}
+\end{enumerate}
 
 
 
