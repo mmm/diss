@@ -212,25 +212,35 @@ is a geodesic of the Fubini--Study metric on $\CP^N$.
 \end{prop}
 
 \begin{proof}
-In homogeneous coordinates, $\gamma$ is easily seen to be
-a geodesic of the $(2N+1)$--sphere.
-Since $\CP^N$ can be written as 
+%In homogeneous coordinates, $\gamma$ is seen to be
+%a geodesic of the $(2N+1)$--sphere.
+%Since $\CP^N$ can be written as 
+%\begin{equation}
+%S^1\to S^{2N+1}\to \CP^N,
+%\end{equation}
+%then the geodesic projects down onto a geodesic of the base.
+%\mmm{grin}
+In inhomogeneous coordinates, $\gamma$ becomes
 \begin{equation}
-S^1\to S^{2N+1}\to \CP^N,
+z_i = \frac{1}{\sqrt{N-1}}\cot(t)
 \end{equation}
-then the geodesic projects down onto a geodesic of the base.
-\mmm{grin}
+for all $i$.  A little sweat will show that these satisfy 
+the equations of motion (\ref{e:detailedGeodesics}) for a geodesic
+of the Fubini--Study metric on $\CP^N$.
 \end{proof}
 
 
-\begin{prop}
-$\gamma$ coincides with the large database
-limit of Grover's algorithm.
-\end{prop}
-
-\begin{proof}
-Duh!
-\end{proof}
+%\begin{prop}
+%$\gamma$ coincides with the large database
+%limit of Grover's algorithm.
+%\end{prop}
+%
+%\begin{proof}
+%Duh!
+%\end{proof}
+Note that $\gamma$ coincides with the large database
+limit of Grover's algorithm.  This can easily be seen from
+the large $N$ limit of (\ref{e:sincos}).
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
@@ -303,33 +313,6 @@ and so the entire Grover iteration can be written
 
 
 
-%%--------------------------------------------------------------------------------   
-%%--------------------------------------------------------------------------------   
-%\section{Dynamical Maps}
-%
-%\subsubsection{Intro to dynamical maps}
-%Open systems.
-%What the hell are dynamical maps?
-%
-%Unfortunatley, physical systems do not exist in isolation.  There
-%are always interactions with environments or baths that cause
-%quantum mechanical systems to evolve by possibly more complicated
-%means than unitary transformations.
-%
-%A somewhat more general approach to quantum evolution is to 
-%consider dynamical evolution of a quantum mechanical system
-%described as simply a map of density matrices to density
-%matrices, the so--called \emph{dynamical map}.
-%
-%An even more general approach is to simply look at maps of
-%density matrices, where the image itself doesn't necessarily have to
-%be a physical density matrix.  It could be simply a subsystem
-%of a physical system, and hence it's trace could be less than
-%one.
-%
-%\mmm{Phase space stuff or configuration space stuff}
-%
-%
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
 \section{Other Quantum Algorithms}
