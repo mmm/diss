@@ -7,6 +7,123 @@
 %--------------------------------------------------------------------------------   
 \section{Grover}
 
+\subsection{Sines and Cosines}
+
+Grover's algorithm was introduced and discussed at great length in
+chapter (\ref{chap:quantumAlgorithms}).  There, it was mentioned that
+Grover's algorithm can be seen as a rotation of states in Hilbert
+space.  This section will establish this result a little more rigorously.
+
+Consider the action of Grover's algorithm as described in the end of
+section (\ref{sec:grover}).  This will describe a search for one 
+out of a list of $N$ items.  At any given step in the process, the
+quantum register is in the state
+\begin{equation}
+\ket{\Psi} = k\ket{\omega} + \sum_{j\in\omega_\perp}l\ket{j},
+\end{equation}
+for some $k$ and $l$, which, at say the $i$-th iteration, 
+look like
+\begin{equation}
+\begin{split}
+k_{i+1} =& \frac{N-2}{N}k_i + \frac{2(N-1)}{N}l_i\\
+l_{i+1} =& -\frac{2}{N}k_i + \frac{N-2}{N}l_i.
+\end{split}
+\label{e:discsincos}
+\end{equation}
+
+\begin{prop}
+The coefficients $k$ and $l$ obey
+\begin{equation}
+\begin{split}
+k_i =& \sin\left[\left(2i+1\right)\theta\right]\\
+l_i =& \frac{1}{\sqrt{N-1}}\cos\left[\left(2i+1\right)\theta\right]
+\end{split}
+\label{e:sincos}
+\end{equation}
+for $\sin\theta = \frac{1}{\sqrt{N}}$.
+\end{prop}
+
+\begin{proof}
+(By induction)  
+Starting at step zero with an equally weighted 
+superposition of all states
+\begin{equation}
+\ket{\Psi_0} = \frac{1}{\sqrt{N}}\ket{\omega} 
+                + \sum_{j\in\omega_\perp}\frac{1}{\sqrt{N}}\ket{j}
+\end{equation}
+implies $k_0 = l_0 = \frac{1}{\sqrt{N}}$.
+Inserting $i=0$ into (\ref{e:sincos}), you get
+\begin{equation}
+k_0 = \sin\left(\theta\right) = \frac{1}{\sqrt{N}}
+\end{equation}
+and 
+\begin{equation}
+\begin{split}
+l_0 =& \frac{1}{\sqrt{N-1}}\cos\left(\theta\right)\\
+    =& \frac{1}{\sqrt{N-1}}\sqrt{ 1 - \sin^2\left(\theta\right) }\\
+    =& \frac{1}{\sqrt{N-1}}\sqrt{ 1 - \frac{1}{N} }
+    = \frac{1}{\sqrt{N}}.
+\end{split}
+\end{equation}
+The proposition holds for $i=0$.
+
+Now, consider the $(i+1)$--th iteration
+\begin{equation}
+\begin{split}
+&\begin{cases}
+k_{i+1} =& \sin\left[\left(2(i+1)+1\right)\theta\right]\\
+l_{i+1} =& \frac{1}{\sqrt{N-1}}\cos\left[\left(2(i+1)+1\right)\theta\right]
+\end{cases}\\
+&\begin{cases}
+k_{i+1} =& \sin\left[\left(2i+1\right)\theta+2\theta\right]\\
+l_{i+1} =& \frac{1}{\sqrt{N-1}}\cos\left[\left(2i+1\right)+2\theta\right]
+\end{cases}\\
+&\begin{cases}
+k_{i+1} =& \sin\left[\left(2i+1\right)\theta\right]
+           \cos\left(2\theta\right)
+          +\cos\left[\left(2i+1\right)\theta\right]
+           \sin\left(2\theta\right) \\
+l_{i+1} =& \frac{1}{\sqrt{N-1}}\left\lbrace
+                \cos\left[\left(2i+1\right)\theta\right]
+                \cos\left(2\theta\right)
+               -\sin\left[\left(2i+1\right)\theta\right]
+                \sin\left(2\theta\right) 
+           \right\rbrace.
+\end{cases}
+\end{split}
+\end{equation}
+By the induction hypothesis, 
+\begin{equation}
+\begin{cases}
+k_{i+1} =& k_i\cos\left(2\theta\right)
+          +\sqrt{N-1}\;l_i\sin\left(2\theta\right) \\
+l_{i+1} =& \frac{1}{\sqrt{N-1}}\left\lbrace
+                \sqrt{N-1}\;l_i\cos\left(2\theta\right)
+               - k_i\sin\left(2\theta\right) 
+           \right\rbrace,
+\end{cases}
+\end{equation}
+and since
+\begin{equation}
+\sin\left(\theta\right) = \frac{1}{\sqrt{N}}
+\quad\Rightarrow\quad
+\cos\left(2\theta\right) = \frac{N-2}{N}
+\quad\text{and}\quad
+\sin\left(2\theta\right) = \frac{2\sqrt{N-1}}{N},
+\end{equation}
+then
+\begin{equation}
+\begin{cases}
+k_{i+1} =& k_i\frac{N-2}{N} + l_i\frac{2(N-1)}{N}\\
+l_{i+1} =& l_i\frac{N-2}{N} -k_i\frac{2}{N}. 
+\end{cases}
+\end{equation}
+Since this is (\ref{e:discsincos}) as expected, $j\Rightarrow j+1$.
+\end{proof}
+
+
+\mmm{Trotter formula!}
+
 \mmm{Biggest problem still: Why is Grover a geodesic?}
 
 %--------------------------------------------------------------------------------   
