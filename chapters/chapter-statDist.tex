@@ -35,7 +35,7 @@ As an example, consider two differently weighted coins.  Coin $i$ has
 an {\it a priori} probability $p_i$ of obtaining heads in a given toss.
 The probability space is one dimensional, just the probability 
 $p_i$ of heads for each coin.
-Define\footnote{After Wooters\cite{Wooters:81}} 
+Define, following Wooters\cite{Wooters:81},
 the statistical distance between two coins in this probability space as
 \begin{equation}
 d(p_1,p_2) = \lim_{n\to\infty} \frac{1}{\sqrt{n}}\times
@@ -55,8 +55,36 @@ uncertainty as RMS deviation
 \begin{equation}
 \Delta p = \left[ \frac{p(1-p)}{n} \right]^\frac{1}{2}.
 \end{equation}
+This gives 
+\begin{equation}
+\begin{split}
+d(p_1,p_2) =& \lim_{n\to\infty} \frac{1}{\sqrt{n}}\times
+\int_{p_1}^{p_2}\,\frac{dp}{2\Delta p}\\
+=& \lim_{n\to\infty} \frac{1}{\sqrt{n}}\times
+\int_{p_1}^{p_2}\,\frac{\sqrt{n}dp}{2\sqrt{p(1-p)}}\\
+=& \int_{p_1}^{p_2}\,\frac{dp}{2\sqrt{p(1-p)}}\\
+=& \cos^{-1}\left( 
+    \sqrt{p_1} \sqrt{p_2} 
+    +\sqrt{q_1}\sqrt{q_2}
+\right),
+\end{split}
+\end{equation}
+where $q_1 = 1-p_1$ and $q_2=1-p_2$.  So, the statistical distance
+is not the Euclidean distance ($\left| p_2 - p_1 \right|$) on probability
+space.
+It is easy to generalize this distance when the system has 
+more that just two outcomes, $p$ and $q$.
+When there are countably infinite outcomes, the notion of statistical
+distance becomes
+\begin{equation}
+d(p_1,p_2) = \cos^{-1}\left\lbrack 
+    \sum_{i=1}^\infty
+    \sqrt{p_1} \sqrt{p_2} 
+\right\rbrack.
+\end{equation}
 
-\mmm{Add in Konstantine's stuff here}
+
+
 
 %--------------------------------------------------------------------------------   
 \subsection{A Quantum Mechanical Approach}
@@ -82,9 +110,11 @@ notion of state distinguishability.  \ie,
 \begin{equation}
 \frac{1}{4}ds_{\text{\tiny Pure States}}^2 = 
     \left[ \cos^{-1}\left(\left|
-                        \braket{\psi}{\tilde\psi}
+                        \braket{\tilde\psi}{\psi}
                     \right|\right)
-    \right]^2.
+    \right]^2
+= 1-\left| \braket{\tilde\psi}{\psi} \right|^2    
+= \braket{d\psi_\perp}{d\psi_\perp}.
 \end{equation}
 If we define $\ket{d\psi_\perp} = \ket{d\psi} - \ket{\psi}\braket{\psi}{d\psi}$, 
 then
