@@ -5,31 +5,31 @@
 
 \subsubsection{General QC intro}
 
-%--------------------------------------------------------------------------------   
-%--------------------------------------------------------------------------------   
-\section{Information Theory}
-
-\subsubsection{Why do we care?}
-
-%--------------------------------------------------------------------------------   
-\subsection{Classical}
-
-\subsubsection{Entropy}
-\subsubsection{Information}
-\subsubsection{Coding}
-\subsubsection{Channel Capacity}
-
-%--------------------------------------------------------------------------------   
-\subsection{Quantum}
-
-\subsubsection{Entropy}
-\subsubsection{Information}
-\subsubsection{Measurement (POVMs and Optimal Measurements?)}
-\subsubsection{Entanglement}
-\subsubsection{Coding}
-\subsubsection{Dense Coding and Channel Capacity}
-\subsubsection{Teleportation}
-\subsubsection{Cloning}
+%%--------------------------------------------------------------------------------   
+%%--------------------------------------------------------------------------------   
+%\section{Information Theory}
+%
+%\subsubsection{Why do we care?}
+%
+%%--------------------------------------------------------------------------------   
+%\subsection{Classical}
+%
+%\subsubsection{Entropy}
+%\subsubsection{Information}
+%\subsubsection{Coding}
+%\subsubsection{Channel Capacity}
+%
+%%--------------------------------------------------------------------------------   
+%\subsection{Quantum}
+%
+%\subsubsection{Entropy}
+%\subsubsection{Information}
+%\subsubsection{Measurement (POVMs and Optimal Measurements?)}
+%\subsubsection{Entanglement}
+%\subsubsection{Coding}
+%\subsubsection{Dense Coding and Channel Capacity}
+%\subsubsection{Teleportation}
+%\subsubsection{Cloning}
 
 %--------------------------------------------------------------------------------   
 %--------------------------------------------------------------------------------   
@@ -130,10 +130,10 @@ f^{(i^\prime )}(x) = (\neg x_1 )\wedge x_2\wedge x_3\wedge (\neg x_4 )
 \end{equation}
 
 The function $f$ can now be represented in terms of three elementary
-logical operations AND, OR, and NOT.\footnote{This representation of the 
+logical operations AND, OR, and NOT.  This representation of the 
 function is called, in the computer science literature, ``disjunctive
-normal form.''\index{disjunctive normal form}}
-In this way, a small number of elementary gates suffice to evaluate
+normal form.''\index{disjunctive normal form}
+A small number of elementary gates suffice to evaluate
 exactly any function of a finite input.  This is an important result
 in computer science and allows for arbitrarily complex computations
 to be built up out of very simple physical devices.
@@ -178,7 +178,7 @@ than some polynomial of $n$, or
 \text{Size}\left( C_f \right) \le \text{Poly}(n).
 \end{equation}
 Decision problems with circuits of polynomial size are considered
-to be ``easy,'' otherwise, ``hard.''
+to be ``easy,'' otherwise, they are referred to as ``hard.''
 A \emph{complexity class}\index{complexity class} of these problems 
 can be defined as ({\bf P} for Polynomial)
 \begin{equation}
@@ -263,7 +263,8 @@ Are there {\sl reversible} universal gates?
 The trivial gate, which takes an input directly to an output,
 as well as the \texttt{NOT} gate are obviously reversible.
 \texttt{AND} and \texttt{OR} are not.  However, 
-the next simplest reversible gate is the conrolled--\texttt{NOT}
+there exist non--trivial reversible gates.
+The next simplest is the conrolled--\texttt{NOT}
 (\texttt{CNOT}) or the exclusive--\texttt{OR} (\texttt{XOR}) gate
 \begin{equation}
 \texttt{XOR}\colon (x,y)\mapsto (x, x\oplus y).
@@ -308,12 +309,32 @@ the next simplest reversible gate is the conrolled--\texttt{NOT}
 This gate flips the second bit when the first is set as shown in 
 figure (\ref{fig:xor}) and table (\ref{tab:xor}).  Notice that this
 could be used as a copy operation if the second bit ($y$) is initially set
-to zero
+to zero (figure (\ref{fig:xorCopy}))
+%
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(40,50)
+    \put(20,40){\circle*{4}}
+    \put(20,10){\circle{6}}
+    \put(-20,7){$0$}
+    \put(-20,37){$x$}
+    \put(50,7){$x$}
+    \put(50,37){$x$}
+    \path(0,10)(40,10)
+    \path(0,40)(40,40)
+    \path(20,7)(20,40)
+\end{picture}
+\caption{A controlled--\texttt{NOT} (\texttt{CNOT}) gate can be used to perform
+a \texttt{COPY}.}
+\label{fig:xorCopy}
+\end{center}
+\end{figure}
+%
 \begin{equation}
 \texttt{XOR}\colon (x,0)\mapsto (x, x).
 \end{equation}
       
-The most useful reversible gate is the
+Perhaps the most useful reversible gate is the
 controlled--controlled--\texttt{NOT} (\texttt{CCNOT}) gate
 \begin{equation}
 \texttt{CCNOT}\colon (x,y,z)\mapsto (x,y, z\oplus xy),
@@ -347,8 +368,8 @@ and, unlike the reversible two--bit gates, is itself a universal gate
 for Boolean logic.  A Boolean circuit can be built to compute any
 reversible computation using Toffoli gates alone, provided input bits
 can be fixed and output bits can be ignored.  For more on this, 
-the reader is referred to the literature.  For instance, 
-Preskill\cite{Preskill:98} addresses this in more detail.
+the reader is referred to the literature.  
+Preskill\cite{Preskill:98}, for example, addresses this in more detail.
 
 Note that a reversible circuit can simulate a circuit composed of 
 irreversible gates.  This can be done efficiently without many
@@ -363,15 +384,16 @@ A classical computer has ``bits,'' while a quantum computer will have
 \emph{quantum bits}, or ``qubits.''
 \index{quantum bit}\index{qubit}
 A quantum bit will be the state of a two--state quantum system.
-Say, for instance
+Say, for instance for some spin system,
 \begin{equation}
 \begin{split}
     \ket{1} =& \,\ket{\uparrow}\\
     \ket{0} =& \,\ket{\downarrow},
 \end{split}
 \end{equation}
-for some spin system.  More will be discussed about the actual physical
+More will be discussed about the actual physical
 implementation of these qubits later.
+
 Sets of bits, will be tensor product states of qubits.  
 \begin{equation}
 \ket{0110\ldots} = \ket{0}\otimes
@@ -383,7 +405,7 @@ It is assumed, at any time during a computation, that the Hilbert space
 for the entire quantum computer will factor
 into tensor products of smaller dimensional Hilbert spaces.  
 For the most part, it is assumed these will be two--dimensional Hilbert 
-spaces to more closely resemble classical {\sl binary} computations.  
+spaces in order to more closely resemble classical {\sl binary} computations.  
 However, notice that nothing precludes
 working with {\sl qutrits} or, in general, {\sl qudits} (d--state
 systems) as the basic unit of computation.
@@ -477,25 +499,13 @@ a Von Neumann measurement is performed on the register of qubits, projecting
 each onto some measurement basis $\lbrace\ket{0},\ket{1}\rbrace$.
 The outcome of this measurement is the result of the computation.
 
+Before more is discussed about quantum algorithms and the actual
+computations involved, there are still a few more basic tools
+to be developed.  Practically every computation involves the use of
+at least one Hadamaard transformation.
+
 \subsubsection{The Hadamaard Transformation}
 \index{Hadamaard transformation}
-
-\begin{figure}[h]
-\begin{center}
-\begin{picture}(50,60)
-    \put(20,0){\framebox(20,50){\bf{$H$}}}
-    \put(-20,7){$\ket{1}$}
-    \put(-20,37){$\ket{0}$}
-    \path(0,10)(20,10)
-    \path(40,10)(60,10)
-    \path(0,40)(20,40)
-    \path(40,40)(60,40)
-    \put(65,7){$\frac{1}{\sqrt{2}}\left(\ket{0}-\ket{1}\right)$}
-    \put(65,37){$\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)$}
-\end{picture}
-\caption{A quantum circuit applying a Hadamaard transformation to two qubits.}
-\end{center}
-\end{figure}
 
 The one--dimensional Hadamaard transformation takes a quantum bit into the
 superposition given by
@@ -513,6 +523,23 @@ H_1
 \left[\begin{matrix}1&1\\ 1&-1\end{matrix}\right].
 %\left[\begin{matrix}\ket{0}\\ \ket{1}\end{matrix}\right].
 \end{equation}
+%
+\begin{figure}[h]
+\begin{center}
+\begin{picture}(50,60)
+    \put(20,0){\framebox(20,50){\bf{$H$}}}
+    \put(-20,7){$\ket{1}$}
+    \put(-20,37){$\ket{0}$}
+    \path(0,10)(20,10)
+    \path(40,10)(60,10)
+    \path(0,40)(20,40)
+    \path(40,40)(60,40)
+    \put(65,7){$\frac{1}{\sqrt{2}}\left(\ket{0}-\ket{1}\right)$}
+    \put(65,37){$\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)$}
+\end{picture}
+\caption{A quantum circuit applying a Hadamaard transformation to two qubits.}
+\end{center}
+\end{figure}
 
 The version of the Hadamaard transformation that sees the most use is
 the $N$--dimensional Hadamaard transformation defined as the $N$--fold
@@ -571,9 +598,9 @@ of $x$
 H\ket{\bf 0} = \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1} \ket{x}.
 \end{equation}
 
-A Hadamaard transformation acting on a {\sl general} state 
+A Hadamaard transformation can also act on a {\sl general} state 
 $\ket{x}=\ket{x_1\ldots x_N}$
-(not necessarily all 0's) can be written as
+(not necessarily all 0's), which can be written as
 \begin{equation}
 \begin{split}
 H\colon\ket{x}\quad\mapsto\quad&
