@@ -65,7 +65,7 @@ realclean: clean
 
 clobber: clean
 #	-rm -f *.log *.aux *.toc *~
-	-rm -f *.log *.aux *.toc *.idx *.lof *.lot *.ind *.bbl *.blg *.ilg *~
+	-rm -f *.log *.aux *.toc *.idx *.lof *.lot *.ind *.bbl *.blg *.ilg *~ chapters/*~
 
 targets: $(PROGS)
 
