@@ -1,22 +1,7 @@
-\documentclass[a4paper,twoside]{article}
-\usepackage[procnames,noindent]{lgrind}
-\usepackage{fancyhdr,a4wide}
-\usepackage{german}
-\usepackage{makeidx}
-\pagestyle{fancy}
+% Remember to use the lgrind style
 
-\makeindex
-
-\begin{document}
-\renewcommand{\footrulewidth}{0.4pt}
-\fancyhead[C]{\lgrindhead}
-\fancyhead[LO,RE]{\lgrindfilesize~Bytes\\\lgrindmodtime}
-\fancyhead[RO,LE]{\bfseries \lgrindfilename\\\lgrindmodday.\lgrindmodmonth.\lgrindmodyear}
-\fancyfoot[C]{\bfseries\thepage}
-\setlength{\headheight}{24pt}
-\begin{lgrind}
-\BGfont
-\File{stdin}{2000}{9}{5}{18:42}{0}
+\Head{}
+\File{stdin}{2000}{9}{5}{18:47}{0}
 \L{\LB{//_\V{MixedState}.\V{h}}}
 \L{\LB{}}
 \L{\LB{\K{\#ifndef}_\V{\_MIXEDSTATE\_H\_}}}
@@ -48,6 +33,3 @@
 \L{\LB{}}
 \L{\LB{}}
 \L{\LB{\K{\#endif}_//\V{\_MIXEDSTATE\_H\_}}}
-\end{lgrind}
-\printindex
-\end{document}
