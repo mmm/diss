@@ -14,7 +14,7 @@ LOG = build.log
 %.ps :  %.dvi 
 	@echo "--- ps ---"
 	@echo "--- ps ---" >> $(LOG)
-	dvips -o $@ $<
+	@dvips -o $@ $<
 
 %.ps :  %.pdf 
 	@echo "--- ps ---"
@@ -29,7 +29,7 @@ LOG = build.log
 2up%.ps : %.ps
 	@echo "--- 2up-ps ---"
 	@echo "--- 2up-ps ---" >> $(LOG)
-	2psred $< 
+	@2psred $< 
 
 ##### TARGETS #####
 
