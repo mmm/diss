@@ -8,170 +8,91 @@
 
 \baselineskip=15.5pt plus .5pt minus .2pt
 
-This chapter will contain details of the computer programs used
-in the various numerical simulations of Grover's algorithm, and
-will be added to the final draft.
+This chapter contains details of the computer program used
+in the numerical simulation of Grover's algorithm.
+The code itself is interesting and possibly useful in
+other quantum simulations due to the general nature of the
+representations of quantum states.
+
+This code is written in C++ and compiled with development
+snapshots of the GNU C++ compiler (\texttt{http://gcc.gnu.org/}).
+Any compiler compliant with the ANSI ISO C++ standard \emph{should}
+compile the code, but I would read about how the compiler implements
+and instantiates templates before I tried it.
+
 
 %-----------------------------------------------------------------
 %-----------------------------------------------------------------
-\section{Organization of the Code}
+\section{Classes Used}
 
 %-----------------------------------------------------------------
-\subsection{Classes Used}
-
-\subsubsection{State.h}
-
-%\lagrind[h]{figures/State.h.lg}{State.h}{fig:junk}
-\lgrindfile{figures/State.h.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/State.h}}
-
-\subsubsection{PureState.h}
-\lgrindfile{figures/PureState.h.lg}
-
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/PureState.h}}
-
-\subsubsection{MixedState.h}
-\lgrindfile{figures/MixedState.h.lg}
-
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/MixedState.h}}
-
-
-\subsubsection{The \texttt{valarray} Template}
+\subsection{State}
+%-----------------------------------------------------------------
+\subsection{PureState}
+%-----------------------------------------------------------------
+\subsection{MixedState}
+%-----------------------------------------------------------------
+\subsection{The \texttt{valarray} Template}
 \index{Code@\emph{Code}!Valarray}
 
 
 %-----------------------------------------------------------------
-\subsection{Libraries Used}
+%-----------------------------------------------------------------
+\section{Libraries Used}
 
+\subsection{LAPACK}
+The module \texttt{fwrap.C} is an example o
 
+\subsection{The Template Numerical Toolkit}
+
+\subsection{blitz++}
 
 
 %-----------------------------------------------------------------
 %-----------------------------------------------------------------
-\section{Organization of the Code}
+\section{Modules}
+
+\begin{sloppy}
 
 %-----------------------------------------------------------------
-\subsection{main.C}
-
+\subsection{main}
 \lgrindfile{figures/main.C.lg}
-
-%\texttt{
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/diffs/main.C}}
-
 %-----------------------------------------------------------------
-\subsection{PureState.C}
-
+\subsection{State}
+\lgrindfile{figures/State.h.lg}
+%-----------------------------------------------------------------
+\subsection{PureState}
+\lgrindfile{figures/PureState.h.lg}
 \lgrindfile{figures/PureState.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/PureState.C}}
-
 %-----------------------------------------------------------------
-\subsection{MixedState.C}
-
+\subsection{MixedState}
+\lgrindfile{figures/MixedState.h.lg}
 \lgrindfile{figures/MixedState.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/MixedState.C}}
-
 %-----------------------------------------------------------------
-\subsection{derivs.C}
-
+\subsection{derivs}
 \lgrindfile{figures/derivs.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/diffs/derivs.C}}
-
 %-----------------------------------------------------------------
-\subsection{rk4.C}
-
+\subsection{rk4}
 \lgrindfile{figures/rk4.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/rk4.C}}
-
 %-----------------------------------------------------------------
-\subsection{Bures.C}
-
+\subsection{Bures}
 \lgrindfile{figures/Bures.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/Bures.C}}
-
 %-----------------------------------------------------------------
-\subsection{Matrices.h}
-
+\subsection{Matrices}
 \lgrindfile{figures/Matrices.h.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/Matrices.h}}
-
-%-----------------------------------------------------------------
-\subsection{Matrices.C}
-
 \lgrindfile{figures/Matrices.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/Matrices.C}}
-
 %-----------------------------------------------------------------
-\subsection{display.C}
-
+\subsection{display}
 \lgrindfile{figures/display.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/diffs/display.C}}
-
 %-----------------------------------------------------------------
-\subsection{exceptions.h}
-
+\subsection{exceptions}
 \lgrindfile{figures/exceptions.h.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/exceptions.h}}
-
-%-----------------------------------------------------------------
-\subsection{exceptions.C}
-
 \lgrindfile{figures/exceptions.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/exceptions.C}}
-
 %-----------------------------------------------------------------
-\subsection{fwrap.C}
-
+\subsection{fwrap}
 \lgrindfile{figures/fwrap.C.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/fwrap.C}}
-
 %-----------------------------------------------------------------
-\subsection{myvalarray.h}
-
+\subsection{myvalarray}
 \lgrindfile{figures/myvalarray.h.lg}
-%\texttt{
-%\sloppy
-%\small
-%\verbatiminput{/home/mmm/src/numerical/stepper/common/myvalarray.h}}
+
+\end{sloppy}

@@ -339,10 +339,10 @@ environment.
 A method of stability analysis
 is therefore needed that does not rely upon a linearization
 of the problem.  This gets quite difficult to do in general,
-so a numerical approach is then warranted.
+so a numerical approach is warranted.
 
 %--------------------------------------------------------------------------------   
-\subsection{Numerical Model of Grover's Algorithm}
+\subsection{A Numerical Model of Grover's Algorithm}
 
 A database consisting of $N=2^n$ items, is represented (using
 $n$ qubits) as an $N$--state system whose states are given as
@@ -350,26 +350,30 @@ points in $\CP^{N-1}$.  The evolution of the algorithm is then
 modelled by the numerical integration of the geodesic equations 
 of motion (\ref{e:detailedGeodesics}) on this space.
 Appropriate initial conditions are supplied to mimic the behaviour of 
-the actual algorithm.  At this stage, the approach involves only pure 
-states, and so the (unitary) evolution remains on the shell of pure 
-states.
-\mmm{show baseline results here?}
-\mmm{uncertainties here?}
+the actual algorithm, which, at this stage, involves only pure 
+states.  The unitary evolution of the algorithm simply remains 
+on the shell of pure states.
+\mmm{show baseline results here}
 \mmm{pseudotime relates to number of Grover iterations}
 
-\subsubsection{Simulation of Grover as a dynamical map}
+
+%--------------------------------------------------------------------------------   
+\subsection{Noise}
 
 The time evolution of a quantum mechanical system is most easily
 described by unitary evolution.
-Unfortunatley, physical systems do not exist in isolation.  There
-are always interactions with environments or baths that cause
-quantum mechanical systems to evolve by possibly more complicated
-means than these simple unitary transformations.
+Unfortunately (fortunately?), physical systems do not exist in 
+isolation.  There
+are always interactions with either the environment or other 
+physical systems that cause a quantum mechanical system to evolve 
+by possibly more complicated means than these simple unitary 
+transformations.
 
 A somewhat more general approach to quantum evolution is to 
 consider dynamical evolution of a quantum mechanical system
 described as simply a map, a \emph{dynamical map}\cite{Sudarshan:??}
 of density matrices to density matrices.
+\footnote{Density matrices are needed because\dots}
 Notice that an even more general approach is to look at maps of 
 density matrices, where the image itself doesn't necessarily have to
 be a physical density matrix.  It could be simply a subsystem
@@ -378,29 +382,39 @@ one.  For purposes of this dissertation, only dynamical maps that
 take physical density matrices to physical density matrices are
 considered.
 
-\mmm{Phase space stuff or configuration space stuff}
-
-The numerical simulation of Grover's algorithm described above
-integrates the geodesic equations of motion.  At every time step,
-this numerical integration can be viewed as simply a map that
-takes density matrices to density matrices\dots a dynamical map.
+The numerical simulation of Grover's algorithm described 
+in the previous section integrates the geodesic equations 
+of motion.  This can describe not only the evolution of pure states, 
+but more generally, the evolution of density matrices.  
+At every time step,
+this numerical integration can then be viewed as simply a dynamical
+map taking density matrices to density matrices.
 \footnote{Really, this particular mapping maps derivatives as well, and
 can be thought of as a mapping of the state in a quantum phase 
 space.}
-
-%--------------------------------------------------------------------------------   
-\subsection{Noise}
+\mmm{maybe example with simple problem as dynamical map...add noise
+(physically motivated noise)}
 
 Now, any noise introduced into the dynamical evolution of a 
 quantum mechanical system can be described within the context 
-of dynamical maps.  
-No matter the source of the noise or whether the noise is 
-Hamiltonian or non-Hamiltonian, this approach will encompass
-it all.
-\mmm{Include simple analytical perturbation if possible.  Use this to
-compare with code}
-\mmm{maybe example with simple problem as dynamical map...add noise
-(physically motivated noise)}
+of dynamical maps.   This approach encompasses any kind of noise
+that can be introduced, regardless of the source or if the noise
+is Hamiltonian or non-Hamiltonian.
+
+In order to faithfully bring noise into the numerical model of Grover's 
+algorithm, mixed states must be represented in that model.  
+Mixed state density matrices can be written as
+\begin{equation}
+\rho = \sum\lambda_i\rho_i,
+\end{equation}
+where the $\rho_i$ are pure state density matrices, and $i$ can run 
+to the dimension of the component pure 
+states ($N=2^{\text{Number of Qubits}}$ for the present model). 
+
+Without noise,
+the algorithm happily evolves along the shell of pure states.
+When noise is added in, the state will be taken off of the shell 
+of pure states and ``in'' via a slight mixture of other pure states.
 
 Try two different models\dots
 \begin{enumerate}
@@ -414,11 +428,6 @@ noise in Grover(?). This will take pure to mixed states.
 and let the $\rho_i$ flow as pure states.  Add in noise to $\lambda$s
 {\sl and} to the $\rho_i$ evolutions.
 \end{enumerate}
-
-\subsubsection{No Noise}
-\subsubsection{...}
-\subsubsection{Max Noise}
-
 
 
 %--------------------------------------------------------------------------------   
