@@ -65,11 +65,18 @@ H\ket{\bf 0} =& H_N\ket{0\ldots 0}\\
 \label{e:hadamaard}
 \end{equation}
 Now, each of the kets on the bottom--RHS of equation (\ref{e:hadamaard})
-can be thought of as number expressed in binary. \ie,
+can be thought of as just a number expressed in binary. \ie,
 \begin{equation}
-H\ket{\bf 0} = \frac{1}{\sqrt{2^N}}\biggl\lbrace \ket{0\ldots 0} + \ket{0\ldots 01} + \cdots 
-+ \ket{1\ldots 1}\biggr\rbrace.
+\begin{split}
+H\ket{\bf 0} =& \frac{1}{\sqrt{2^N}}\biggl\lbrace 
+\underset{0}{\underbrace{\ket{0\ldots 0}}}
++ \underset{1}{\underbrace{\ket{0\ldots 01}}} + \cdots 
++ \underset{2^N-1}{\underbrace{\ket{1\ldots 1}}}\biggr\rbrace \\
+=& \frac{1}{\sqrt{2^N}}\sum_{x=0}^{2^N-1} \ket{x}.
+\end{split}
 \end{equation}
+This will be useful in function evaluation. \ie, We think of a function
+from $\lbrace 0,1\rbrace^N\to\lbrace 0,1\rbrace$.
 
 
 
