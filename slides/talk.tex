@@ -20,7 +20,7 @@
 \item Why Quantum Computers?
 \item Shor's Algorithm.
 \item Grover's Algorithm.
-\item Modelling Noise.
+\item Adding Noise.
 \item Results.
 \end{itemize}
 
@@ -332,8 +332,52 @@ $\ket{s} = \frac{1}{\sqrt{N}}\sum_{i=0}^{N-1} \ket{i}$
 %-----------------------------------------------------------------
 
 \begin{center}
-\textbf{Modelling Noise}
+\textbf{Adding Noise}\\
+\bigskip
+A dynamical treatment of Grover's algorithm
 \end{center}
+
+\pagebreak
+
+Grover's algorithm can be described by a geodesic on the 
+space of pure quantum states.
+\begin{center}
+\begin{picture}(200,150)
+    \thicklines
+    \qbezier(0,70)(40,150)(120,100)
+    \qbezier(120,100)(150,80)(180,85)
+    \qbezier(0,70)(-40,-50)(140,0)
+    \qbezier(180,85)(270,90)(200,30)
+    \qbezier(200,30)(170,10)(140,0)
+    \put(20,20){$\ket{\Psi}$}
+    \put(110,70){$\ket{\omega}$}
+    \qbezier[15](25,35)(70,70)(175,60)
+\end{picture}
+\end{center}
+
+If a numerical model can integrate the geodesic equations of
+motion, noise can then be added in at every step.
+
+\vfil
+\begin{center}
+{\sl This is not good enough.}
+\end{center}
+
+\pagebreak
+
+The numerical model must be modified to include 
+mixed states of the form
+\begin{equation*}
+\rho = \sum\lambda_i\rho_i.
+\end{equation*}
+
+Noise must then be added to both the pure state 
+evolution (the $\rho_i$'s) and the mixture of 
+the state (the $\lambda$'s) at every step.
+
+Note that \emph{any} physical noise in the system can be 
+described in this way.
+
 
 \pagebreak
 
