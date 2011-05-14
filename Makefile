@@ -33,7 +33,7 @@ LOG = build.log
 
 ##### TARGETS #####
 
-default: main.dvi
+default: main.pdf
 
 main.dvi: main.aux main.bbl main.ind
 	@echo "--- dvi ---"

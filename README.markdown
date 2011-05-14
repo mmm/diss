@@ -6,5 +6,14 @@ Published as "Dynamical Stability of Quantum Algorithms". Dissertation, ISBN:0-4
 
 # Building
 
-the `Makefile` says it all... lots of deps.  And it's, ahem, slow.
+The `Makefile` says most of it... lots of deps.  And it's, ahem, slow.
+
+First, from the toplevel:
+
+    export TEXINPUTS=.:./macros:
+    make main.dvi
+    make main.dvi
+    make main.pdf
+
+multiple times just to resolve citations, indices, etc.
 
